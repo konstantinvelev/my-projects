@@ -1,0 +1,127 @@
+﻿@model Prima08.Web.ViewModels.Products.AllViewModel;
+@{
+    this.ViewData["Title"] = "Продукти";
+}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Начало</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Продукти</li>
+        </ol>
+    </nav>
+<section id="product-list">
+    <div class="container">
+        <div class="col-xs-12 text-center">
+            <h1>Продукти</h1>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Products)
+            {
+                <div class="col-sm-3">
+                    <div class="card cardheight" style="width: 16rem;">
+                        <img class="card-img-top" src="@item.ImageUrl" alt="@item.Title">
+                        <div class="card-body">
+                            <a href="/Products/Details?id=@item.Id">@item.Title</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<div class="container">
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <a href="/Home/Index" class="custom-logo-link" rel="home"><img width="300" height="90" src="/Home/Index" class="custom-logo" alt="Прима 08 ООД" srcset="https://prima08.com/wp-content/uploads/2019/07/cropped-Prima08-logo.png 650w,   https://prima08.com/wp-content/uploads/2019/07/cropped-Prima08-logo-300x67.png 300w" sizes="(max-width: 650px) 100vw, 650px"></a>					<h2 class="title-like c-white">Компоненти от неръждаема стомана <span>за хранителната промишленост</span></h2>
+                    <hr class="hidden-xs">
+                    <h2 class="c-white a-left hidden-sm hidden-md hidden-lg">Меню</h2>
+                    <ul class="footer-menu>
+                        <li><a href="/" title="Начална страница">Начало</a></li>
+                        <li><a href="/Home/ForUs" title="За нас">За нас</a></li>
+                        <li><a href="/Products/All" title="Продуктов каталог">Продукти</a></li>
+                        <li><a href="/Catalogs/All" title="Каталози" rel="nofollow">Каталози</a></li>
+                        <li><a href="/Home/Contacts" title="За контакти">Контакти</a></li>
+                    </ul>
+                    <hr class="hidden-sm hidden-md hidden-lg">
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="form-wapper hidden-xs">
+                        <h2 class="title-like">Свържете се с нас</h2>
+                        <div class="caldera-grid" id="caldera_form_1" data-cf-ver="1.8.11" data-cf-form-id="CF5d2da92ee009b">
+                            <div id="caldera_notices_1" data-spinner="https://prima08.com/wp-admin/images/spinner.gif"></div>
+
+                            <form method="post" asp-action="Add" asp-controller="Queries">
+                                <div>
+                                    Вашето име:
+                                    <input type="text" asp-for=" Name" class="form-control"></input>
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div>
+                                    Телефон:
+                                    <input type="text" asp-for=" Number" class="form-control"></input>
+                                    <span asp-validation-for="Number" class="text-danger"></span>
+                                </div>
+                                <div>
+                                    Email:
+                                    <input asp-for=" Email" class="form-control"></input>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div>
+                                    Въпрос/Коментар:
+                                    <textarea asp-for=" Question" class="form-control"></textarea>
+                                    <span asp-validation-for="Question" class="text-danger"></span>
+                                </div>
+                                <div data-field-wrapper="fld_2150019" class="form-group" id="fld_2150019_1-wrap">
+                                    <label id="fld_2150019Label" for="fld_2150019_1" class="control-label screen-reader-text sr-only">GDPR</label>
+                                    <div class="">
+                                        <div class="checkbox">
+                                            <label for="fld_2150019_1_opt1902201">
+                                                <input data-parsley-required="true" data-parsley-group="fld_2150019_1" data-parsley-multiple="fld_2150019_1" type="checkbox" data-label="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>" data-field="fld_2150019" id="fld_2150019_1_opt1902201" class="fld_2150019_1 option-required" name="fld_2150019[opt1902201]" value="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>" data-type="checkbox" data-checkbox-field="fld_2150019_1" data-calc-value="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>">
+                                                съгласен съм с <a href="/Home/GDPR" target="_blank" rel="nofollow">политиката за поверителност</a>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-holder d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-primary">Изпрати</button>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <h2 class="c-white a-left">За контакти</h2>
+                    <div class="f-contacts">
+                        <div class="f-contact">
+                            <i class="fas fa-map-marker-alt"></i> гр. Пловдив, ул. Нестор Абаджиев 23
+                        </div>
+                        <div class="f-contact">
+                            <a href="mailto:info@prima08.com" class="r-10" title="Изпратете ни съобщение"><i class="far fa-envelope-open"></i> info@prima08.com</a>
+                        </div>
+                        <div class="f-contact">
+                            <a href="tel:+359 32 24 20 40" title="Обадете ни се"><i class="fas fa-phone-volume"></i> +359 32 24 20 40</a>
+                        </div>
+                        <div class="f-contact">
+                            <a href="tel:+359 888 888 622" title="Обадете ни се"><i class="fas fa-phone-volume"></i> +359 888 888 622</a>
+                        </div>
+                        <div class="f-contact">
+                            <i class="fas fa-fax"></i> +359 887 34 35 34
+                        </div>
+                        <hr class="c-hr">
+                        <div class="table f-contact-bottom">
+                            <div class="f-contact">
+                                <a href="/Home/Card" title="Карта на сайта"><i class="fas fa-sitemap"></i> Карта на сайта</a>
+                            </div>
+                            <div class="f-contact">
+                                <a href="/Home/GDPR" rel="nofollow" title="Политика за поверителност"><i class="fas fa-link"></i> GDPR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

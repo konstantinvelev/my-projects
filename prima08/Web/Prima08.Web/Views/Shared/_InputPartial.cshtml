@@ -1,0 +1,40 @@
+﻿@model Prima08.Web.ViewModels.Queries.CreateInputViewModel;
+
+<form method="post" asp-action="Add" asp-controller="Queries">
+    <div>
+        Вашето име:
+        <input type="text" asp-for=" Name" class="form-control"></input>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        Телефон:
+        <input type="text" asp-for=" Number" class="form-control"></input>
+        <span asp-validation-for="Number" class="text-danger"></span>
+    </div>
+    <div>
+        Email:
+        <input asp-for=" Email" class="form-control"></input>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        Въпрос/Коментар:
+        <textarea asp-for=" Question" class="form-control"></textarea>
+        <span asp-validation-for="Question" class="text-danger"></span>
+    </div>
+    <div data-field-wrapper="fld_2150019" class="form-group" id="fld_2150019_1-wrap">
+        <label id="fld_2150019Label" for="fld_2150019_1" class="control-label screen-reader-text sr-only">GDPR</label>
+        <div class="">
+            <div class="checkbox">
+                <label for="fld_2150019_1_opt1902201">
+                    <input data-parsley-required="true" data-parsley-group="fld_2150019_1" data-parsley-multiple="fld_2150019_1" type="checkbox" data-label="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>" data-field="fld_2150019" id="fld_2150019_1_opt1902201" class="fld_2150019_1 option-required" name="fld_2150019[opt1902201]" value="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>" data-type="checkbox" data-checkbox-field="fld_2150019_1" data-calc-value="съгласен съм с <a href=&quot;/politika-na-poveritelnost/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;>политиката за поверителност</a>">
+                    съгласен съм с <a href="/Home/GDPR" target="_blank" rel="nofollow">политиката за поверителност</a>
+                </label>
+
+            </div>
+        </div>
+    </div>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Изпрати</button>
+    </div>
+</form>
+

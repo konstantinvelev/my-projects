@@ -1,0 +1,123 @@
+﻿@model Prima08.Web.ViewModels.Products.DetailsViewModel;
+@{
+    this.ViewData["Title"] = "Детайли";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Начало</a></li>
+        <li class="breadcrumb-item"><a href="/Products/All">Продукти</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Детайли</li>
+    </ol>
+</nav>
+<h1>@this.ViewData["Title"]</h1>
+
+<section id="page-content">
+    <div class="container row">
+        <div class="col-xs-12 col-sm-4 c-30">
+            <div class="widget-area secondary" id="secondary" role="complementary" itemtype="https://schema.org/WPSideBar" itemscope="itemscope">
+                <div class="sidebar-main">
+
+                    <div class="topnav">
+                        <a class="active" href="/">Начало</a>
+                        <a href="/Home/ForUs">За нас</a>
+                        <a href="/Home/Contacts">Контакти</a>
+                        <a href="/Products/All">Продукти</a>
+                        <a href="/Catalogs/All">Каталози</a>
+                        <div class="search-container">
+                            <form action="/">
+                                <input type="text" placeholder="Търсене …" name="search">
+                                <input type="submit" class="search-submit" value="Търсене">
+                            </form>
+                        </div>
+                        <div class="sidebar-main">
+                            <ul class="sidebar-pr-list">
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=1" title="Бътерфлай кранове">Бътерфлай кранове</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=2" title="Сферични кранове">Сферични кранове</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=3" title="Люкове и капаци">Люкове и капаци</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=4" title="Кранчета, вентили, наблюдателни стъкла, филтри">Кранчета, вентили, наблюдателни стъкла, филтри</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=5" title="Тръбна арматура">Тръбна арматура</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=6" title="Тръби, колена, тройници, преходи, фланци">Тръби, колена, тройници, преходи, фланци</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=7" title="Компоненти за стерилно съхранение">Компоненти за стерилно съхранение</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=8" title="Актуатори за сферични и бътерфлай кранове с пневматично и ел. управление">Актуатори за сферични и бътерфлай кранове с пневматично и ел. управление</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=9" title="Компоненти за разпределение на азот">Компоненти за разпределение на азот</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=10" title="Почистващи системи">Почистващи системи</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=11" title="Декантатори">Декантатори</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=12" title="Плочи и серпентини за контролиране темп. на ферментационен процес">Плочи и серпентини за контролиране темп. на ферментационен процес</a></li>
+                                <hr class="bg-primary" />
+                                <li class="fas fa-chevron-circle-right"><a href="/Products/Details?id=13" title="Термометри">Термометри</a></li>
+                                <hr class="bg-primary" />
+                            </ul>
+                        </div>
+
+                    </div><!-- .sidebar-main -->
+                </div><!-- #secondary -->
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 c-70">
+            <div id="primary" class="content-area primary">
+
+                <article id="post-132" class="post-132 status-publish hentry ast-article-single">
+                    <div class="ast-post-format- single-layout-1">
+                        <div class="ast-single-post-order">
+                            <h1 class="entry-title">@Model.Title</h1>
+                        </div>
+                        <header class="entry-header ast-no-meta">
+                            <div class="post-thumb-img-content post-thumb">
+                                <img src="@Model.ImageUrl" class="attachment-large size-large wp-post-image" alt="<?php echo $title;?>">
+                            </div>
+                        </header>
+                        <div class="entry-content clear" itemprop="text">
+                            <div>
+                                @Model.Description
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+
+                <div class="well well-custom">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="over-left">
+                                <i class="fas fa-phone-volume"></i>
+                            </div>
+                            <div class="info-box">
+                                <a href="tel:+35932242040">+359 32 24 20 40</a><br><a href="tel:+359888888 622">+359 888 888 622</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="over-left">
+                                <i class="far fa-clock"></i>
+                            </div>
+                            <div class="info-box">
+                                <span>пон.- пет. : 9:00 - 17:00 <br>съб.- нед. : почивни дни</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <a href="#" data-target="#getquote" data-toggle="modal" class="btn-quote"><i class="far fa-bell"></i> Изпрати запитване</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- #primary -->
+        </div>
+
+        <div>
+            <partial name="_FooterPartial" />
+        </div>
+</section>

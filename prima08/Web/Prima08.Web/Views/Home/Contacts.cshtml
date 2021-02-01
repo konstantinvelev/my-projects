@@ -1,0 +1,65 @@
+﻿@model Prima08.Web.ViewModels.Queries.CreateInputViewModel;
+@{
+    this.ViewData["Title"] = "Контакти";
+}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Начало</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Контакти</li>
+    </ol>
+</nav>
+<main id="page" class="hfeed site">
+    <div>
+        <div id="content" class="site-content">
+            <div class="ast-container">
+                <section id="contact-us">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="well">
+                                    <h1 class="c-white a-left">За контакти</h1>
+                                    <p><i><strong>с Прима 08 ООД</strong></i></p>
+                                    <div class="f-contacts">
+                                        <div class="f-contact">
+                                            <i class="fas fa-map-marker-alt"></i> гр. Пловдив, ул. Нестор Абаджиев 23
+                                        </div>
+                                        <div class="f-contact">
+                                            <a href="mailto:info@prima08.com" class="r-10" title="Изпратете ни съобщение"><i class="far fa-envelope-open"></i> info@prima08.com</a>
+                                        </div>
+                                        <div class="f-contact">
+                                            <a href="tel:+359 32 24 20 40" title="Обадете ни се"><i class="fas fa-phone-volume"></i> +359 32 24 20 40</a>
+                                        </div>
+                                        <div class="f-contact">
+                                            <a href="tel:+359 888 888 622" title="Обадете ни се"><i class="fas fa-phone-volume"></i> +359 888 888 622</a>
+                                        </div>
+                                        <div class="f-contact">
+                                            <i class="fas fa-fax"></i> +359 887 34 35 34
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="form-wapper">
+                                    <h2 class="title-like">Свържете се с нас</h2>
+                                    <partial name="_InputPartial" />
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="map-wapper">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2959.2558234366347!2d24.783742115448845!3d42.12340627920357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14acd0dfe473b107%3A0xebd306a7cfb719d4!2z0YPQuy4g4oCe0J3QtdGB0YLQvtGAINCQ0LHQsNC00LbQuNC10LLigJwgMjMsIDQwMjMg0K7QttC90LAg0L_RgNC-0LzQuNGI0LvQtdC90LAg0LfQvtC90LAsINCf0LvQvtCy0LTQuNCy!5e0!3m2!1sbg!2sbg!4v1563271017975!5m2!1sbg!2sbg" width="100%" height="290" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    </section>
+
+    </div> <!-- ast-container -->
+    </div><!-- #content -->
+    <div>
+        <partial name="_FooterPartial" />
+    </div>
+</main>

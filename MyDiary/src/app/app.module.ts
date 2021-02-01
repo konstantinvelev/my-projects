@@ -10,10 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeadComponent } from './layout/head.component';
+import { LeftPanelComponent } from './layout/left-panel.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeadComponent,
+    LeftPanelComponent
   ],
   imports: [
     BrowserModule,

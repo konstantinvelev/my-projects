@@ -13,9 +13,7 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './layout/head.component';
 import { LeftPanelComponent } from './layout/left-panel.component';
 import { UsersComponent } from './components/users/users.component';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +21,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     HeadComponent,
     LeftPanelComponent,
     UsersComponent,
-    LoginComponent,
-    DashboardComponent,
-    LogoutComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

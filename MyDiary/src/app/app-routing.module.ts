@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/login/logout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },

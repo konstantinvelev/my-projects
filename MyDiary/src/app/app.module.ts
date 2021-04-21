@@ -13,7 +13,8 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './layout/head.component';
 import { LeftPanelComponent } from './layout/left-panel.component';
 import { UsersComponent } from './components/users/users.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from "./components/login/login.component";
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './components/login/login.component';
     HeadComponent,
     LeftPanelComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

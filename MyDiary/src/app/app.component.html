@@ -1,9 +1,8 @@
-<!-- <div *ngIf="authentication"> -->
-<div>
+<div *ngIf="authentication">
     <app-head></app-head>
     <button type="button" mat-button (click)="drawer.toggle()">
-    Menu
-  </button>
+      Menu
+    </button>
     <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <app-left-panel></app-left-panel>
@@ -13,4 +12,6 @@
         </div>
     </mat-drawer-container>
 </div>
-<!-- <div *ngIf="!authentication"><app-login></app-login></div> -->
+<div *ngIf="!authentication">
+    <app-login></app-login>
+</div>

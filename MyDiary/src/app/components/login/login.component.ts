@@ -8,9 +8,16 @@ import { Helpers } from '../../helpers/helpers';
   styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent implements OnInit {
-  constructor(private helpers: Helpers, private router: Router, private tokenService: TokenService) { }
+
+  constructor(
+    private helpers: Helpers, 
+    private router: Router, 
+    private tokenService: TokenService
+    ) { }
+
   ngOnInit() {
   }
+
   login(): void {
     let authValues = {"Username":"pablo", "Password":"secret"};
     this.tokenService.auth(authValues).subscribe((token: any) => {

@@ -15,6 +15,12 @@ import { LeftPanelComponent } from './layout/left-panel.component';
 import { UsersComponent } from './components/users/users.component';
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from './components/logout/logout.component';
+import { Helpers } from './helpers/helpers';
+import { TokenService } from './services/token.service';
+import { AppConfig } from './config/config';
+import { AuthGuard } from './helpers/canActivateAuthGuard';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +29,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     LeftPanelComponent,
     UsersComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,12 @@ import { LogoutComponent } from './components/logout/logout.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    Helpers,
+    TokenService,
+    AppConfig,
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

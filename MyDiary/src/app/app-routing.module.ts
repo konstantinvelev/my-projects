@@ -3,19 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './helpers/canActivateAuthGuard';
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from './components/logout/logout.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    pathMatch: 'full', 
-    redirectTo: '/dashboard', 
-    canActivate: [AuthGuard] 
-  },
+  { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'logout', component: LogoutComponent },
 ];

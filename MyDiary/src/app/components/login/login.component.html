@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="container login-register-page">
+    <h1> Welcome, I am your diary :)</h1>
+    <p>
+        You can keep in my mind information that is important to your school or university. I can store details of your subjects, courses, grades, exams and other similar information. If you want me to remind you of the dates of your exams or your ratings from
+        them, then log in to the app or if you don't have an account it's time to create one :)
+    </p>
+    <button (click)="LoginHandler()" class="btn btn-primary stat-item">Log in!</button>
+    <form #login="ngForm" (ngSubmit)="submitLogin(login.value)">
+        <p class="field">
+            <input type="text" name="email" id="email" placeholder="Write here your email">
+        </p>
+        <p class="field">
+            <input type="password" name="password" id="password" placeholder="Write here your password">
+        </p>
+    </form>
+
+    <button (click)="RegisterHandler()" class="btn btn-primary stat-item">Register!</button>
+    <form #register="ngForm" (ngSubmit)="submitRegister(register.value)">
+        <p class="field">
+            <input type="text" name="email" id="email" placeholder="Write here your email">
+        </p>
+        <p class="field">
+            <input type="password" name="password" id="password" placeholder="Write here your password">
+        </p>
+    </form>
+
+</div>

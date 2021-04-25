@@ -18,11 +18,24 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(): void {
+  submitLogin(): void {
     let authValues = {"Username":"pablo", "Password":"secret"};
     this.tokenService.auth(authValues).subscribe((token: any) => {
       this.helpers.setToken(token);
       this.router.navigate(['/dashboard']);
     });
   }
+
+  submitRegister():void{
+
+  }
+
+  LoginHandler(){
+
+  }
+
+  RegisterHandler(){
+
+  }
+
 }

@@ -4,24 +4,49 @@
         You can keep in my mind information that is important to your school or university. I can store details of your subjects, courses, grades, exams and other similar information. If you want me to remind you of the dates of your exams or your ratings from
         them, then log in to the app or if you don't have an account it's time to create one :)
     </p>
-    <button (click)="LoginHandler()" class="btn btn-primary stat-item">Log in!</button>
-    <form #login="ngForm" (ngSubmit)="submitLogin(login.value)">
+    <button (click)="loginHandler()" class="btn btn-primary stat-item">Log in!</button>
+
+    <form #l="ngForm" (ngSubmit)="submitLogin(l.value)" id="login-form">
         <p class="field">
-            <input type="text" name="email" id="email" placeholder="Write here your email">
+            <input type="text" name="email" id="email" placeholder="Write your email">
         </p>
         <p class="field">
-            <input type="password" name="password" id="password" placeholder="Write here your password">
+            <input type="password" name="password" id="password" placeholder="Write your password">
         </p>
     </form>
 
-    <button (click)="RegisterHandler()" class="btn btn-primary stat-item">Register!</button>
-    <form #register="ngForm" (ngSubmit)="submitRegister(register.value)">
+    <button (click)="registerHandler()" class="btn btn-primary stat-item">Register!</button>
+    <form #r="ngForm" (ngSubmit)="submitRegister(r.value)" id="register-form">
         <p class="field">
-            <input type="text" name="email" id="email" placeholder="Write here your email">
+            <input type="text" name="email" id="email" placeholder="Write here your Email">
         </p>
         <p class="field">
-            <input type="password" name="password" id="password" placeholder="Write here your password">
+            <input type="text" name="username" id="username" placeholder="Write here your Username">
+        </p>
+        <p class="field">
+            <input type="password" name="password" id="password" placeholder="Write here your Password">
         </p>
     </form>
 
 </div>
+
+
+<script>
+    function loginHandler() {
+        var form = document.getElementById("login-form");
+        if (form.style.display !== "none") {
+            form.style.display = "none";
+        } else {
+            form.style.display = "block";
+        }
+    }
+
+    function registerHandler() {
+        var form = document.getElementById("register-form");
+        if (form.style.display !== "none") {
+            form.style.display = "none";
+        } else {
+            form.style.display = "block";
+        }
+    }
+</script>

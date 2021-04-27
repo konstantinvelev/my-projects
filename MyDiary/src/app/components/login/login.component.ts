@@ -5,37 +5,49 @@ import { Helpers } from '../../helpers/helpers';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: [ './login.component.css' ]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
   constructor(
-    private helpers: Helpers, 
-    private router: Router, 
+    private helpers: Helpers,
+    private router: Router,
     private tokenService: TokenService
-    ) { }
+  ) { }
 
   ngOnInit() {
   }
 
-  submitLogin(): void {
-    let authValues = {"Username":"pablo", "Password":"secret"};
+  submitLogin(data: any): void {
+    let authValues = { "Username": "pablo", "Password": "secret" };
     this.tokenService.auth(authValues).subscribe((token: any) => {
       this.helpers.setToken(token);
       this.router.navigate(['/dashboard']);
     });
   }
 
-  submitRegister():void{
+  submitRegister(data: any): void {
 
   }
 
-  LoginHandler(){
-
+  loginHandler() {
+    toggleFrom('login');
   }
 
-  RegisterHandler(){
+  registerHandler() {
 
+    toggleFrom('register');
   }
 
 }
+
+
+function toggleFrom(page: string) {
+  var selectorString = `${page}-form`
+  var form = document.getElementById(selectorString)!;
+  if (form.style.display === "none" || form.style.display === "") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+};

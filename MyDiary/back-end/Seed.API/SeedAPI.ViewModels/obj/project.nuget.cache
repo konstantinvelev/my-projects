@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dIwEs2yLJhb2uLdgZdpasjaqQrSDQxloJ+AjBtBwd2WFQYN2DLlrcDvZHPFBei5qGrBFCdAofJJmgowAs5anzA==",
+  "dgSpecHash": "LAKy2qigc7GT4tW24ZwA0l/Llb7SK2xckVFVybNsw4nyYABPXCSMhaZ+rrK+8NvkxT7agsDClbFXX8ZgtEdDMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj",
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

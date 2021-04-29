@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Interfaces\\SeedAPI.Interfaces.csproj",
+      "projectUniqueName": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Interfaces\\SeedAPI.Interfaces.csproj",
       "projectName": "SeedAPI.Interfaces",
-      "projectPath": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Interfaces\\SeedAPI.Interfaces.csproj",
+      "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Interfaces\\SeedAPI.Interfaces.csproj",
       "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Interfaces\\obj\\",
+      "outputPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Interfaces\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

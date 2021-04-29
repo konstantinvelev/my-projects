@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj",
+      "projectUniqueName": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj",
       "projectName": "SeedAPI.Repositories",
-      "projectPath": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj",
+      "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj",
       "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hp\\source\\repos\\Seed.API\\SeedAPI.Repositories\\obj\\",
+      "outputPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

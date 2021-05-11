@@ -1545,6 +1545,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "SeedAPI.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SeedAPI.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SeedAPI.ViewModels.dll": {}
+        }
       }
     }
   },
@@ -5850,12 +5860,18 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "SeedAPI.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../SeedAPI.ViewModels/SeedAPI.ViewModels.csproj",
+      "msbuildProject": "../SeedAPI.ViewModels/SeedAPI.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.5",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.5"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.5",
+      "SeedAPI.ViewModels >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5889,7 +5905,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1560,12 +1560,27 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "SeedAPI.Maps/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "SeedAPI.Models": "1.0.0",
+          "SeedAPI.Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SeedAPI.Maps.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SeedAPI.Maps.dll": {}
+        }
+      },
       "SeedAPI.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",
+          "SeedAPI.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SeedAPI.Models.dll": {}
@@ -1579,7 +1594,8 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",
+          "SeedAPI.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/SeedAPI.Repositories.dll": {}
@@ -1591,6 +1607,10 @@
       "SeedAPI.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "SeedAPI.Models": "1.0.0",
+          "SeedAPI.Repositories": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/SeedAPI.Services.dll": {}
         },
@@ -5941,6 +5961,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "SeedAPI.Maps/1.0.0": {
+      "type": "project",
+      "path": "../SeedAPI.Maps/SeedAPI.Maps.csproj",
+      "msbuildProject": "../SeedAPI.Maps/SeedAPI.Maps.csproj"
+    },
     "SeedAPI.Models/1.0.0": {
       "type": "project",
       "path": "../SeedAPI.Models/SeedAPI.Models.csproj",
@@ -5967,10 +5992,7 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.12",
       "Microsoft.EntityFrameworkCore >= 5.0.5",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.5",
-      "SeedAPI.Models >= 1.0.0",
-      "SeedAPI.Repositories >= 1.0.0",
-      "SeedAPI.Services >= 1.0.0",
-      "SeedAPI.ViewModels >= 1.0.0",
+      "SeedAPI.Maps >= 1.0.0",
       "System.Configuration.ConfigurationManager >= 5.0.0"
     ]
   },
@@ -6006,17 +6028,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Models\\SeedAPI.Models.csproj": {
-              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Models\\SeedAPI.Models.csproj"
-            },
-            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj": {
-              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Repositories\\SeedAPI.Repositories.csproj"
-            },
-            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Services\\SeedAPI.Services.csproj": {
-              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Services\\SeedAPI.Services.csproj"
-            },
-            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.ViewModels\\SeedAPI.ViewModels.csproj"
+            "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Maps\\SeedAPI.Maps.csproj": {
+              "projectPath": "C:\\Users\\Hp\\Desktop\\my-projects\\MyDiary\\back-end\\Seed.API\\SeedAPI.Maps\\SeedAPI.Maps.csproj"
             }
           }
         }

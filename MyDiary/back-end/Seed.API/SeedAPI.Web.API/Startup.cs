@@ -1,36 +1,36 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SeedAPI.Web.API.App_Start;
+using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SeedAPI.Web.API
 {
     public class Startup
     {
-         public void ConfigureServices(IServiceCollection services)
+        private static MvcOptions mvcOptions;
+        private readonly IConfiguration configuration;
+
+        public void ConfigureServices(IServiceCollection services)
         {
+            mvcOptions.EnableEndpointRouting = false;
             DependencyInjectionConfig.AddScope(services);
-            JwtTokenConfig.AddAuthentication(services, Configuration);
-            DBContextConfig.Initialize(services,
-                                       Configuration);
+            JwtTokenConfig.AddAuthentication(services, configuration);
+            DBContextConfig.Initialize(services, configuration);
             services.AddMvc();
         }
-// ...
- // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider svp)
+
+        [Obsolete]
+        public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env, IServiceProvider svp)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            DBContextConfig.Initialize(Configuration, env, svp);
+            DBContextConfig.Initialize(configuration, env, svp);
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()

@@ -11,16 +11,34 @@ namespace SeedAPI.Web.API
 {
     public class Startup
     {
-        private static MvcOptions mvcOptions;
         private readonly IConfiguration configuration;
+        private MvcOptions mvcOptions;
+
+        public Startup(IConfiguration configuration)
+        {
+            this.mvcOptions = new MvcOptions();
+            this.configuration = configuration;
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            mvcOptions.EnableEndpointRouting = false;
+            // MvcOptions.EnableEndpointRouting = false;
             DependencyInjectionConfig.AddScope(services);
             JwtTokenConfig.AddAuthentication(services, configuration);
             DBContextConfig.Initialize(services, configuration);
-            services.AddMvc();
+
+            services.AddMvc(x => x.EnableEndpointRouting = false);
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                    builder.SetIsOriginAllowed(_ => true)
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
+          
         }
 
         [Obsolete]
@@ -31,11 +49,11 @@ namespace SeedAPI.Web.API
                 app.UseDeveloperExceptionPage();
             }
             DBContextConfig.Initialize(configuration, env, svp);
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseCors("CorsPolicy");
+
             app.UseAuthentication();
             app.UseMvc();
         }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 // import { of } from 'rxjs/observable';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppConfig } from '../config/config';
@@ -17,7 +17,7 @@ export class TokenService extends BaseService {
         return this.getToken(body);
     }
     private getToken(body: any): Observable<any> {
-        return this.http.post<any>(this.pathAPI + 'token', body, super.header()).pipe(
+        return this.http.post<any>(this.pathAPI + 'user' , body, super.header()).pipe(
             catchError(super.handleError)
         );
     }

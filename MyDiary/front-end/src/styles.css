@@ -1,3 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+p.error {
+    text-align: center;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+}

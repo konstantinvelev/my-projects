@@ -19,15 +19,17 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(data: any): void {
-    let authValues = { "Username": "pablo", "Password": "secret" };
-    this.tokenService.auth(authValues).subscribe((token: any) => {
+    this.tokenService.auth(data).subscribe((token: any) => {
       this.helpers.setToken(token);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/home']);
     });
   }
 
-  submitRegister(data: any): void {
-
+  submitRegisterForm(data: any): void {
+    this.tokenService.auth(data).subscribe((token: any) => {
+      this.helpers.setToken(token);
+      this.router.navigate(['/home']);
+    })
   }
 
   loginHandler() {

@@ -6,7 +6,7 @@
     </p>
     <button (click)="loginHandler()" class="btn btn-primary stat-item">Log in!</button>
 
-    <form #l="ngForm" (ngSubmit)="submitLogin(l.value)" id="login-form">
+    <form #l="ngForm" (ngSubmit)="submitLogin(l)" id="login-form">
         <p class="field">
             <input type="text" name="email" id="email" placeholder="Write your email">
         </p>
@@ -16,16 +16,76 @@
     </form>
 
     <button (click)="registerHandler()" class="btn btn-primary stat-item">Register!</button>
-    <form #r="ngForm" (ngSubmit)="submitRegister(r.value)" id="register-form">
-        <p class="field">
-            <input type="text" name="email" id="email" placeholder="Write here your Email">
-        </p>
-        <p class="field">
-            <input type="text" name="username" id="username" placeholder="Write here your Username">
-        </p>
-        <p class="field">
-            <input type="password" name="password" id="password" placeholder="Write here your Password">
-        </p>
+    <form #f="ngForm" class="register" (ngSubmit)="submitRegisterForm(f.value)">
+        <fieldset>
+            <h1>Registration</h1>
+
+            <!-- username -->
+            <label for="username">Username</label>
+            <p class="field">
+                <input #userUsername="ngModel" class="input-error" type="text" placeholder="Username" name="username" id="username" ngModel required minlength="4">
+            </p>
+            <p class="error" *ngIf="userUsername.touched && userUsername.errors?.required">
+                Username is required!
+            </p>
+            <p *ngIf="userUsername.touched && userUsername.errors?.minlength" class="error ">
+                Username must be at least 4 characters!
+            </p>
+            <!-- email -->
+            <label for="email">Email</label>
+            <p class="field field-icon">
+                <input #userEmail="ngModel" class="input-error" type="email" placeholder="Email" name="email" id="email" ngModel required minlength="4" pattern="^[a-zA-Z0-9\.-]{4,}@\w+\.(com|bg)$">
+            </p>
+            <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
+                Email is required!
+            </p>
+            <p *ngIf="userEmail.touched && userEmail.errors?.pattern" class="error ">
+                Email is not valid!
+            </p>
+            <p *ngIf="userEmail.touched && userEmail.errors?.minlength" class="error ">
+                Email must be at least 4 characters!
+            </p>
+            <label for="userInfo">User Info </label>
+            <div class="field">
+                <textarea #userInfo="ngModel" type="text" name="userInfo" placeholder="User Info" id="userInfo" ngModel minlength="4"></textarea>
+            </div>
+            <p *ngIf="userInfo.errors?.minlength" class="error ">
+                User info must be at least 4 characters!
+            </p>
+            <!-- password -->
+            <label for="password">Password</label>
+            <p class="field ">
+                <input #userPassword="ngModel" type="password" name="password" placeholder="Password" id="password" ngModel required minlength="4">
+            </p>
+            <p *ngIf="userPassword.touched && userPassword.errors?.required" class="error">
+                Password is required!
+            </p>
+            <p *ngIf="userPassword.touched && userPassword.errors?.minlength" class="error">
+                Password must be at least 4 characters!
+            </p>
+
+            <!-- rePassword -->
+            <label for="rePassword">Repeat Password</label>
+            <p class="field field-icon">
+                <input #rePassword="ngModel" type="password" name="rePassword" placeholder="Repeat Password" id="rePassword" ngModel required minlength="4">
+            </p>
+            <p *ngIf="rePassword.touched && rePassword.errors?.required" class="error">
+                Repeat Password is required!
+            </p>
+            <p *ngIf="rePassword.touched && rePassword.errors?.minlength" class="error">
+                Repeat Password must be at least 4 characters!
+            </p>
+
+            <!-- <p *ngIf="!!errorMessege" class="error">{{errorMessege}}</p> -->
+
+            <button [disabled]="f.invalid">Register Me</button>
+
+            <p class="text-center">
+                If you already have an account!
+                <a id="haveanaccount" routerLink="/user/login">Log In!</a>
+            </p>
+
+        </fieldset>
     </form>
 
 </div>

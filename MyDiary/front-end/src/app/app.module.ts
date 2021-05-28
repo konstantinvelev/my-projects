@@ -22,6 +22,7 @@ import { AuthGuard } from './helpers/canActivateAuthGuard';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     Helpers,
     TokenService,
+    UserService,
     AppConfig,
     AuthGuard
   ],

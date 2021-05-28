@@ -1,6 +1,6 @@
 import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import { Helpers } from './helpers';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 @Injectable()

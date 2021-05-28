@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 // import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Helpers } from '../helpers/helpers';
 @Injectable()
@@ -25,7 +26,7 @@ export class BaseService {
         return Observable.throw(errMsg);
     }
       public header() {
-        let header = new HttpHeaders({ 'Content-Type': 'application/json' });
+        let header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
         if(this.helper.isAuthenticated()) {
           header = header.append('Authorization', 'Bearer ' + this.helper.getToken()); 
         }

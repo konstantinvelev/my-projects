@@ -14,7 +14,6 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
-  { path: 'logout', component: LogoutComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

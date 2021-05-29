@@ -10,6 +10,7 @@ using SeedAPI.Models.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using SeedAPI.Services.UserServices;
 
 namespace SeedAPI.Web.API
 {
@@ -24,11 +25,16 @@ namespace SeedAPI.Web.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            DependencyInjectionConfig.AddScope(services);
+            JwtTokenConfig.AddAuthentication(services, Configuration);
+            DBContextConfig.Initialize(services, Configuration);
             services.AddMvc();
 
             services.AddDbContext<ApplicationContext>(
             options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
+            //services.AddTransient<IUserService, UserService>();
 
         }
 
@@ -40,7 +46,7 @@ namespace SeedAPI.Web.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
             app.UseCors();
 

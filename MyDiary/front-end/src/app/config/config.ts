@@ -4,7 +4,7 @@ export class AppConfig {
     private _config: { [key: string]: string };
     constructor() {
         this._config = { 
-            PathAPI: 'http://localhost:5001/api/'
+            PathAPI: 'http://localhost:27562/api/'
         };
     }
     get setting():{ [key: string]: string } {

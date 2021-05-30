@@ -26,7 +26,7 @@ export class BaseService {
         return Observable.throw(errMsg);
     }
       public header() {
-        let header = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let header = new HttpHeaders({ 'Content-Type': 'application/json' });
         if(this.helper.isAuthenticated()) {
           header = header.append('Authorization', 'Bearer ' + this.helper.getToken()); 
         }

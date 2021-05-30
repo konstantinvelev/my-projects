@@ -42,8 +42,12 @@ export class UserService extends BaseService {
   // }
 
   register(data: any): Observable<any> {
-    return this.http.post(this.pathAPI + 'user', data, { withCredentials: true });
+    return this.http.post(this.pathAPI + 'user',JSON.stringify(data), super.header()).pipe(
+      catchError(super.handleError));
   }
+  // register(data: any): Observable<any> {
+  //   return this.http.post(this.pathAPI + 'user', data, { withCredentials: false });
+  // }
 
   // logout(): Observable<any> {
   //   return this.http.post(`${pathAPI}/users/logout`, {}, { withCredentials: true }).pipe(

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SeedAPI.Models\SeedAPI.Models.csproj" />
     <ProjectReference Include="..\SeedAPI.Services\SeedAPI.Services.csproj" />
   </ItemGroup>

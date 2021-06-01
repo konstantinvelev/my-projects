@@ -13,13 +13,11 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './layout/head.component';
 import { LeftPanelComponent } from './layout/left-panel.component';
 import { UsersComponent } from './components/users/users.component';
-import { LoginComponent } from "./components/login/login.component";
-import { LogoutComponent } from './components/logout/logout.component';
+import { LoginComponent } from "./components/login-register/login.component";
 import { Helpers } from './helpers/helpers';
 import { TokenService } from './services/token.service';
 import { AppConfig } from './config/config';
 import { AuthGuard } from './helpers/canActivateAuthGuard';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
@@ -31,8 +29,6 @@ import { UserService } from './services/user.service';
     LeftPanelComponent,
     UsersComponent,
     LoginComponent,
-    LogoutComponent,
-    RegisterComponent,
     HomeComponent
   ],
   imports: [

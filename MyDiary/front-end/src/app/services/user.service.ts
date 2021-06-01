@@ -11,17 +11,20 @@ import { Helpers } from '../helpers/helpers';
 export class UserService extends BaseService {
   private pathAPI = this.config.setting['PathAPI'];
 
-  // currentUser: User | null;
+  currentUser: User | null;
   // userById: IUser | null;
-  private currentUser = {};
+  //private currentUser = {};
   //get isLogged(): boolean { return !!this.currentUser; }
 
 
   constructor(
     private http: HttpClient,
     private config: AppConfig,
-    helper: Helpers
-  ) { super(helper); }
+    helper: Helpers,
+  ) {
+     super(helper);
+     this.currentUser = new User();
+   }
 
   getUsers(): Observable<any> {
     return this.http.get(this.pathAPI + 'user', super.header()).pipe(
@@ -41,9 +44,14 @@ export class UserService extends BaseService {
   //   );
   // }
 
-  register(data: any): Observable<any> {
-    return this.http.post(this.pathAPI + 'user',JSON.stringify(data), super.header()).pipe(
-      catchError(super.handleError));
+  register(data: any): Observable<User> {
+    return this.http.post<User>(this.pathAPI + 'user', JSON.stringify(data), super.header()).pipe(
+      tap((user : User) => {
+        if (user) {
+          this.currentUser = user;
+        }
+      }),
+  catchError(super.handleError));
   }
   // register(data: any): Observable<any> {
   //   return this.http.post(this.pathAPI + 'user', data, { withCredentials: false });

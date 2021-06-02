@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeadComponent } from './layout/head.component';
 import { LeftPanelComponent } from './layout/left-panel.component';
-import { UsersComponent } from './components/users/users.component';
 import { LoginComponent } from "./components/login-register/login.component";
 import { Helpers } from './helpers/helpers';
 import { TokenService } from './services/token.service';
@@ -21,15 +20,20 @@ import { AuthGuard } from './helpers/canActivateAuthGuard';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
+import { HomeworkComponent } from './components/homework/homework.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { ExamComponent } from './components/exam/exam.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeadComponent,
     LeftPanelComponent,
-    UsersComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HomeworkComponent,
+    CoursesComponent,
+    ExamComponent
   ],
   imports: [
     FormsModule,

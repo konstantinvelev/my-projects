@@ -1592,6 +1592,16 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "SeedAPI.Commons/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/SeedAPI.Commons.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SeedAPI.Commons.dll": {}
+        }
+      },
       "SeedAPI.Maps/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -1613,6 +1623,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.6",
+          "SeedAPI.Commons": "1.0.0",
           "SeedAPI.ViewModels": "1.0.0"
         },
         "compile": {
@@ -1654,6 +1665,9 @@
       "SeedAPI.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "SeedAPI.Commons": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/SeedAPI.ViewModels.dll": {}
         },
@@ -6059,6 +6073,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "SeedAPI.Commons/1.0.0": {
+      "type": "project",
+      "path": "../Commons/SeedAPI.Commons.csproj",
+      "msbuildProject": "../Commons/SeedAPI.Commons.csproj"
     },
     "SeedAPI.Maps/1.0.0": {
       "type": "project",

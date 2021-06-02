@@ -70,7 +70,7 @@ namespace SeedAPI.Repositories.CourseRepository
                 await context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

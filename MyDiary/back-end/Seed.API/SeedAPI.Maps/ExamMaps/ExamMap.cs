@@ -20,13 +20,13 @@ namespace SeedAPI.Maps.ExamMaps
         }
         public ExamViewModel Create(ExamViewModel viewModel)
         {
-            Exam course = ViewModelToDomain(viewModel);
-            return DomainToViewModel(this.examService.Create(course));
+            Exam exam = ViewModelToDomain(viewModel);
+            return DomainToViewModel(this.examService.Create(exam));
         }
         public bool Update(ExamViewModel viewModel)
         {
-            Exam course = ViewModelToDomain(viewModel);
-            return examService.Update(course);
+            Exam exam = ViewModelToDomain(viewModel);
+            return examService.Update(exam);
         }
         public bool Delete(string id)
         {
@@ -37,9 +37,9 @@ namespace SeedAPI.Maps.ExamMaps
             return DomainToViewModel(examService.GetAll());
         }
 
-        public ExamViewModel DomainToViewModel(Exam course)
+        public ExamViewModel DomainToViewModel(Exam exam)
         {
-            var viewModel = this.mapper.Map<Exam, ExamViewModel>(course);
+            var viewModel = this.mapper.Map<Exam, ExamViewModel>(exam);
             return viewModel;
         }
         public List<ExamViewModel> DomainToViewModel(List<Exam> domain)

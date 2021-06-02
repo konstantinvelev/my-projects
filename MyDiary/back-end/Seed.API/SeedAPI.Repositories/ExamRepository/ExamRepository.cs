@@ -71,7 +71,7 @@ namespace SeedAPI.Repositories.ExamRepository
                 await context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

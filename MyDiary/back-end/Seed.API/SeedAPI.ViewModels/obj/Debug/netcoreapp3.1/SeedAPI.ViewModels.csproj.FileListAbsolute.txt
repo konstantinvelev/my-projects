@@ -1,0 +1,12 @@
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.AssemblyInfo.cs
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\bin\Debug\netcoreapp3.1\SeedAPI.ViewModels.deps.json
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\bin\Debug\netcoreapp3.1\SeedAPI.ViewModels.dll
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\bin\Debug\netcoreapp3.1\SeedAPI.ViewModels.pdb
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.dll
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.pdb
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.csprojAssemblyReference.cache
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\bin\Debug\netcoreapp3.1\SeedAPI.Commons.dll
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\bin\Debug\netcoreapp3.1\SeedAPI.Commons.pdb
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.ViewModels\obj\Debug\netcoreapp3.1\SeedAPI.ViewModels.csproj.CopyComplete

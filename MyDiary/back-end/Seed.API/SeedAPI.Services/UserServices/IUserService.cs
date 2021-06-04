@@ -9,6 +9,7 @@ namespace SeedAPI.Services.UserServices
    public interface IUserService
     {
         User Create(User domain);
+        User LogInUser(LoginViewModel domain);
         bool Update(User domain);
         List<User> GetAll();
         bool Delete(string id);

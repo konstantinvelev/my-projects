@@ -31,42 +31,5 @@ export class UserService extends BaseService {
       catchError(super.handleError));
   }
 
-  // getCurrentUserProfile(): Observable<any> {
-  //   return this.http.get(`${pathAPI}/users/profile`, { withCredentials: true }).pipe(
-  //     tap(((user: User) => this.currentUser = user)),
-  //     catchError(() => { this.currentUser = null; return of(null); })
-  //   );
-  // }
-
-  // login(data: any): Observable<any> {
-  //   return this.http.post(`${pathAPI}/users/login`, data, { withCredentials: true }).pipe(
-  //     tap((user: User) => this.currentUser = user)
-  //   );
-  // }
-
-  register(data: any): Observable<User> {
-    return this.http.post<User>(this.pathAPI + 'user', JSON.stringify(data), super.header()).pipe(
-      tap((user : User) => {
-        if (user) {
-          this.currentUser = user;
-        }
-      }),
-  catchError(super.handleError));
-  }
-  // register(data: any): Observable<any> {
-  //   return this.http.post(this.pathAPI + 'user', data, { withCredentials: false });
-  // }
-
-  // logout(): Observable<any> {
-  //   return this.http.post(`${pathAPI}/users/logout`, {}, { withCredentials: true }).pipe(
-  //     tap(() => this.currentUser = null)
-  //   );
-  // }
-
-  // editProfile(data): Observable<User>{
-  //   return this.http.put(`${pathAPI}/users/profile`, data.formData, { withCredentials: true }).pipe(
-  //     tap((user: User) => this.currentUser = user)
-  //   )
-  // }
 }
 

@@ -9,15 +9,30 @@ import { BaseService } from './base.service';
 import { Helpers } from '../helpers/helpers';
 @Injectable()
 export class TokenService extends BaseService {
+
     private pathAPI = this.config.setting['PathAPI'];
     public errorMessage = '';
-    constructor(private http: HttpClient, private config: AppConfig, helper: Helpers) { super(helper); }
+
+    constructor(
+        private http: HttpClient,
+         private config: AppConfig,
+          helper: Helpers
+          ) { super(helper); }
     auth(data: any): any {
         let body = JSON.stringify(data);
         return this.getToken(body);
     }
+    login(data: any): any {
+        let body = JSON.stringify(data);
+        return this.getCreateToken(body);
+    }
     private getToken(body: any): Observable<any> {
         return this.http.post<any>(this.pathAPI + 'user' , body, super.header()).pipe(
+            catchError(super.handleError)
+        );
+    }
+    private getCreateToken(body: any): Observable<any> {
+        return this.http.post<any>(this.pathAPI + 'token' , body, super.header()).pipe(
             catchError(super.handleError)
         );
     }

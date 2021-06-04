@@ -33,7 +33,7 @@ export class BaseService {
         return { headers: header };
       }
       public setToken(data:any) {
-        this.helper.setToken(data);
+        this.helper.setToken({username: data.username, email:data.email});
       }
       public failToken(error: Response | any) {
         this.helper.failToken();

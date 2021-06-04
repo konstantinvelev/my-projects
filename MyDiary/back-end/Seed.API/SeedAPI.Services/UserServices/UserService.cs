@@ -28,6 +28,10 @@ namespace SeedAPI.Services.UserServices
         {
             return repository.GetAll();
         }
+        public User LogInUser(LoginViewModel domain)
+        {
+            return repository.CheckAndLogIn(domain);
+        }
     }
 }
 

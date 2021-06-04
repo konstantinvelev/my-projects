@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SeedAPI.ViewModels;
+using SeedAPI.Web.API.App_Start;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SeedAPI.Web.API.Controllers
@@ -16,9 +18,12 @@ namespace SeedAPI.Web.API.Controllers
     public class TokenController : Controller
     {
         private IConfiguration _config;
-        public TokenController(IConfiguration config)
+        private readonly IUserMap userMap;
+
+        public TokenController(IConfiguration config ,IUserMap userMap)
         {
             _config = config;
+            this.userMap = userMap;
         }
 
         [AllowAnonymous]
@@ -46,12 +51,8 @@ namespace SeedAPI.Web.API.Controllers
         }
         private UserViewModel Authenticate(LoginViewModel login)
         {
-            UserViewModel user = null;
-            if (login.username == "pablo" && login.password == "secret")
-            {
-                user = new UserViewModel { Username = "Pablo" };
-            }
-            return user;
+          return this.userMap.LogInUser(login);
+            
         }
     }
 

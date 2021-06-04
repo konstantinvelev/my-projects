@@ -7,8 +7,9 @@ namespace SeedAPI.Web.API.App_Start
     public interface IUserMap
     {
         UserViewModel Create(UserViewModel viewModel);
-         bool Update(UserViewModel viewModel);
-         bool Delete(string id);
+        bool Update(UserViewModel viewModel);
+        bool Delete(string id);
+        UserViewModel LogInUser(LoginViewModel userInfo);
         IEnumerable<UserViewModel> GetAll();
     }
 }

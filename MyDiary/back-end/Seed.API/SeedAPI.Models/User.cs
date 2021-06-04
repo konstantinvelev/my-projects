@@ -1,5 +1,6 @@
 ﻿
 using SeedAPI.Commons;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace SeedAPI.Models
     {
         public User()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.Courses = new List<Course>();
             this.Homeworks = new List<Homework>();
             this.Exams = new List<Exam>();
@@ -27,7 +29,6 @@ namespace SeedAPI.Models
         public string UserInfo { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Password" + ErrorMessages.BetweenThreeAndFifty)]
         public string Password { get; set; }
 
         public ICollection<Course> Courses { get; set; }

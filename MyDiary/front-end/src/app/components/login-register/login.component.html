@@ -6,13 +6,31 @@
     </p>
     <button (click)="loginHandler()" class="btn btn-primary stat-item">Log in!</button>
 
-    <form #l="ngForm" (ngSubmit)="submitLogin(l)" id="login-form">
-        <p class="field">
-            <input type="text" name="email" id="email" placeholder="Write your email">
+    <form #l="ngForm" (ngSubmit)="submitLogin(l.value)" id="login-form">
+        <label for="email">Email</label>
+        <p class="field field-icon">
+            <input #userEmail="ngModel" class="input-error" type="email" placeholder="Email" name="email" id="email" ngModel required minlength="4" pattern="^[a-zA-Z0-9\.-]{4,}@\w+\.(com|bg)$">
         </p>
-        <p class="field">
-            <input type="password" name="password" id="password" placeholder="Write your password">
+        <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
+            Email is required!
         </p>
+        <p *ngIf="userEmail.touched && userEmail.errors?.pattern" class="error ">
+            Email is not valid!
+        </p>
+        <p *ngIf="userEmail.touched && userEmail.errors?.minlength" class="error ">
+            Email must be at least 4 characters!
+        </p>
+        <label for="password">Password</label>
+        <p class="field ">
+            <input #userPassword="ngModel" type="password" name="password" placeholder="Password" id="password" ngModel required minlength="4">
+        </p>
+        <p *ngIf="userPassword.touched && userPassword.errors?.required" class="error">
+            Password is required!
+        </p>
+        <p *ngIf="userPassword.touched && userPassword.errors?.minlength" class="error">
+            Password must be at least 4 characters!
+        </p>
+        <button [disabled]="l.invalid">Log in me</button>
     </form>
 
     <button (click)="registerHandler()" class="btn btn-primary stat-item">Register!</button>

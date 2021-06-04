@@ -30,7 +30,7 @@ namespace SeedAPI.Web.API.Controllers
         {
             return "value";
         }
-        // POST api/user
+         // POST api/user
         [HttpPost]
         public string Post([FromBody] UserViewModel user)
         {

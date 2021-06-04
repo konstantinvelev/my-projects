@@ -26,6 +26,10 @@ namespace SeedAPI.Web.API.App_Start
             User user = ViewModelToDomain(viewModel);
             return userService.Update(user);
         }
+        public UserViewModel LogInUser(LoginViewModel userInfo)
+        {
+            return DomainToViewModel(this.userService.LogInUser(userInfo));
+        }
         public bool Delete(string id)
         {
             return userService.Delete(id);

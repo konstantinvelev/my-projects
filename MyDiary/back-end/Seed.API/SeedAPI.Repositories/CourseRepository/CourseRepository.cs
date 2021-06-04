@@ -43,7 +43,8 @@ namespace SeedAPI.Repositories.CourseRepository
         {
             try
             {
-                await this.context.Courses.AddAsync(course);
+                var newCourse = CreateCourse(course);
+                await this.context.Courses.AddAsync(newCourse);
                 await this.context.SaveChangesAsync();
                 return course;
             }

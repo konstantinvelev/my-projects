@@ -44,7 +44,8 @@ namespace SeedAPI.Repositories.ExamRepository
         {
             try
             {
-                await this.context.Exams.AddAsync(exam);
+                var newExam = CreateExam(exam);
+                await this.context.Exams.AddAsync(newExam);
                 await this.context.SaveChangesAsync();
                 return exam;
             }
@@ -60,7 +61,7 @@ namespace SeedAPI.Repositories.ExamRepository
             try
             {
                 var courseForUpdate = context.Exams.FirstOrDefault(s => s.Id == exam.Id);
-                var updatedCourse = CreateCourse(exam);
+                var updatedCourse = CreateExam(exam);
 
                 if (courseForUpdate == null && updatedCourse == null)
                 {
@@ -77,7 +78,7 @@ namespace SeedAPI.Repositories.ExamRepository
             }
         }
 
-        private Exam CreateCourse(Exam exam)
+        private Exam CreateExam(Exam exam)
         {
             var newCourse = new Exam
             {

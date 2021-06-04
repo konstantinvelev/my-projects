@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using SeedAPI.ViewModels;
 
 namespace SeedAPI.Repositories.UserRepositories
 {
@@ -22,7 +23,8 @@ namespace SeedAPI.Repositories.UserRepositories
         {
             try
             {
-                await context.Users.AddAsync(user);
+                var newUser = CreateUser(user);
+                await context.Users.AddAsync(newUser);
                 await context.SaveChangesAsync();
                 return user;
             }
@@ -45,6 +47,7 @@ namespace SeedAPI.Repositories.UserRepositories
                     throw new Exception("The update was not successfully!");
                 }
                 userForUpdate = updatedUser;
+                userForUpdate.UpdatedOn = DateTime.UtcNow;
                 context.Users.Update(userForUpdate);
                 await context.SaveChangesAsync();
                 return true;
@@ -65,6 +68,34 @@ namespace SeedAPI.Repositories.UserRepositories
             {
                 //ErrorManager.ErrorHandler.HandleError(ex);
                 throw ex;
+            }
+        }
+        public User CheckAndLogIn(LoginViewModel domain)
+        {
+            try
+            {
+                var user = this.context.Users.FirstOrDefault(s => s.Email == domain.Email);
+                if ((user != null))
+                {
+                    using var MySha = SHA256.Create();
+                    if (user.Password == GetHash(MySha, domain.Password))
+                    {
+                        return user;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Wrong password!");
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("The user with you are trying to login does not exist!");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -99,8 +130,8 @@ namespace SeedAPI.Repositories.UserRepositories
                 Email = user.Email,
                 Username = user.Username,
                 IsDeleted = user.IsDeleted,
-                UpdatedOn= DateTime.UtcNow,
-                Password = GetHash(MySha,user.Password),
+                CreatedOn = DateTime.UtcNow,
+                Password = GetHash(MySha, user.Password),
                 UserInfo = user.UserInfo,
             };
             return newUser;
@@ -126,16 +157,5 @@ namespace SeedAPI.Repositories.UserRepositories
             return sBuilder.ToString();
         }
 
-        //// Verify a hash against a string.
-        //private static bool VerifyHash(HashAlgorithm hashAlgorithm, string input, string hash)
-        //{
-        //    // Hash the input.
-        //    var hashOfInput = GetHash(hashAlgorithm, input);
-
-        //    // Create a StringComparer an compare the hashes.
-        //    StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-
-        //    return comparer.Compare(hashOfInput, hash) == 0;
-        //}
     }
 }

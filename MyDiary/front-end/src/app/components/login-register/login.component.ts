@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit {
   }
 
   submitLogin(data: any): void {
-    this.tokenService.auth(data).subscribe((token: any) => {
+    this.tokenService.login(data).subscribe((token: any) => {
       this.helpers.setToken(token);
       this.router.navigate(['/home']);
     });
   }
 
   submitRegisterForm(data: any): void {
-    this.userService.register(data).subscribe((token: any) => {
+    this.tokenService.auth(data).subscribe((token: any) => {
       this.helpers.setToken(token);
       this.router.navigate(['/home']);
     })

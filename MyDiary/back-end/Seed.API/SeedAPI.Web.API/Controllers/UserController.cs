@@ -33,7 +33,7 @@ namespace SeedAPI.Web.API.Controllers
          // POST api/user
         [HttpPost]
         public string Post([FromBody] UserViewModel user)
-        {
+            {
             var createdUser =  this.userMap.Create(user);
             var jsonUser = JsonSerializer.Serialize(createdUser);
             return jsonUser;

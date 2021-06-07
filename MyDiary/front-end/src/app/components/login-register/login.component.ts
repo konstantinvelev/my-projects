@@ -10,6 +10,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  get isAuthenticate():boolean{
+    return this.helpers.isAuthenticated();
+  }
+
   constructor(
     private helpers: Helpers,
     private router: Router,

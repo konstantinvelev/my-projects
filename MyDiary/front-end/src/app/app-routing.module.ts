@@ -9,11 +9,11 @@ import { ExamComponent } from './components/exam/exam.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
-  { path: 'exams', component: ExamComponent, canActivate: [AuthGuard] },
-  { path: 'homeworks', component: HomeworkComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent, canLoad:[AuthGuard]},
+  { path: 'courses', component: CoursesComponent, canLoad: [AuthGuard] },
+  { path: 'exams', component: ExamComponent, canLoad: [AuthGuard] },
+  { path: 'homeworks', component: HomeworkComponent, canLoad: [AuthGuard] },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

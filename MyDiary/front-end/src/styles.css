@@ -7,3 +7,7 @@ p.error {
     color: red;
     padding-top: 0;
 }
+
+body {
+    margin: 0;
+}

@@ -25,7 +25,6 @@ namespace SeedAPI.Models
         [EmailAddress(ErrorMessage = "Email" + ErrorMessages.ValidInput)]
         public string Email { get; set; }
 
-        [StringLength(250)]
         public string UserInfo { get; set; }
 
         [Required]

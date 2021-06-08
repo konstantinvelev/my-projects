@@ -24,7 +24,8 @@ namespace SeedAPI.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateTime { get; set; }
-        public Grade Grade { get; set; }
+        public Grade? Grade { get; set; }
+        public bool IsPassed { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
         public ICollection<Exam> Exams { get; set; }

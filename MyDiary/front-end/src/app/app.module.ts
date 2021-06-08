@@ -18,12 +18,11 @@ import { TokenService } from './services/token.service';
 import { AppConfig } from './config/config';
 import { AuthGuard } from './helpers/canActivateAuthGuard';
 import { HomeComponent } from './components/home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
-import { HomeworkComponent } from './components/homework/homework.component';
-import { CoursesComponent } from './components/courses/courses.component';
-import { ExamComponent } from './components/exam/exam.component';
-
+import { CourseModule } from './components/course/course.module';
+import { ExamModule } from './components/exam/exam.module';
+import { HomeworkModule } from './components/homework/homework.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,12 +30,10 @@ import { ExamComponent } from './components/exam/exam.component';
     LeftPanelComponent,
     LoginComponent,
     HomeComponent,
-    HomeworkComponent,
-    CoursesComponent,
-    ExamComponent
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -45,7 +42,10 @@ import { ExamComponent } from './components/exam/exam.component';
     MatFormFieldModule,
     MatSidenavModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CourseModule,
+    ExamModule,
+    HomeworkModule,
   ],
   providers: [
     Helpers,

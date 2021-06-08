@@ -6,6 +6,9 @@ namespace SeedAPI.Models
 {
     public class Homework:BaseModel
     {
+        
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Title" + ErrorMessages.BetweenThreeAndThirty)]
+        public string Title { get; set; }
         [Required]
         [StringLength(400, ErrorMessage = "Description" + ErrorMessages.LongerText)]
         public string Description { get; set; }

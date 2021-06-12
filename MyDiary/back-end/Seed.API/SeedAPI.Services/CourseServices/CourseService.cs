@@ -4,6 +4,7 @@ using SeedAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SeedAPI.Services.CourseServices
 {
@@ -20,9 +21,9 @@ namespace SeedAPI.Services.CourseServices
             return this.courseRepository.Save(domain).Result;
         }
 
-        public bool Delete(string id)
+        public async Task<bool> Delete(string id)
         {
-            return this.courseRepository.Delete(id);
+            return await this.courseRepository.Delete(id);
         }
 
         public List<Course> GetAll()

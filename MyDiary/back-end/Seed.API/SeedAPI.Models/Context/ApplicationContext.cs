@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SeedAPI.Models.Context
 {
-    public class ApplicationContext : DbContext 
+    public class ApplicationContext : DbContext,IApplicationContext 
     {
 
         public ApplicationContext(DbContextOptions options) : base(options) { }

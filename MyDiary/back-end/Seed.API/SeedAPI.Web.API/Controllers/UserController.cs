@@ -6,7 +6,6 @@ using System.Text.Json;
 namespace SeedAPI.Web.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
     public class UserController : Controller
     {
         private IUserMap userMap;

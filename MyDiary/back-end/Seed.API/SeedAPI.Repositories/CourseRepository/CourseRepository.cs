@@ -9,20 +9,20 @@ namespace SeedAPI.Repositories.CourseRepository
 {
     public class CourseRepository : ICourseRepository
     {
-        private readonly ApplicationContext context;
+        private readonly EfDeletableEntityRepository<Course> courseRepository;
 
-        public CourseRepository(ApplicationContext context)
+        public CourseRepository(EfDeletableEntityRepository<Course> courseRepository)
         {
-            this.context = context;
+            this.courseRepository = courseRepository;
         }
 
-        public bool Delete(string id)
+        public async Task<bool> Delete(string id)
         {
             try
             {
-                var courseForDelete = this.context.Courses.FirstOrDefault(s => s.Id == id);
+                var courseForDelete = this.courseRepository.GetById(id);
                 courseForDelete.IsDeleted = true;
-                this.context.SaveChanges();
+                await this.courseRepository.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -34,45 +34,44 @@ namespace SeedAPI.Repositories.CourseRepository
 
         public List<Course> GetAll()
         {
-            return this.context.Courses
-                .OrderByDescending(s => s.CreatedOn)
-                .ToList();
+            return this.courseRepository.All().ToList();
         }
 
-        public async Task<Course> Save(Course course)
+        public async Task<Course> Save(Course domain)
         {
             try
             {
-                var newCourse = CreateCourse(course);
-                await this.context.Courses.AddAsync(newCourse);
-                await this.context.SaveChangesAsync();
-                return course;
+                var newUser = CreateCourse(domain);
+                await this.courseRepository.AddAsync(newUser);
+                await this.courseRepository.SaveChangesAsync();
+                return newUser;
             }
             catch (Exception)
             {
-                //error
+
                 throw;
             }
         }
 
-        public async Task<bool> Update(Course course)
+        public async Task<bool> Update(Course domain)
         {
             try
             {
-                var courseForUpdate = context.Courses.FirstOrDefault(s => s.Id == course.Id);
-                var updatedCourse = CreateCourse(course);
+                var courseForUpdate = this.courseRepository.GetById(domain.Id);
+                var updatedCourse = CreateCourse(domain);
 
                 if (courseForUpdate == null && updatedCourse == null)
                 {
                     throw new Exception("The update was not successfully!");
                 }
                 courseForUpdate = updatedCourse;
-                context.Courses.Update(courseForUpdate);
-                await context.SaveChangesAsync();
+                this.courseRepository.Update(courseForUpdate);
+                await this.courseRepository.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
             {
+                return false;
                 throw;
             }
         }

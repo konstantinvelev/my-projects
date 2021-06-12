@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SeedAPI.Repositories.CourseRepository
 {
-    public interface ICourseRepository
+    public interface ICourseRepository 
     {
         Task<Course> Save(Course domain);
         Task<bool> Update(Course domain);
-        bool Delete(string id);
+        Task<bool> Delete(string id);
         List<Course> GetAll();
     }
 }

@@ -12,6 +12,10 @@ using Microsoft.AspNetCore.Http;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using SeedAPI.Services.UserServices;
 using AutoMapper;
+using SeedAPI.Repositories.CourseRepository;
+using SeedAPI.Maps.CourseMaps;
+using SeedAPI.Services.CourseServices;
+using SeedAPI.Repositories;
 
 namespace SeedAPI.Web.API
 {
@@ -35,7 +39,14 @@ namespace SeedAPI.Web.API
             services.AddDbContext<ApplicationContext>(
             options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddTransient<IUserService, UserService>();
+            services.AddSingleton(Configuration);
+
+            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            // Application services
+            //services.AddTransient<ICourseService, CourseService>();
+            //services.AddTransient<ICourseRepository, CourseRepository>();
 
         }
 
@@ -65,6 +76,7 @@ namespace SeedAPI.Web.API
 
             app.UseAuthentication();
             app.UseRouting();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -16,7 +16,6 @@ export class UserService extends BaseService {
   //private currentUser = {};
   //get isLogged(): boolean { return !!this.currentUser; }
 
-
   constructor(
     private http: HttpClient,
     private config: AppConfig,

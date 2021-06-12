@@ -2,7 +2,7 @@
 
 namespace SeedAPI.Models
 {
-    public abstract class BaseModel
+    public abstract class BaseModel : IBaseModel
     {
         public string Id { get; set; }
         public DateTime? CreatedOn { get; set; }

@@ -9,7 +9,7 @@ namespace SeedAPI.Maps.CourseMaps
 {
     public class CourseMap : ICourseMap
     {
-        ICourseService courseService;
+        private ICourseService courseService;
         private IMapper mapper;
 
         public CourseMap(ICourseService service)
@@ -29,7 +29,7 @@ namespace SeedAPI.Maps.CourseMaps
         }
         public bool Delete(string id)
         {
-            return courseService.Delete(id);
+            return courseService.Delete(id).Result;
         }
         public IEnumerable<CourseViewModel> GetAll()
         {

@@ -8,7 +8,7 @@ namespace SeedAPI.Web.API.App_Start
 {
     public class UserMap : IUserMap
     {
-        IUserService userService;
+        private IUserService userService;
         private IMapper mapper;
 
         public UserMap(IUserService service)

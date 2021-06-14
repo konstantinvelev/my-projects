@@ -1,0 +1,9 @@
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\bin\Debug\netcoreapp3.1\SeedAPI.Interfaces.deps.json
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\bin\Debug\netcoreapp3.1\SeedAPI.Interfaces.dll
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\bin\Debug\netcoreapp3.1\SeedAPI.Interfaces.pdb
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.AssemblyInfo.cs
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.dll
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.pdb
+C:\Users\Hp\Desktop\my-projects\MyDiary\back-end\Seed.API\SeedAPI.Interfaces\obj\Debug\netcoreapp3.1\SeedAPI.Interfaces.csprojAssemblyReference.cache

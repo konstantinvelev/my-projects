@@ -1,0 +1,21 @@
+<form #l="ngForm" class="modal-content animate" (ngSubmit)="createExam(l.value)">
+    <fieldset>
+        <label for="email">Name</label>
+        <p class="field field-icon">
+            <input #postTitle="ngModel" class="input-error" type="text" name="name" id="name" ngModel>
+        </p>
+        <label for="grade">Grade</label>
+        <p class="field ">
+            <input #postGrade="ngModel" type="text" name="grade" id="grade" ngModel>
+        </p>
+        <label for="dateTime">Date Time</label>
+        <p class="field ">
+            <input #postDateTime="ngModel" type="datetime" name="dateTime" id="dateTime" ngModel>
+        </p>
+        <label for="isPassed">IsPassed</label>
+        <p class="field">
+            <input #postPassed="ngModel" type="checkbox" name="isPassed" id="isPassed" ngModel>
+        </p>
+        <button>Create Course</button>
+    </fieldset>
+</form>

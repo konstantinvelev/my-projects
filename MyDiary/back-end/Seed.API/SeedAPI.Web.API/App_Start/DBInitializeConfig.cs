@@ -1,8 +1,4 @@
-﻿using SeedAPI.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using SeedAPI.Maps.UserMaps;
 
 namespace SeedAPI.Web.API.App_Start
 {

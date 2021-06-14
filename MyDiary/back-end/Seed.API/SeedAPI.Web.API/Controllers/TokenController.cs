@@ -2,15 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using SeedAPI.Maps.UserMaps;
 using SeedAPI.ViewModels;
-using SeedAPI.Web.API.App_Start;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace SeedAPI.Web.API.Controllers
 {
@@ -35,7 +31,7 @@ namespace SeedAPI.Web.API.Controllers
             if (user != null)
             {
                 var tokenString = BuildToken(user);
-                response = Ok(new { token = tokenString });
+                response = Ok(new { token = tokenString, user = user });
             }
             return response;
         }

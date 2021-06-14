@@ -13,8 +13,9 @@ namespace SeedAPI.Models.Context
     public class ApplicationContext : DbContext,IApplicationContext 
     {
 
-        public ApplicationContext(DbContextOptions options) : base(options) { }
-
+        public ApplicationContext(DbContextOptions options) 
+            : base(options) { }
+     
         public DbSet<User> Users { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Exam> Exams { get; set; }

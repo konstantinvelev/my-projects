@@ -1,20 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SeedAPI.Web.API.App_Start;
 using Microsoft.Extensions.Configuration;
-using System;
 using SeedAPI.Models.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-using SeedAPI.Services.UserServices;
-using AutoMapper;
 using SeedAPI.Repositories.CourseRepository;
-using SeedAPI.Maps.CourseMaps;
-using SeedAPI.Services.CourseServices;
 using SeedAPI.Repositories;
 
 namespace SeedAPI.Web.API
@@ -40,14 +32,6 @@ namespace SeedAPI.Web.API
             options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddSingleton(Configuration);
-
-            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
-            // Application services
-            //services.AddTransient<ICourseService, CourseService>();
-            //services.AddTransient<ICourseRepository, CourseRepository>();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

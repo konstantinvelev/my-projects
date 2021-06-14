@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using SeedAPI.Maps.UserMaps;
 using SeedAPI.Models;
 using SeedAPI.Services.UserServices;
 using SeedAPI.ViewModels;
 using System.Collections.Generic;
 
-namespace SeedAPI.Web.API.App_Start
+namespace SeedAPI.Maps.UserMaps
 {
     public class UserMap : IUserMap
     {

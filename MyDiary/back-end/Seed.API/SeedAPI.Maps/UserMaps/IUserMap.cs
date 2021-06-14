@@ -1,8 +1,7 @@
-﻿using SeedAPI.Models;
-using SeedAPI.ViewModels;
+﻿using SeedAPI.ViewModels;
 using System.Collections.Generic;
 
-namespace SeedAPI.Web.API.App_Start
+namespace SeedAPI.Maps.UserMaps
 {
     public interface IUserMap
     {

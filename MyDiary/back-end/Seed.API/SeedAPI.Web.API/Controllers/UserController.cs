@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SeedAPI.Maps.UserMaps;
 using SeedAPI.ViewModels;
-using SeedAPI.Web.API.App_Start;
 using System.Text.Json;
 
 namespace SeedAPI.Web.API.Controllers

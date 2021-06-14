@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SeedAPI.Maps.UserMaps;
 using SeedAPI.Models.Context;
 using System;
 

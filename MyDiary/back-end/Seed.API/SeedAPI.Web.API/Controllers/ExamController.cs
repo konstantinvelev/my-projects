@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace SeedAPI.Web.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ExamController : Controller
     {
         private readonly IExamMap examMap;

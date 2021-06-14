@@ -1,4 +1,5 @@
-﻿using SeedAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SeedAPI.Models;
 using SeedAPI.Models.Context;
 using System;
 using System.Collections.Generic;
@@ -9,20 +10,20 @@ namespace SeedAPI.Repositories.CourseRepository
 {
     public class CourseRepository : ICourseRepository
     {
-        private readonly EfDeletableEntityRepository<Course> courseRepository;
+        private readonly ApplicationContext context;
 
-        public CourseRepository(EfDeletableEntityRepository<Course> courseRepository)
+        public CourseRepository(ApplicationContext context)
         {
-            this.courseRepository = courseRepository;
+            this.context = context;
         }
 
         public async Task<bool> Delete(string id)
         {
             try
             {
-                var courseForDelete = this.courseRepository.GetById(id);
+                var courseForDelete = await this.context.Courses.FindAsync(id);
                 courseForDelete.IsDeleted = true;
-                await this.courseRepository.SaveChangesAsync();
+                await this.context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -32,9 +33,9 @@ namespace SeedAPI.Repositories.CourseRepository
             }
         }
 
-        public List<Course> GetAll()
+        public async Task<List<Course>> GetAll()
         {
-            return this.courseRepository.All().ToList();
+            return await this.context.Courses.ToListAsync();
         }
 
         public async Task<Course> Save(Course domain)
@@ -42,8 +43,9 @@ namespace SeedAPI.Repositories.CourseRepository
             try
             {
                 var newUser = CreateCourse(domain);
-                await this.courseRepository.AddAsync(newUser);
-                await this.courseRepository.SaveChangesAsync();
+                newUser.CreatedOn = DateTime.UtcNow;
+                await this.context.Courses.AddAsync(newUser);
+                await this.context.SaveChangesAsync();
                 return newUser;
             }
             catch (Exception)
@@ -57,7 +59,7 @@ namespace SeedAPI.Repositories.CourseRepository
         {
             try
             {
-                var courseForUpdate = this.courseRepository.GetById(domain.Id);
+                var courseForUpdate = await this.context.Courses.FindAsync(domain.Id);
                 var updatedCourse = CreateCourse(domain);
 
                 if (courseForUpdate == null && updatedCourse == null)
@@ -65,8 +67,8 @@ namespace SeedAPI.Repositories.CourseRepository
                     throw new Exception("The update was not successfully!");
                 }
                 courseForUpdate = updatedCourse;
-                this.courseRepository.Update(courseForUpdate);
-                await this.courseRepository.SaveChangesAsync();
+                this.context.Courses.Update(courseForUpdate);
+                await this.context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -86,6 +88,7 @@ namespace SeedAPI.Repositories.CourseRepository
                 DateTime = course.DateTime,
                 IsDeleted = course.IsDeleted,
                 UpdatedOn = DateTime.UtcNow,
+                UserId = course.UserId
             };
             return newCourse;
         }

@@ -28,7 +28,7 @@ namespace SeedAPI.Services.CourseServices
 
         public List<Course> GetAll()
         {
-            return this.courseRepository.GetAll();
+            return this.courseRepository.GetAll().Result;
         }
 
         public bool Update(Course course)

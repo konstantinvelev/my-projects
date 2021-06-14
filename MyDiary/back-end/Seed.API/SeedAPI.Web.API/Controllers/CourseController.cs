@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeedAPI.Maps.CourseMaps;
-using SeedAPI.Services.CourseServices;
 using SeedAPI.ViewModels;
-using System.Collections.Generic;
 using System.Text.Json;
 
 namespace SeedAPI.Web.API.Controllers
@@ -37,11 +34,10 @@ namespace SeedAPI.Web.API.Controllers
         //}
 
         [HttpPost]
-        public string Post([FromBody] object course)
+        public string Post([FromBody] CourseViewModel course)
         {
-            var model = this.mapper.Map<object, CourseViewModel>(course);
-            var createdCourse = this.courseMap.Create(model);
-            var jsonUser = JsonSerializer.Serialize(createdCourse);
+            var createdUser = this.courseMap.Create(course);
+            var jsonUser = JsonSerializer.Serialize(createdUser);
             return jsonUser;
         }
         // PUT api/user/5

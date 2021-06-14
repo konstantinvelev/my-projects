@@ -2,7 +2,6 @@
 using SeedAPI.Models;
 using SeedAPI.ViewModels;
 using System.Collections.Generic;
-using SeedAPI.Services;
 using SeedAPI.Services.CourseServices;
 
 namespace SeedAPI.Maps.CourseMaps

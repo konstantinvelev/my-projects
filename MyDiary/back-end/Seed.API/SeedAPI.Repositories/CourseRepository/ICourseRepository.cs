@@ -12,5 +12,6 @@ namespace SeedAPI.Repositories.CourseRepository
         Task<bool> Update(Course domain);
         Task<bool> Delete(string id);
         Task<List<Course>> GetAll();
+        Task<Course> GetByName(string courseName);
     }
 }

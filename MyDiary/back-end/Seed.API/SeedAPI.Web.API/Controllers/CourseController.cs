@@ -19,13 +19,14 @@ namespace SeedAPI.Web.API.Controllers
 
         }
 
-        // GET api/user
-        //[HttpGet]
-        //public IEnumerable<CourseViewModel> Get()
-        //{
-        //    //return this.courseMap.GetAll();
-        //    return new List<CourseViewModel>();
-        //}
+        //GET api/user
+       [HttpGet]
+        public string Get(string courseName)
+        {
+            var course = courseMap.GetByName(courseName);
+            var jsonCourse = JsonSerializer.Serialize(course);
+            return jsonCourse;
+        }
         //// GET api/user/5
         //[HttpGet("{id}")]
         //public string Get(int id)

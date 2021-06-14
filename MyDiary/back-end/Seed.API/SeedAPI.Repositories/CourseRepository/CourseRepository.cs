@@ -38,6 +38,12 @@ namespace SeedAPI.Repositories.CourseRepository
             return await this.context.Courses.ToListAsync();
         }
 
+        public async Task<Course> GetByName(string courseName)
+        {
+            var course = await this.context.Courses.FirstOrDefaultAsync(s=>s.Name.ToLower() == courseName.ToLower());
+            return course;
+        }
+
         public async Task<Course> Save(Course domain)
         {
             try
@@ -67,6 +73,7 @@ namespace SeedAPI.Repositories.CourseRepository
                     throw new Exception("The update was not successfully!");
                 }
                 courseForUpdate = updatedCourse;
+                courseForUpdate.UpdatedOn = DateTime.UtcNow;
                 this.context.Courses.Update(courseForUpdate);
                 await this.context.SaveChangesAsync();
                 return true;
@@ -87,7 +94,6 @@ namespace SeedAPI.Repositories.CourseRepository
                 Description = course.Description,
                 DateTime = course.DateTime,
                 IsDeleted = course.IsDeleted,
-                UpdatedOn = DateTime.UtcNow,
                 UserId = course.UserId
             };
             return newCourse;

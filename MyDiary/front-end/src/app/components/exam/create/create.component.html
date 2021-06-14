@@ -1,8 +1,8 @@
 <form #l="ngForm" class="modal-content animate" (ngSubmit)="createExam(l.value)">
     <fieldset>
-        <label for="email">Name</label>
+        <label for="email">Title</label>
         <p class="field field-icon">
-            <input #postTitle="ngModel" class="input-error" type="text" name="name" id="name" ngModel>
+            <input #postTitle="ngModel" class="input-error" type="text" name="title" id="title" ngModel>
         </p>
         <label for="grade">Grade</label>
         <p class="field ">
@@ -11,6 +11,10 @@
         <label for="dateTime">Date Time</label>
         <p class="field ">
             <input #postDateTime="ngModel" type="datetime" name="dateTime" id="dateTime" ngModel>
+        </p>
+        <label for="email">Name Of The Course</label>
+        <p class="field field-icon">
+            <input #postCourseTitle="ngModel" class="input-error" type="text" name="courseName" id="courseName" ngModel>
         </p>
         <label for="isPassed">IsPassed</label>
         <p class="field">

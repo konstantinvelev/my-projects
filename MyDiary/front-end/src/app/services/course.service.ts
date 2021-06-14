@@ -1,6 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError } from "rxjs/operators";
+import { catchError, tap } from "rxjs/operators";
 import { Observable } from 'rxjs/Rx';
 import { AppConfig } from "../config/config";
 import { Helpers } from "../helpers/helpers";
@@ -25,5 +25,12 @@ export class CourseService extends BaseService {
             catchError(super.handleError));
     }
 
-    
+    getCourseByName(name:string) :  Observable<any>{
+        var headers = new HttpHeaders();
+         headers = super.header().headers;
+        const params = new HttpParams().append('courseName', name);
+        var course = null
+         return this.http.get<any>((this.pathAPI + 'course'),{headers:headers,params}).pipe(
+            catchError(super.handleError));
+    }
 }

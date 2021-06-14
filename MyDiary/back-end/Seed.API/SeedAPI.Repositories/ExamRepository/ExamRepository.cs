@@ -45,6 +45,7 @@ namespace SeedAPI.Repositories.ExamRepository
             try
             {
                 var newExam = CreateExam(exam);
+                newExam.CreatedOn = DateTime.UtcNow;
                 await this.context.Exams.AddAsync(newExam);
                 await this.context.SaveChangesAsync();
                 return exam;
@@ -68,6 +69,8 @@ namespace SeedAPI.Repositories.ExamRepository
                     throw new Exception("The update was not successfully!");
                 }
                 courseForUpdate = updatedCourse;
+
+                courseForUpdate.UpdatedOn = DateTime.UtcNow;
                 context.Exams.Update(courseForUpdate);
                 await context.SaveChangesAsync();
                 return true;
@@ -82,11 +85,13 @@ namespace SeedAPI.Repositories.ExamRepository
         {
             var newCourse = new Exam
             {
-             DateTime=exam.DateTime,
-             Grade = exam.Grade,
-             IsDeleted = exam.IsDeleted,
-             IsPassed = exam.IsPassed,
-             UpdatedOn = DateTime.UtcNow,
+                Title = exam.Title,
+                DateTime = exam.DateTime,
+                Grade = exam.Grade,
+                IsDeleted = exam.IsDeleted,
+                IsPassed = exam.IsPassed,
+                CourseId = exam.CourseId,
+                UserId = exam.UserId,
             };
             return newCourse;
         }

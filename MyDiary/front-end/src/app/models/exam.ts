@@ -1,10 +1,11 @@
 import { IBase } from "./IBase";
 
 export interface IExam extends IBase {
-    name: string;
-    grade: string;
-    dateTime: string;
-    isPassed: boolean;
-    userId: string;
-    courseId: string;
-  }
+  title: string;
+  grade: string;
+  dateTime: string;
+  courseName: string;
+  isPassed: boolean;
+  userId: string;
+  courseId: string;
+}

@@ -33,8 +33,9 @@ export class TokenService extends BaseService {
     }
     logout():any{
         this.Helper.logout();
-        this.currentUser = null;
     }
+
+   // getUserByEmail():any
     private getToken(body: any): Observable<any> {
         return this.http.post<any>(this.pathAPI + 'user', body, super.header()).pipe(
             tap((params) => this.currentUser = params.user),
@@ -43,7 +44,7 @@ export class TokenService extends BaseService {
     }
     private getCreatedToken(body: any): Observable<any> {
         return this.http.post<any>(this.pathAPI + 'token', body, super.header()).pipe(
-            tap((params) => this.currentUser = params.user),
+            tap((params) =>  this.Helper.setUserInfo(params.user)),
             catchError(super.handleError)
         );
     }

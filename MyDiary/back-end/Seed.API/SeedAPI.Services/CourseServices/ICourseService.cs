@@ -13,5 +13,6 @@ namespace SeedAPI.Services.CourseServices
         bool Update(Course domain);
         List<Course> GetAll();
         Task<bool> Delete(string id);
+        Course GetByName(string courseName);
     }
 }

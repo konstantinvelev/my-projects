@@ -64,5 +64,10 @@ namespace SeedAPI.Maps.CourseMaps
             var maper = config.CreateMapper();
             return maper;
         }
+
+        public Course GetByName(string courseName)
+        {
+            return this.courseService.GetByName(courseName);
+        }
     }
 }

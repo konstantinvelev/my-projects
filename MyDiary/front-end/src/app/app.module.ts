@@ -25,6 +25,7 @@ import { ExamModule } from './components/exam/exam.module';
 import { HomeworkModule } from './components/homework/homework.module';
 import { CourseService } from './services/course.service';
 import { ExamService } from './services/exam.service';
+import { HomeworkService } from './services/homeworkService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { ExamService } from './services/exam.service';
     TokenService,
     UserService,
     CourseService,
+    HomeworkService,
     ExamService,
     AppConfig,
     AuthGuard

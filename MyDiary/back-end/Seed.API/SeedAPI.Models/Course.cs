@@ -26,6 +26,7 @@ namespace SeedAPI.Models
         public DateTime DateTime { get; set; }
         public Grade? Grade { get; set; }
         public bool IsPassed { get; set; }
+        [Required]
         public string UserId { get; set; }
         public User User { get; set; }
         public ICollection<Exam> Exams { get; set; }

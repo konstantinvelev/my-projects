@@ -45,6 +45,7 @@ namespace SeedAPI.Repositories.HomeworkRepository
             try
             {
                 var newHomework = CreateHomework(homework);
+                newHomework.CreatedOn = DateTime.UtcNow;
                 await this.context.Homeworks.AddAsync(homework);
                 await this.context.SaveChangesAsync();
                 return homework;
@@ -68,6 +69,7 @@ namespace SeedAPI.Repositories.HomeworkRepository
                     throw new Exception("The update was not successfully!");
                 }
                 courseForUpdate = updatedCourse;
+                courseForUpdate.CreatedOn = DateTime.UtcNow;
                 context.Homeworks.Update(courseForUpdate);
                 await context.SaveChangesAsync();
                 return true;
@@ -82,11 +84,14 @@ namespace SeedAPI.Repositories.HomeworkRepository
         {
             var newCourse = new Homework
             {
+                Title = homework.Title,
+                Description = homework.Description,
                 DateTime = homework.DateTime,
                 Grade = homework.Grade,
                 IsDeleted = homework.IsDeleted,
                 IsPassed = homework.IsPassed,
-                UpdatedOn = DateTime.UtcNow,
+                CourseId = homework.CourseId,
+                UserId = homework.UserId,
             };
             return newCourse;
         }

@@ -9,8 +9,10 @@ namespace SeedAPI.ViewModels
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime DateTime { get; set; }
+        public string DateTime { get; set; }
         public bool IsPassed { get; set; } = false;
-        public Grade? Grade { get; set; }
+        public string Grade { get; set; }
+        public string UserId { get; set; }
+        public string CourseId { get; set; }
     }
 }

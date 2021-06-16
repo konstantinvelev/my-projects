@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeadComponent } from './layout/head.component';
 import { LeftPanelComponent } from './layout/left-panel.component';
 import { LoginComponent } from "./components/login-register/login.component";
 import { Helpers } from './helpers/helpers';
@@ -29,7 +28,6 @@ import { HomeworkService } from './services/homeworkService';
 @NgModule({
   declarations: [
     AppComponent,
-    HeadComponent,
     LeftPanelComponent,
     LoginComponent,
     HomeComponent,

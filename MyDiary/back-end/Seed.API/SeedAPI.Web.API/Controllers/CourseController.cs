@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SeedAPI.Maps.CourseMaps;
 using SeedAPI.ViewModels;
+using System.Linq;
 using System.Text.Json;
 
 namespace SeedAPI.Web.API.Controllers
@@ -18,10 +19,17 @@ namespace SeedAPI.Web.API.Controllers
             this.mapper = GetMap();
 
         }
+        [HttpGet]
+        public string Get()
+        {
+            var courses = this.courseMap.GetAll().ToList();
+            var jsonCourse = JsonSerializer.Serialize(courses);
+            return jsonCourse;
+        }
 
         //GET api/user
-       [HttpGet]
-        public string Get(string courseName)
+        [HttpGet("{courseName}")]
+        public string GetByName(string courseName)
         {
             var course = courseMap.GetByName(courseName);
             var jsonCourse = JsonSerializer.Serialize(course);

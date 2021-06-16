@@ -1,7 +1,11 @@
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/course/all">Courses</a>
-    <a routerLink="/homework/all">Homeworks</a>
-    <a routerLink="/exam/all">Exams</a>
-    <button (click)="logoutHandler()">Logout</button>
-</nav>
+<div class="contaner">
+    <nav>
+        <ul>
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/course/all">Courses</a></li>
+            <li><a routerLink="/homework/all">Homeworks</a></li>
+            <li><a routerLink="/exam/all">Exams</a></li>
+            <li><button (click)="logoutHandler()">Logout</button></li>
+        </ul>
+    </nav>
+</div>

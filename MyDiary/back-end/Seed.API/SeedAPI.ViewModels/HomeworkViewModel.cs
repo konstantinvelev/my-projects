@@ -7,12 +7,13 @@ namespace SeedAPI.ViewModels
 {
     public class HomeworkViewModel
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string DateTime { get; set; }
-        public bool IsPassed { get; set; } = false;
-        public string Grade { get; set; }
-        public string UserId { get; set; }
-        public string CourseId { get; set; }
+        public string id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public string dateTime { get; set; }
+        public bool isPassed { get; set; } = false;
+        public string grade { get; set; }
+        public string userId { get; set; }
+        public string courseId { get; set; }
     }
 }

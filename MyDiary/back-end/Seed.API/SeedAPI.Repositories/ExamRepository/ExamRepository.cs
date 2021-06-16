@@ -35,6 +35,7 @@ namespace SeedAPI.Repositories.ExamRepository
 
         public List<Exam> GetAll()
         {
+
             return this.context.Exams
                 .OrderByDescending(s => s.CreatedOn)
                 .ToList();

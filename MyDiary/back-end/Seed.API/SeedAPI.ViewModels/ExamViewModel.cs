@@ -5,12 +5,12 @@ namespace SeedAPI.ViewModels
 {
     public class ExamViewModel
     {
-        public string Title { get; set; }
-        public string CourseName { get; set; }
-        public string DateTime { get; set; }
-        public bool IsPassed { get; set; } = false;
-        public string Grade { get; set; }
-        public string UserId { get; set; }
-        public string CourseId { get; set; }
+        public string title { get; set; }
+        public string courseName { get; set; }
+        public string dateTime { get; set; }
+        public bool isPassed { get; set; } = false;
+        public string grade { get; set; }
+        public string userId { get; set; }
+        public string? courseId { get; set; }
     }
 }

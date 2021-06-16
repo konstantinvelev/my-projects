@@ -26,7 +26,7 @@ namespace SeedAPI.Repositories.UserRepositories
                 var newUser = CreateUser(user);
                 await context.Users.AddAsync(newUser);
                 await context.SaveChangesAsync();
-                return user;
+                return newUser;
             }
             catch (Exception ex)
             {

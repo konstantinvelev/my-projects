@@ -23,9 +23,9 @@ export class CreateComponent implements OnInit {
 
   createHomework(data: any): void {
     var user = this.helper.getUser();
-    data.userId = user.id;
+    data.userId = user.Id;
      this.courseService.getCourseByName(data.courseName).subscribe(course => {
-      data.courseId =course.Id;
+      data.courseId =course.id;
       this.homeworkService.createExam(data).subscribe({
         next: () => {
           this.router.navigate(['/homework/all']);

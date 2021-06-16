@@ -23,10 +23,11 @@ namespace SeedAPI.Web.API.Controllers
 
         // GET api/user
         [HttpGet]
-        public IEnumerable<HomeworkViewModel> Get()
+        public string Get()
         {
-            //return this.homeworkMap.GetAll();
-            return new List<HomeworkViewModel>();
+            var homeworks = this.homeworkMap.GetAll();
+            var json = JsonSerializer.Serialize(homeworks);
+            return json;
         }
         // GET api/user/5
         [HttpGet("{id}")]
@@ -36,9 +37,9 @@ namespace SeedAPI.Web.API.Controllers
         }
         // POST api/user
         [HttpPost]
-        public string Post([FromBody] HomeworkViewModel course)
+        public string Post([FromBody] HomeworkViewModel homeworks)
         {
-            var createdCourse = this.homeworkMap.Create(course);
+            var createdCourse = this.homeworkMap.Create(homeworks);
             var jsonUser = JsonSerializer.Serialize(createdCourse);
             return jsonUser;
         }

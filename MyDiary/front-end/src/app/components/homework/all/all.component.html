@@ -1,3 +1,15 @@
-<p>all homeworks!</p>
-
 <a routerLink="/homework/create">Create Homework ~~!!!!!~~</a>
+
+<div class="row contaner" *ngFor="let item of allHomeworks">
+    <div>
+        <div id="cheifdiv">
+            <h2>{{item.title}}</h2>
+            <div id="infoHolder">
+                <div>{{item.dateTime}}</div>
+                <div id="detailsButton">
+                    <a id="details" [routerLink]="['/post/details', item.id]" class="navitem">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

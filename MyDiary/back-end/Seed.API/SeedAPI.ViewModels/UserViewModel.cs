@@ -6,10 +6,10 @@ namespace SeedAPI.ViewModels
 {
     public class UserViewModel 
     {
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string UserInfo { get; set; }
-        public string Password { get; set; }
-        public string Id { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string userInfo { get; set; }
+        public string password { get; set; }
+        public string id { get; set; }
     }
 }

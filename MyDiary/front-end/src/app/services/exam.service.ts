@@ -4,12 +4,13 @@ import { catchError } from "rxjs/operators";
 import { Observable } from 'rxjs/Rx';
 import { AppConfig } from "../config/config";
 import { Helpers } from "../helpers/helpers";
+import { IExam } from "../models/exam";
 import { BaseService } from "./base.service";
 
 @Injectable()
 export class ExamService extends BaseService {
-    private pathAPI = this.config.setting['PathAPI'];
 
+    private pathAPI = this.config.setting['PathAPI'] + 'exam';
 
     constructor(
         private http: HttpClient,
@@ -19,9 +20,16 @@ export class ExamService extends BaseService {
         super(helper);
     }
 
-    createExam(data:any) : Observable<any>{
-        return this.http.post<any>(this.pathAPI + 'exam', data, super.header()).pipe(
-            catchError(super.handleError));
+    all(): Observable<IExam[]> {
+        return this.http.get<any>(this.pathAPI, super.header()).pipe(
+            catchError(super.handleError)
+        );
+    }
+
+    createExam(data: any): Observable<any> {
+        return this.http.post<any>(this.pathAPI, data, super.header()).pipe(
+            catchError(super.handleError)
+        );
     }
 
 }

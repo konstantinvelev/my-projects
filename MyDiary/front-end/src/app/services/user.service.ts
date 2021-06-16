@@ -6,7 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { BaseService } from './base.service';
 import { AppConfig } from '../config/config';
 import { Helpers } from '../helpers/helpers';
-import {IUser} from '../models/user'
+import { IUser } from '../models/user'
 @Injectable()
 export class UserService extends BaseService {
   private pathAPI = this.config.setting['PathAPI'];
@@ -19,14 +19,15 @@ export class UserService extends BaseService {
     private http: HttpClient,
     private config: AppConfig,
     helper: Helpers,
-  ) {super(helper);}
+  ) { super(helper); }
 
   getUsers(): Observable<any> {
     return this.http.get(this.pathAPI + 'user', super.header()).pipe(
-      catchError(super.handleError));
+      catchError(super.handleError)
+    );
   }
 
-  
+
 
 }
 

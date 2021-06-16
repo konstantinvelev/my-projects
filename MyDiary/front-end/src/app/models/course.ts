@@ -10,5 +10,5 @@ export interface ICourse extends IBase {
     isPassed: boolean;
     userId: string;
     homeworks: IHomework[];
-    exam: IExam[]
+    exams: IExam[]
   }

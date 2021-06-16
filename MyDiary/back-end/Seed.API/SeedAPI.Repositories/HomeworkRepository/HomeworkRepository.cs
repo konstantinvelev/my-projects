@@ -46,7 +46,7 @@ namespace SeedAPI.Repositories.HomeworkRepository
             {
                 var newHomework = CreateHomework(homework);
                 newHomework.CreatedOn = DateTime.UtcNow;
-                await this.context.Homeworks.AddAsync(homework);
+                await this.context.Homeworks.AddAsync(newHomework);
                 await this.context.SaveChangesAsync();
                 return homework;
             }

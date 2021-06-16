@@ -16,6 +16,8 @@ export class Helpers  {
     public isAuthenticationChanged():any {
         return this.authenticationChanged.asObservable();
     }
+
+    
     public getUser():any {
         if( window.localStorage['user'] === undefined || 
             window.localStorage['user'] === null ||
@@ -27,6 +29,7 @@ export class Helpers  {
         let obj = JSON.parse(window.localStorage['user']);
         return obj;
     }
+   
     public getToken():any {
         if( window.localStorage['token'] === undefined || 
             window.localStorage['token'] === null ||
@@ -46,6 +49,7 @@ export class Helpers  {
     }
     public logout():void {
         this.setStorageToken(undefined);
+        this.setStorageUserInfo(undefined)
     }
     private setStorageToken(value: any):void {
         window.localStorage['token'] = value;

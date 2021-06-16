@@ -23,10 +23,11 @@ namespace SeedAPI.Web.API.Controllers
 
         // GET api/user
         [HttpGet]
-        public IEnumerable<ExamViewModel> Get()
+        public string Get()
         {
-            //return this.courseMap.GetAll();
-            return new List<ExamViewModel>();
+            var homeworks = this.examMap.GetAll();
+            var json = JsonSerializer.Serialize(homeworks);
+            return json;
         }
         // GET api/user/5
         [HttpGet("{id}")]

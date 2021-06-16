@@ -9,8 +9,9 @@ import { BaseService } from "./base.service";
 
 @Injectable()
 export class CourseService extends BaseService {
-    private pathAPI = this.config.setting['PathAPI'];
-    
+
+    private pathAPI = this.config.setting['PathAPI'] + 'course';
+
     constructor(
         private http: HttpClient,
         private config: AppConfig,
@@ -19,17 +20,25 @@ export class CourseService extends BaseService {
         super(helper);
     }
 
-    createCourse(data:any) : Observable<any>{
-        return this.http.post<any>(this.pathAPI + 'course', data, super.header()).pipe(
-            catchError(super.handleError));
+    all(): Observable<ICourse[]> {
+        return this.http.get<any>(this.pathAPI, super.header()).pipe(
+            catchError(super.handleError)
+        );
     }
 
-    getCourseByName(name:string) :  Observable<any>{
+    createCourse(data: any): Observable<any> {
+        return this.http.post<any>(this.pathAPI, data, super.header()).pipe(
+            catchError(super.handleError)
+        );
+    }
+
+    getCourseByName(name: string): Observable<any> {
         var headers = new HttpHeaders();
-         headers = super.header().headers;
+        headers = super.header().headers;
         const params = new HttpParams().append('courseName', name);
         var course = null
-         return this.http.get<any>((this.pathAPI + 'course'),{headers:headers,params}).pipe(
-            catchError(super.handleError));
+        return this.http.get<any>((this.pathAPI + 'courseName'), { headers: headers, params }).pipe(
+            catchError(super.handleError)
+        );
     }
 }

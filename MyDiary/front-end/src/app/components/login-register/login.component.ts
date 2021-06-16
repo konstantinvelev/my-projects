@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   submitRegisterForm(data: any): void {
     this.tokenService.auth(data).subscribe((token: any) => {
       this.helpers.setToken(token);
-      this.helpers.setUserInfo(data);
+      this.helpers.setUserInfo(token);
       this.router.navigate(['/home']);
     })
   }

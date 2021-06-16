@@ -94,7 +94,8 @@ namespace SeedAPI.Repositories.CourseRepository
                 Description = course.Description,
                 DateTime = course.DateTime,
                 IsDeleted = course.IsDeleted,
-                UserId = course.UserId
+                UserId = course.UserId,
+                IsPassed = course.IsPassed,
             };
             return newCourse;
         }

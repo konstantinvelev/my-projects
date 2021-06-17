@@ -11,8 +11,7 @@ import { IUser } from '../models/user';
 @Injectable()
 export class TokenService extends BaseService {
 
-    currentUser: IUser | null = null;
-    private pathAPI = this.config.setting['PathAPI'];
+    private pathAPI = this.config.setting['PathAPI'] + 'user';
     public errorMessage = '';
 
     constructor(
@@ -36,14 +35,12 @@ export class TokenService extends BaseService {
     }
 
     private getToken(body: any): Observable<any> {
-        return this.http.post<any>(this.pathAPI + 'user', body, super.header()).pipe(
-            tap((params) => this.currentUser = params.user),
+        return this.http.post<any>(this.pathAPI, body, super.header()).pipe(
             catchError(super.handleError)
         );
     }
     private getCreatedToken(body: any): Observable<any> {
-        return this.http.post<any>(this.pathAPI + 'token', body, super.header()).pipe(
-            tap((params) => this.currentUser = params.user),
+        return this.http.post<any>(this.pathAPI, body, super.header()).pipe(
             tap((params) => this.Helper.setUserInfo(params.user)),
             catchError(super.handleError)
         );

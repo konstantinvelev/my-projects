@@ -54,6 +54,22 @@ namespace SeedAPI.Maps.CourseMaps
             var model = this.mapper.Map<CourseViewModel, Course>(officeViewModel);
             return model;
         }
+     
+
+        public CourseViewModel GetByName(string courseName)
+        {
+             var course = this.courseService.GetByName(courseName); 
+            var model = this.mapper.Map<Course, CourseViewModel>(course);
+            return model;
+        }
+
+        public CourseViewModel GetById(string id)
+        {
+            var course = this.courseService.GetById(id);
+            var model = this.mapper.Map<Course, CourseViewModel>(course);
+            return model;
+        }
+
         private static IMapper GetMap()
         {
             var config = new MapperConfiguration(cfg => {
@@ -63,11 +79,6 @@ namespace SeedAPI.Maps.CourseMaps
 
             var maper = config.CreateMapper();
             return maper;
-        }
-
-        public Course GetByName(string courseName)
-        {
-            return this.courseService.GetByName(courseName);
         }
     }
 }

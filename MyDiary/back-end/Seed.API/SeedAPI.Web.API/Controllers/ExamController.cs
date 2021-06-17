@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeedAPI.Maps.ExamMaps;
 using SeedAPI.ViewModels;
@@ -21,19 +22,16 @@ namespace SeedAPI.Web.API.Controllers
             this.examMap = examMap;
         }
 
-        // GET api/user
         [HttpGet]
-        public string Get()
+        public IEnumerable<ExamViewModel> Get()
         {
-            var homeworks = this.examMap.GetAll();
-            var json = JsonSerializer.Serialize(homeworks);
-            return json;
+            return this.examMap.GetAll();
         }
-        // GET api/user/5
+
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ExamViewModel Get(string id)
         {
-            return "value";
+            return this.examMap.GetById(id);
         }
         // POST api/user
         [HttpPost]

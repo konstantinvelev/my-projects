@@ -1,5 +1,6 @@
 ﻿using SeedAPI.Models;
 using SeedAPI.Repositories.ExamRepository;
+using SeedAPI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,6 +28,11 @@ namespace SeedAPI.Services.ExamServices
         public List<Exam> GetAll()
         {
             return this.examRepository.GetAll();
+        }
+
+        public Exam GetById(string id)
+        {
+            return this.examRepository.GetById(id).Result;
         }
 
         public bool Update(Exam exam)

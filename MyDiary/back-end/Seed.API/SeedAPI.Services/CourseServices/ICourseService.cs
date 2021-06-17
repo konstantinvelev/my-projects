@@ -14,5 +14,6 @@ namespace SeedAPI.Services.CourseServices
         List<Course> GetAll();
         Task<bool> Delete(string id);
         Course GetByName(string courseName);
+        Course GetById(string id);
     }
 }

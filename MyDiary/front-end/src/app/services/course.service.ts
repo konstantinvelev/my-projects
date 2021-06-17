@@ -32,12 +32,18 @@ export class CourseService extends BaseService {
         );
     }
 
+    getCourseById(id:string): Observable<ICourse> {
+        return this.http.get<ICourse>(this.pathAPI + `/${id}`, super.header()).pipe(
+            catchError(super.handleError)
+        );
+      }
+
     getCourseByName(name: string): Observable<any> {
         var headers = new HttpHeaders();
         headers = super.header().headers;
         const params = new HttpParams().append('courseName', name);
         var course = null
-        return this.http.get<any>((this.pathAPI + 'courseName'), { headers: headers, params }).pipe(
+        return this.http.get<any>((this.pathAPI + `/GetByName/${name}`), { headers: headers, params }).pipe(
             catchError(super.handleError)
         );
     }

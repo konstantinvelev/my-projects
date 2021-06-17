@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
   submitLogin(data: any): void {
     this.tokenService.login(data).subscribe((token: any) => {
       this.helpers.setToken(token);
-      //this.tokenService.getUserByEmail(data.email);
       this.router.navigate(['/home']);
     });
   }

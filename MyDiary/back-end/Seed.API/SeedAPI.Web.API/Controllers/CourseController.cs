@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SeedAPI.Maps.CourseMaps;
+using SeedAPI.Models;
 using SeedAPI.ViewModels;
 using System.Linq;
 using System.Text.Json;
@@ -27,20 +28,18 @@ namespace SeedAPI.Web.API.Controllers
             return jsonCourse;
         }
 
-        //GET api/user
-        [HttpGet("{courseName}")]
-        public string GetByName(string courseName)
+        [Route("[action]/{courseName}")]
+        [HttpGet]
+        public CourseViewModel GetByName(string courseName)
         {
-            var course = courseMap.GetByName(courseName);
-            var jsonCourse = JsonSerializer.Serialize(course);
-            return jsonCourse;
+            return courseMap.GetByName(courseName);
         }
-        //// GET api/user/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+
+        [HttpGet("{id}")]
+        public CourseViewModel GetById(string id)
+        {
+            return courseMap.GetById(id);
+        }
 
         [HttpPost]
         public string Post([FromBody] CourseViewModel course)
@@ -63,8 +62,8 @@ namespace SeedAPI.Web.API.Controllers
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<object, CourseViewModel>();
-                cfg.CreateMap<CourseViewModel, CourseViewModel>();
+                cfg.CreateMap<Course, CourseViewModel>();
+                cfg.CreateMap<CourseViewModel, Course>();
             });
 
             var maper = config.CreateMapper();

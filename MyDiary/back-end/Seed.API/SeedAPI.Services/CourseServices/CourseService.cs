@@ -31,6 +31,11 @@ namespace SeedAPI.Services.CourseServices
             return this.courseRepository.GetAll().Result;
         }
 
+        public Course GetById(string id)
+        {
+            return this.courseRepository.GetById(id).Result;
+        }
+
         public Course GetByName(string courseName)
         {
             return this.courseRepository.GetByName(courseName).Result;

@@ -41,6 +41,11 @@ namespace SeedAPI.Repositories.ExamRepository
                 .ToList();
         }
 
+        public async Task<Exam> GetById(string id)
+        {    
+            return await this.context.Exams.FindAsync(id);
+        }
+
         public async Task<Exam> Save(Exam exam)
         {
             try

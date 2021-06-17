@@ -36,6 +36,12 @@ namespace SeedAPI.Maps.ExamMaps
         {
             return DomainToViewModel(examService.GetAll());
         }
+        public ExamViewModel GetById(string id)
+        {
+            var exam  = this.examService.GetById(id);
+            var model = this.mapper.Map<Exam, ExamViewModel>(exam);
+            return model;
+        }
 
         public ExamViewModel DomainToViewModel(Exam exam)
         {

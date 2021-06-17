@@ -1,4 +1,5 @@
 ﻿using SeedAPI.Models;
+using SeedAPI.ViewModels;
 using System.Collections.Generic;
 
 namespace SeedAPI.Services.ExamServices
@@ -9,5 +10,6 @@ namespace SeedAPI.Services.ExamServices
         bool Delete(string id);
         List<Exam> GetAll();
         bool Update(Exam exam);
+        Exam GetById(string id);
     }
 }

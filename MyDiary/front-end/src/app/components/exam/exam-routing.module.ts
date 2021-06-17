@@ -12,23 +12,14 @@ const routes: Routes = [
             {
                 path: 'create',
                 component: CreateComponent,
-                data:{
-                    title: 'Create Exam Page'
-                }
             },
             {
                 path: 'all',
                 component: AllComponent,
-                data:{
-                    title: 'All Exams Page'
-                }
             },
             {
                 path: 'details/:id',
-                component: DetailsComponent,
-                data:{
-                    title: 'Details Exam Page'
-                }
+                component: DetailsComponent
             },
             // {
             //     path: 'edit/:id',

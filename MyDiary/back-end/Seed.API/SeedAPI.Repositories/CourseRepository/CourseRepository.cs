@@ -38,6 +38,12 @@ namespace SeedAPI.Repositories.CourseRepository
             return await this.context.Courses.ToListAsync();
         }
 
+        public async Task<Course> GetById(string id)
+        {
+            var course = await this.context.Courses.FirstOrDefaultAsync(s => s.Id == id);
+            return course;
+        }
+
         public async Task<Course> GetByName(string courseName)
         {
             var course = await this.context.Courses.FirstOrDefaultAsync(s=>s.Name.ToLower() == courseName.ToLower());

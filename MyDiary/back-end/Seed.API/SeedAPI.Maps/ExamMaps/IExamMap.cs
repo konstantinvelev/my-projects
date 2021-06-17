@@ -9,5 +9,6 @@ namespace SeedAPI.Maps.ExamMaps
         public bool Update(ExamViewModel viewModel);
         public bool Delete(string id);
         public IEnumerable<ExamViewModel> GetAll();
+        ExamViewModel GetById(string id);
     }
 }

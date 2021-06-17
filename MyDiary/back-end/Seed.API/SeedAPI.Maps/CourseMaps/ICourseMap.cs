@@ -10,6 +10,7 @@ namespace SeedAPI.Maps.CourseMaps
         bool Update(CourseViewModel viewModel);
         bool Delete(string id);
         IEnumerable<CourseViewModel> GetAll();
-        Course GetByName(string courseName);
+        CourseViewModel GetByName(string courseName);
+        CourseViewModel GetById(string id);
     }
 }

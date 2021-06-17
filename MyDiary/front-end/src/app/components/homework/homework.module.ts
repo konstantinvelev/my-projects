@@ -4,13 +4,15 @@ import { AllComponent } from './all/all.component';
 import { HomeworkRoutingModule } from './homework-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
+import { DetailsComponent } from './details/details.component';
 
 
 
 @NgModule({
   declarations: [
     AllComponent,
-    CreateComponent
+    CreateComponent,
+    DetailsComponent
   ],
   imports: [
     CommonModule,

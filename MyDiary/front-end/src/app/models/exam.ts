@@ -1,11 +1,13 @@
+import { ICourse } from "./course";
 import { IBase } from "./IBase";
+import { IUser } from "./user";
 
-export interface IExam extends IBase {
+export interface IExam<T = string> extends IBase {
   title: string;
   grade: string;
   dateTime: string;
   courseName: string;
   isPassed: boolean;
-  userId: string;
-  courseId: string;
+  userId: IUser;
+  courseId: ICourse;
 }

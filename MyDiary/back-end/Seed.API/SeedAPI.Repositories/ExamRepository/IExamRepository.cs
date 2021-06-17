@@ -10,5 +10,6 @@ namespace SeedAPI.Repositories.ExamRepository
         Task<bool> Update(Exam course);
          bool Delete(string id);
         List<Exam> GetAll();
+        Task<Exam> GetById(string id);
     }
 }

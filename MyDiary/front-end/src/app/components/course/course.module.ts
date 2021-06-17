@@ -4,6 +4,7 @@ import { AllComponent } from './all/all.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseRoutingModule } from './course-routing.module';
 import { CreateComponent } from './create/create.component';
+import { DetailsComponent } from './details/details.component';
 
 
 
@@ -11,6 +12,7 @@ import { CreateComponent } from './create/create.component';
   declarations: [
     AllComponent,
     CreateComponent,
+    DetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { CreateComponent } from './create/create.component';
   exports:[
     AllComponent,
     CreateComponent,
+    DetailsComponent,
   ]
 })
 export class CourseModule { }

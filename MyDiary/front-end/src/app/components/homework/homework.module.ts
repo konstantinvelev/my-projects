@@ -25,7 +25,8 @@ import { DetailsComponent } from './details/details.component';
   ],
   exports: [
     AllComponent,
-    CreateComponent
+    CreateComponent,
+    DetailsComponent,
   ]
 })
 export class HomeworkModule { }

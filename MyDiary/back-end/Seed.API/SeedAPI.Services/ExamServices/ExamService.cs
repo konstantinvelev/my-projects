@@ -27,7 +27,7 @@ namespace SeedAPI.Services.ExamServices
 
         public List<Exam> GetAll()
         {
-            return this.examRepository.GetAll();
+            return this.examRepository.GetAll().Result;
         }
 
         public Exam GetById(string id)

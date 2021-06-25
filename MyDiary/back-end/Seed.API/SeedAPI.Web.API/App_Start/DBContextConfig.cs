@@ -16,16 +16,23 @@ namespace SeedAPI.Web.API.App_Start
             var optionsBuilder = new DbContextOptionsBuilder();
             if (env.IsDevelopment())
             {
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
             else if (env.IsStaging())
             {
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
             else if (env.IsProduction())
             {
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                optionsBuilder
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             }
+
 
             var context = new ApplicationContext(optionsBuilder.Options);
             if (context.Database.EnsureCreated())

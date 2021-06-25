@@ -9,5 +9,6 @@ namespace SeedAPI.Services.HomeworkServices
         bool Delete(string id);
         List<Homework> GetAll();
         bool Update(Homework homework);
+        Homework GetById(string id);
     }
 }

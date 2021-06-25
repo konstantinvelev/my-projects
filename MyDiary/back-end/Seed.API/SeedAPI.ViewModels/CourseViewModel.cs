@@ -1,5 +1,6 @@
 ﻿using SeedAPI.Commons;
 using System;
+using System.Collections.Generic;
 
 namespace SeedAPI.ViewModels
 {
@@ -13,5 +14,7 @@ namespace SeedAPI.ViewModels
         public bool isPassed { get; set; }
         public string userId { get; set; }
         public string createdOn { get; set; }
+        public IEnumerable<HomeworkViewModel> homeworks { get; set; } = new List<HomeworkViewModel>();
+        public IEnumerable<ExamViewModel> exams { get; set; } = new List<ExamViewModel>();
     }
 }

@@ -9,5 +9,6 @@ namespace SeedAPI.Maps.HomeworkMaps
         public bool Update(HomeworkViewModel viewModel);
         public bool Delete(string id);
         public IEnumerable<HomeworkViewModel> GetAll();
+        HomeworkViewModel GetById(string id);
     }
 }

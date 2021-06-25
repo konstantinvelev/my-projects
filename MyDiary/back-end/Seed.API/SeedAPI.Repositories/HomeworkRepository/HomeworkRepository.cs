@@ -1,4 +1,5 @@
-﻿using SeedAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SeedAPI.Models;
 using SeedAPI.Models.Context;
 using System;
 using System.Collections.Generic;
@@ -33,11 +34,27 @@ namespace SeedAPI.Repositories.HomeworkRepository
             }
         }
 
-        public List<Homework> GetAll()
+        public async Task<List<Homework>> GetAll()
         {
-            return this.context.Homeworks
+            return await this.context.Homeworks
                 .OrderByDescending(s => s.CreatedOn)
-                .ToList();
+                .ToListAsync();
+        }
+
+        public async Task<Homework> GetById(string id)
+        {
+            try
+            {
+                return await this.context.Homeworks
+                    .Include("Course")
+                    .Include("User")
+                    .Where(s => s.Id == id)
+                    .FirstOrDefaultAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<Homework> Save(Homework homework)

@@ -1,5 +1,6 @@
 ﻿using SeedAPI.Commons;
 using System;
+using System.Collections.Generic;
 
 namespace SeedAPI.ViewModels
 {
@@ -13,7 +14,8 @@ namespace SeedAPI.ViewModels
         public string grade { get; set; }
         public string userId { get; set; }
         public string? courseId { get; set; }
-        public Course MyProperty { get; set; }
         public string createdOn { get; set; }
+        public CourseViewModel course { get; set; }
+        public UserViewModel user { get; set; }
     }
 }

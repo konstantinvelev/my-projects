@@ -28,7 +28,7 @@ export class CreateComponent implements OnInit {
     var user = this.helper.getUser();
     data.userId = user.id;
      this.courseService.getCourseByName(data.courseName).subscribe(course => {
-      data.courseId =course.Id;
+      data.courseId =course.id;
       this.examService.createExam(data).subscribe({
         next: () => {
           this.router.navigate(['/exam/all']);

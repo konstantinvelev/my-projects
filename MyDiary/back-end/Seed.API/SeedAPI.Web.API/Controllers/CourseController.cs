@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SeedAPI.Maps.CourseMaps;
 using SeedAPI.Models;
 using SeedAPI.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
@@ -21,11 +22,10 @@ namespace SeedAPI.Web.API.Controllers
 
         }
         [HttpGet]
-        public string Get()
+        public IEnumerable<CourseViewModel> Get()
         {
-            var courses = this.courseMap.GetAll().ToList();
-            var jsonCourse = JsonSerializer.Serialize(courses);
-            return jsonCourse;
+            return this.courseMap.GetAll().ToList();
+            
         }
 
         [Route("[action]/{courseName}")]
@@ -42,11 +42,9 @@ namespace SeedAPI.Web.API.Controllers
         }
 
         [HttpPost]
-        public string Post([FromBody] CourseViewModel course)
+        public CourseViewModel Post([FromBody] CourseViewModel course)
         {
-            var createdUser = this.courseMap.Create(course);
-            var jsonUser = JsonSerializer.Serialize(createdUser);
-            return jsonUser;
+            return this.courseMap.Create(course);
         }
         // PUT api/user/5
         [HttpPut("{id}")]

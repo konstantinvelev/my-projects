@@ -33,13 +33,11 @@ namespace SeedAPI.Web.API.Controllers
         {
             return this.examMap.GetById(id);
         }
-        // POST api/user
+
         [HttpPost]
-        public string Post([FromBody] ExamViewModel exam)
+        public ExamViewModel Post([FromBody] ExamViewModel exam)
         {
-            var createdCourse = this.examMap.Create(exam);
-            var jsonUser = JsonSerializer.Serialize(createdCourse);
-            return jsonUser;
+            return this.examMap.Create(exam);
         }
         // PUT api/user/5
         [HttpPut("{id}")]

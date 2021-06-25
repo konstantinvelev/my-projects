@@ -67,6 +67,10 @@ namespace SeedAPI.Maps.ExamMaps
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Exam, ExamViewModel>();
                 cfg.CreateMap<ExamViewModel, Exam>();
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.CreateMap<UserViewModel, User >();
+                cfg.CreateMap<Course, CourseViewModel>();
+                cfg.CreateMap<CourseViewModel, Course >();
             });
 
             var maper = config.CreateMapper();

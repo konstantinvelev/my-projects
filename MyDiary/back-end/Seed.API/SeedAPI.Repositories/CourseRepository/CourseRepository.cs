@@ -35,19 +35,44 @@ namespace SeedAPI.Repositories.CourseRepository
 
         public async Task<List<Course>> GetAll()
         {
-            return await this.context.Courses.ToListAsync();
+            
+            return await this.context.Courses
+                .ToListAsync();
         }
 
         public async Task<Course> GetById(string id)
         {
-            var course = await this.context.Courses.FirstOrDefaultAsync(s => s.Id == id);
-            return course;
+            try
+            {
+                var course = await this.context.Courses
+                   .Where(s => s.Id == id)
+                   .FirstOrDefaultAsync();
+                return course;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public async Task<Course> GetByName(string courseName)
         {
-            var course = await this.context.Courses.FirstOrDefaultAsync(s=>s.Name.ToLower() == courseName.ToLower());
-            return course;
+            try
+            {
+                var course = await this.context.Courses
+                    .Where(s => s.Name.ToLower() == courseName.ToLower())
+                    .Include("Homework")
+                    .Include("Course")
+                    .FirstOrDefaultAsync();
+                return course;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<Course> Save(Course domain)

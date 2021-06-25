@@ -21,27 +21,22 @@ namespace SeedAPI.Web.API.Controllers
             this.homeworkMap = homeworkMap;
         }
 
-        // GET api/user
         [HttpGet]
-        public string Get()
+        public IEnumerable<HomeworkViewModel> Get()
         {
-            var homeworks = this.homeworkMap.GetAll();
-            var json = JsonSerializer.Serialize(homeworks);
-            return json;
+            return this.homeworkMap.GetAll();
         }
-        // GET api/user/5
+
         [HttpGet("{id}")]
-        public string Get(int id)
+        public HomeworkViewModel GetById(string id)
         {
-            return "value";
+            return this.homeworkMap.GetById(id);
         }
-        // POST api/user
+
         [HttpPost]
-        public string Post([FromBody] HomeworkViewModel homeworks)
+        public HomeworkViewModel Post([FromBody] HomeworkViewModel homeworks)
         {
-            var createdCourse = this.homeworkMap.Create(homeworks);
-            var jsonUser = JsonSerializer.Serialize(createdCourse);
-            return jsonUser;
+            return this.homeworkMap.Create(homeworks);
         }
         // PUT api/user/5
         [HttpPut("{id}")]

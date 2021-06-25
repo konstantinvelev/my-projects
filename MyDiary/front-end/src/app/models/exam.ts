@@ -9,5 +9,6 @@ export interface IExam<T = string> extends IBase {
   courseName: string;
   isPassed: boolean;
   userId: IUser;
-  courseId: ICourse;
+  courseId: string;
+  course: ICourse;
 }

@@ -6,9 +6,6 @@ using SeedAPI.Web.API.App_Start;
 using Microsoft.Extensions.Configuration;
 using SeedAPI.Models.Context;
 using Microsoft.EntityFrameworkCore;
-using SeedAPI.Repositories.CourseRepository;
-using SeedAPI.Repositories;
-
 namespace SeedAPI.Web.API
 {
     public class Startup
@@ -22,6 +19,10 @@ namespace SeedAPI.Web.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers()
+             .AddNewtonsoftJson(options =>
+                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+             );
 
             DependencyInjectionConfig.AddScope(services);
             JwtTokenConfig.AddAuthentication(services, Configuration);
@@ -51,7 +52,7 @@ namespace SeedAPI.Web.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()

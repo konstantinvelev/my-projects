@@ -16,9 +16,9 @@ namespace SeedAPI.Models
         public Grade? Grade { get; set; }
         [Required]
         public string CourseId { get; set; }
-        public Course Course { get; set; }
+        public virtual Course Course { get; set; }
         [Required]
         public string UserId { get; set; }
-        public User User { get; set; }
+        public virtual User User { get; set; }
     }
 }

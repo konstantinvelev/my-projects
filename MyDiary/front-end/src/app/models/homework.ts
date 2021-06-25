@@ -8,6 +8,8 @@ export interface IHomework<T = string> extends IBase {
     grade: string;
     dateTime: string;  
     isPassed: boolean;
-    userId: IUser;
-    courseId: ICourse;
+    userId: string;
+    user: IUser;
+    courseId: string;
+    course: ICourse;
   }

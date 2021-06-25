@@ -8,12 +8,6 @@ namespace SeedAPI.Models
 {
     public class Course : BaseModel
     {
-        public Course()
-        {
-            this.Homeworks = new List<Homework>();
-            this.Exams = new List<Exam>();
-        }
-
         [Required]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Name" + ErrorMessages.BetweenThreeAndFifty)]
         public string Name { get; set; }
@@ -28,8 +22,8 @@ namespace SeedAPI.Models
         public bool IsPassed { get; set; }
         [Required]
         public string UserId { get; set; }
-        public User User { get; set; }
-        public ICollection<Exam> Exams { get; set; }
-        public ICollection<Homework> Homeworks { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<Exam> Exams { get; set; } = new List<Exam>();
+        public virtual ICollection<Homework> Homeworks { get; set; } = new List<Homework>();
     }
 }

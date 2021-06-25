@@ -36,6 +36,12 @@ namespace SeedAPI.Maps.HomeworkMaps
         {
             return DomainToViewModel(homeworkService.GetAll());
         }
+        public HomeworkViewModel GetById(string id)
+        {
+            var homework = this.homeworkService.GetById(id);
+            var model = this.mapper.Map<Homework,HomeworkViewModel>(homework);
+            return model;
+        }
 
         public HomeworkViewModel DomainToViewModel(Homework homework)
         {
@@ -61,10 +67,16 @@ namespace SeedAPI.Maps.HomeworkMaps
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Homework, HomeworkViewModel>();
                 cfg.CreateMap<HomeworkViewModel, Homework>();
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.CreateMap<UserViewModel, User >();
+                cfg.CreateMap<Course, CourseViewModel>();
+                cfg.CreateMap<CourseViewModel, Course>();
             });
 
             var maper = config.CreateMapper();
             return maper;
         }
+
+        
     }
 }

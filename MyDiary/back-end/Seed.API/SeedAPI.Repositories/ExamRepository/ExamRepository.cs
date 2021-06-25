@@ -1,4 +1,5 @@
-﻿using SeedAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SeedAPI.Models;
 using SeedAPI.Models.Context;
 using System;
 using System.Collections.Generic;
@@ -33,17 +34,30 @@ namespace SeedAPI.Repositories.ExamRepository
             }
         }
 
-        public List<Exam> GetAll()
+        public async Task<List<Exam>> GetAll()
         {
 
-            return this.context.Exams
+            return await this.context.Exams
+                .Include("Course")
+                .Include("User")
                 .OrderByDescending(s => s.CreatedOn)
-                .ToList();
+                .ToListAsync();
         }
 
         public async Task<Exam> GetById(string id)
-        {    
-            return await this.context.Exams.FindAsync(id);
+        {
+            try
+            {
+            return await this.context.Exams
+                .Include("Course")
+                .Include("User")
+                .Where(s => s.Id == id)
+                .FirstOrDefaultAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<Exam> Save(Exam exam)

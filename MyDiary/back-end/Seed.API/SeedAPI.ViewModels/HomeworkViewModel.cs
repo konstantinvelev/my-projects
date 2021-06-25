@@ -14,6 +14,8 @@ namespace SeedAPI.ViewModels
         public bool isPassed { get; set; } = false;
         public string grade { get; set; }
         public string userId { get; set; }
+        public UserViewModel user { get; set; }
         public string courseId { get; set; }
+        public CourseViewModel course { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace SeedAPI.Repositories.HomeworkRepository
         Task<Homework> Save(Homework homework);
         Task<bool> Update(Homework homework);
         bool Delete(string id);
-        List<Homework> GetAll();
+         Task<List<Homework>> GetAll();
+        Task<Homework> GetById(string id);
     }
 }

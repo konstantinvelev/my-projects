@@ -86,16 +86,6 @@ namespace SeedAPI.Models.Context
 
             var entityTypes = builder.Model.GetEntityTypes().ToList();
 
-            // Set global query filter for not deleted entities only
-            //var deletableEntityTypes = entityTypes
-            //    .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
-            //foreach (var deletableEntityType in deletableEntityTypes)
-            //{
-            //    var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
-            //    method.Invoke(null, new object[] { builder });
-            //}
-
-            // Disable cascade delete
             var foreignKeys = entityTypes
                 .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Restrict));
             foreach (var foreignKey in foreignKeys)
@@ -104,7 +94,6 @@ namespace SeedAPI.Models.Context
             }
         }
 
-        // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
              => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
 

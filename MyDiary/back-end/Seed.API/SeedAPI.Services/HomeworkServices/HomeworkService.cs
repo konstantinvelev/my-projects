@@ -26,7 +26,12 @@ namespace SeedAPI.Services.HomeworkServices
 
         public List<Homework> GetAll()
         {
-            return this.homeworkRepository.GetAll();
+            return this.homeworkRepository.GetAll().Result;
+        }
+
+        public Homework GetById(string id)
+        {
+            return this.homeworkRepository.GetById(id).Result;
         }
 
         public bool Update(Homework homework)

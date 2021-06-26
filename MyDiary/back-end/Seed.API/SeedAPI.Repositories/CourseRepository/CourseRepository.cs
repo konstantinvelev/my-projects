@@ -35,8 +35,8 @@ namespace SeedAPI.Repositories.CourseRepository
 
         public async Task<List<Course>> GetAll()
         {
-            
             return await this.context.Courses
+                .Where(s => s.IsDeleted == false)
                 .ToListAsync();
         }
 
@@ -54,7 +54,7 @@ namespace SeedAPI.Repositories.CourseRepository
 
                 throw;
             }
-            
+
         }
 
         public async Task<Course> GetByName(string courseName)

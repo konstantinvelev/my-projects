@@ -37,6 +37,7 @@ namespace SeedAPI.Repositories.HomeworkRepository
         public async Task<List<Homework>> GetAll()
         {
             return await this.context.Homeworks
+                .Where(s=>s.IsDeleted == false)
                 .OrderByDescending(s => s.CreatedOn)
                 .ToListAsync();
         }

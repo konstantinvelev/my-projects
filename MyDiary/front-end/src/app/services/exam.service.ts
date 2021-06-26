@@ -10,8 +10,6 @@ import { BaseService } from "./base.service";
 
 @Injectable()
 export class ExamService extends BaseService {
-
-
     private pathAPI = this.config.setting['PathAPI'] + 'exam';
 
     constructor(
@@ -28,14 +26,19 @@ export class ExamService extends BaseService {
         );
     }
 
-    getById(id: any):Observable<IExam<ICourse>> {
+    getById(id: any): Observable<IExam<ICourse>> {
         return this.http.get<IExam<ICourse>>(this.pathAPI + `/${id}`, super.header()).pipe(
             catchError(super.handleError)
         );
-      }
+    }
 
     createExam(data: any): Observable<any> {
         return this.http.post<any>(this.pathAPI, data, super.header()).pipe(
+            catchError(super.handleError)
+        );
+    }
+    deleteById(id: string) {
+        return this.http.delete<any>(this.pathAPI + `/${id}`, super.header()).pipe(
             catchError(super.handleError)
         );
     }

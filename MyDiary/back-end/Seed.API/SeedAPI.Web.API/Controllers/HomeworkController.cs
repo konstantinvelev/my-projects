@@ -48,5 +48,11 @@ namespace SeedAPI.Web.API.Controllers
         public void Delete(int id)
         {
         }
+
+        [HttpGet("{homeworkId}/{courseId}")]
+        public void DeleteById(string homeworkId, string courseId)
+        {
+            this.homeworkMap.Delete(homeworkId);
+        }
     }
 }

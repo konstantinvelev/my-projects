@@ -9,7 +9,6 @@ import { BaseService } from "./base.service";
 
 @Injectable()
 export class CourseService extends BaseService {
-
     private pathAPI = this.config.setting['PathAPI'] + 'course';
 
     constructor(
@@ -47,4 +46,10 @@ export class CourseService extends BaseService {
             catchError(super.handleError)
         );
     }
+    deleteById(id: string) {
+        return this.http.delete<any>(this.pathAPI + `/${id}`, super.header()).pipe(
+            catchError(super.handleError)
+        );
+      }
+  
 }

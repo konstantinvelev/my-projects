@@ -36,8 +36,8 @@ namespace SeedAPI.Repositories.ExamRepository
 
         public async Task<List<Exam>> GetAll()
         {
-
             return await this.context.Exams
+                .Where(s => s.IsDeleted == false)
                 .Include("Course")
                 .Include("User")
                 .OrderByDescending(s => s.CreatedOn)

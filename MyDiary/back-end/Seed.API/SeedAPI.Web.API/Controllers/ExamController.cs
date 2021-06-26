@@ -46,10 +46,9 @@ namespace SeedAPI.Web.API.Controllers
         }
         // DELETE api/user/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            this.examMap.Delete(id);
         }
-
-
     }
 }

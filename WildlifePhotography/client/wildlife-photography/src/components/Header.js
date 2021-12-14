@@ -1,9 +1,8 @@
 export function Header() {
     return (
         <nav>
-           
-            <img src="./static/img/logo.png" alt="logo"/>
-                <ul class="menu">
+            <img src="./img/logo.png" alt="logo"/>
+                <ul className="menu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">All Posts</a></li>
                    

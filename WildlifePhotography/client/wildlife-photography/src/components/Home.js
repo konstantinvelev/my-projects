@@ -2,9 +2,9 @@ export function Home() {
     return (
         <div>
             <section id="home">
-                <div class="home-container">
+                <div className="home-container">
 
-                    <div class="short-info">
+                    <div className="short-info">
                         <h1>The best of the wildlife photography.</h1>
                         <h2>Share knowledge about the environment and enrich your life.</h2>
                     </div>
@@ -12,11 +12,11 @@ export function Home() {
             </section>
 
             <section id="home-page">
-                <div class="offers">
-                    <div class="col container"><img src="./static/img/nature1.jpg" alt="nature_1"/></div>
-                    <div class="col container"><img src="./static/img/nature2.jpg" alt="nature_2"/></div>
-                    <div class="col container"><img src="./static/img/nature3.jpg" alt="nature_3"/></div>
-                    <div class="col container"><img src="./static/img/nature4.jpg" alt="nature_4"/></div>
+                <div className="offers">
+                    <div className="col container"><img src="./img/nature1.jpg" alt="nature_1"/></div>
+                    <div className="col container"><img src="./img/nature2.jpg" alt="nature_2"/></div>
+                    <div className="col container"><img src="./img/nature3.jpg" alt="nature_3"/></div>
+                    <div className="col container"><img src="./img/nature4.jpg" alt="nature_4"/></div>
                 </div>
             </section>
         </div>

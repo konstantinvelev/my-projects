@@ -11,6 +11,7 @@ import { MyPosts } from './components/MyPosts'
 import { Create } from './components/Create'
 import { Edit } from './components/Edit'
 import NotFound from './components/NotFound';
+import { AllPosts } from './components/AllPosts';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path= "/all" element={<AllPosts/>}/>
           <Route path="/logout" element={<Logout />} />
           <Route path="/my-posts" element={<MyPosts />} />
           <Route path="/create" element={<Create />} />

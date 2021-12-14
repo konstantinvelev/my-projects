@@ -5,22 +5,34 @@ const saltRounds = Number(process.env.SALTROUNDS) || 5;
 const { ObjectId } = mongoose.Schema.Types;
 
 const userSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true,
+        unique: false,
+        minlength: [3, 'Username should be at least 3 characters'],
+        validate: {
+            validator: function(v) {
+                return /[a-zA-Z]+/g.test(v);
+            },
+            message: props => `${props.value} must contains only latin letters!`
+        },
+    },
+    lastName: {
+        type: String,
+        required: true,
+        unique: false,
+        minlength: [3, 'Username should be at least 3 characters'],
+        validate: {
+            validator: function(v) {
+                return /[a-zA-Z]+/g.test(v);
+            },
+            message: props => `${props.value} must contains only latin letters!`
+        },
+    },
     email: {
         type: String,
         required: true,
         unique: true,
-    },
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        minlength: [5, 'Username should be at least 5 characters'],
-        validate: {
-            validator: function(v) {
-                return /[a-zA-Z0-9]+/g.test(v);
-            },
-            message: props => `${props.value} must contains only latin letters and digits!`
-        },
     },
     password: {
         type: String,
@@ -34,10 +46,6 @@ const userSchema = new mongoose.Schema({
         },
     },
 
-    userInfo: {
-        type: String,
-    },
-
     posts: [{
         type: ObjectId,
         ref: "post"
@@ -46,14 +54,14 @@ const userSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "Comment"
     }],
-    following: [{
-        type: ObjectId,
-        ref: "User"
-    }],
-    followers: [{
-        type: ObjectId,
-        ref: "User"
-    }]
+    // following: [{
+    //     type: ObjectId,
+    //     ref: "User"
+    // }],
+    // followers: [{
+    //     type: ObjectId,
+    //     ref: "User"
+    // }]
 }, { timestamps: { createdAt: 'created_at' } });
 
 userSchema.methods = {

@@ -1,0 +1,29 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div id="cheaf" *ngIf="course !== null">
+    <div class="container py-4 my-4 mx-auto d-flex flex-column">
+        <div class="header">
+            <div class="row r1">
+                <div class="col-md-9 abc">
+                    <h1 class="title">{{course.name}}</h1>
+                    <p>{{course.created_at}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-body mt-4">
+            <div class="row r4">
+                <div class="col-md-5">
+                    <h2 id="description">Description</h2>
+                    <p class="p">{{course.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column mt-5" *ngIf="course !== null">
+            <a class="btn btn-outline-success" routerLink="/course/all">Back</a>
+            <a class="btn btn-outline-success" [routerLink]="['/course/edit', course.id]">Edit</a>
+            <a class="btn btn-outline-success" (click)="deleteCourse(course.id)">Delete</a>
+        </div>
+    </div>
+</div>

@@ -24,7 +24,6 @@ export function MyPosts(){
                     </div>
                     <div className="no-posts">
                         <div className="no-posts-img">
-                          
                             <img src="./img/bear.jpg" alt="image_nature_3"/>
                         </div>
                         <p className="no-offer">There are no own posts yet...</p>

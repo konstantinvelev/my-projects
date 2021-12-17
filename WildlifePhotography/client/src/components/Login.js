@@ -32,11 +32,11 @@ export function Login() {
                         <h2>Login</h2>
                         <ul className="noBullet">
                             <li>
-                                <label for="email">Email:</label>
+                                <label>Email:</label>
                                 <input type="text" className="inputFields" id="email" name="email" placeholder="alex@gmail.com" />
                             </li>
                             <li>
-                                <label for="password">Password:</label>
+                                <label>Password:</label>
                                 <input type="password" className="inputFields" id="password" name="password" placeholder="*******" />
                             </li>
                             <li id="center-btn">

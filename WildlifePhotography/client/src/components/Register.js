@@ -33,24 +33,24 @@ export function Register() {
                     <ul className="noBullet">
                         <li>
                             <span>
-                                <label for="first-name">First Name:</label>
+                                <label>First Name:</label>
                                 <input type="text" className="inputFields" id="first-name" name="firstName" placeholder="Alex" />
                             </span>
                         </li>
                         <li>
-                            <label for="last-name">Last Name:</label>
+                            <label>Last Name:</label>
                             <input type="text" className="inputFields" id="last-name" name="lastName" placeholder="Petkov" />
                         </li>
                         <li>
-                            <label for="email">Email:</label>
+                            <label>Email:</label>
                             <input type="text" className="inputFields" id="email" name="email" placeholder="alex@gmail.com" />
                         </li>
                         <li>
-                            <label for="password">Password:</label>
+                            <label>Password:</label>
                             <input type="password" className="inputFields" id="password" name="password" placeholder="******" />
                         </li>
                         <li>
-                            <label for="repeat-password">Repeat-Password:</label>
+                            <label>Repeat-Password:</label>
                             <input type="password" className="inputFields" id="rePassword" name="rePassword" placeholder="******" />
                         </li>
                         <li id="center-btn">

@@ -1,6 +1,6 @@
-const baseUrl = 'http://localhost:3005/api'
+const baseUrl = 'http://localhost:3005/api/users'
 
-export const register = async (data) => {
+export const register = async(data) => {
     let res = await fetch(`${baseUrl}/register`, {
         method: 'POST',
         credentials: 'include',
@@ -18,7 +18,8 @@ export const register = async (data) => {
     //return <NotAllowed></NotAllowed> or something
 }
 
-export const login = async (data) => {
+
+export const login = async(data) => {
     let res = await fetch(`${baseUrl}/login`, {
         method: 'POST',
         credentials: 'include',
@@ -35,6 +36,20 @@ export const login = async (data) => {
         return result;
     }
     //return <NotAllowed></NotAllowed> or something
+}
+
+export const logout = async() => {
+    let res = await fetch(`${baseUrl}/logout`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            'content-type': 'application/json',
+        }
+    });
+
+    if (res.ok) {
+        removeLocalStorage();
+    }
 }
 
 function setLocalStorage(data) {

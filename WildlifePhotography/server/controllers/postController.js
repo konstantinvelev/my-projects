@@ -28,10 +28,12 @@ function getpost(req, res, next) {
 }
 
 function createpost(req, res, next) {
-    const { title, imageUrl, description } = req.body;
-    const { _id: userId } = req.user;
-    // 
-    postModel.create({ title, imageUrl, description, userId })
+    const { title, keyword, location, date, imageUrl, description } = req.body;
+    const { _id: userId } = req.user.id;
+
+    let newData = new Date(date);
+
+    postModel.create({ title, keyword, location, newData, imageUrl, description, userId })
         .then((post) => {
             userModel.updateOne({ _id: userId }, { $push: { posts: post._id } })
                 .then((post) => res.status(200).json(post));

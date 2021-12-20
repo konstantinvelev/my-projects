@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as authServices  from '../services/authServices';
+import { AuthContext } from '../contexts/AuthContext';
+import * as authServices from '../services/authServices';
 
 export function Login() {
+    let { login } = useContext(AuthContext);
+    
     let navigate = useNavigate();
     function loginHandler(e) {
         e.preventDefault();
@@ -15,6 +19,7 @@ export function Login() {
 
         authServices.login(data)
             .then((userData) => {
+                login(userData);
                 navigate('/');
             });
 

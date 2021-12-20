@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../services/authServices'
+import { AuthContext } from '../contexts/AuthContext';
 
 export function Register() {
+    let [register] = useContext(AuthContext);
     const navigate = useNavigate();
 
     function registerHandler(e) {
@@ -18,6 +21,7 @@ export function Register() {
 
         authService.register(data)
             .then((data) => {
+                register(data)
                 navigate('/')
             })
     };

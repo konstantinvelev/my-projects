@@ -6,6 +6,7 @@ const userModel = require('../models/userModel');
 function getposts(req, res, next) {
     postModel.find()
         .populate('userId')
+        .populate('comments')
         .then(posts => res.json(posts))
         .catch(next);
 }

@@ -18,7 +18,7 @@ export function Create() {
         };
         postService.create(data)
         .then((res)=>{
-            if(!(!!res)){
+            if(!!res){
                 navigate('/all')
             }
             else{

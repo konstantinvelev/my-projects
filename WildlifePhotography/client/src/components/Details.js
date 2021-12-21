@@ -1,32 +1,55 @@
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom"
+
+import * as postService from '../services/postService';
+
 export function Details() {
+
+    let { postId } = useParams();
+    let [post, setPost] = useState([]);
+
+    useEffect(() => {
+        postService.getById(postId)
+            .then((data) => {
+                formatCreatedAt(data);
+                setPost(data);
+            })
+    }, [postId])
+
+    function formatCreatedAt(data) {
+        let { created_at } = data;
+        var date = new Date(created_at );
+        var day = date.getDate(); //Date of the month: 2 in our example
+        var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
+        var year = date.getFullYear()
+        data.created_at = `${day}/${month}/${year}`;
+    }
+
+
     return (
         <div>
             <section id="details-page">
                 <div className="main_card">
                     <div className="card_left">
                         <div className="card_datails">
-                            <h1>Title: Two golden snub-nosed monkeys</h1>
-                            <h3>Created by an author: Alex Petkov</h3>
+                            <h1>Title: {post.title}</h1>
+                            <h3>Created by an author: {`${post.user?.firstName} ${post.user?.lastName}`}</h3>
                             <div className="card_animal">
-                                <p className="card-keyword">Keyword: Animal</p>
-                                <p className="card-location">Location: North America</p>
-                                <p className="card-date">Date: 18.02.2021</p>
+                                <p className="card-keyword">Keyword: {post.keyword}</p>
+                                <p className="card-location">Location: {post.location}</p>
+                                <p className="card-date">Date: {post.created_at}</p>
                             </div>
-                            <p className="disc">Description: Monkey, in general, any of nearly 200 species of tailed primate, with
-                                the exception of lemurs, tarsiers, and lorises.All but the durukuli of tropical Central and
-                                South America are active during the day, moving
-                                frequently in bands as they search for vegetation.</p>
+                            <p className="disc">Description: {post.description}</p>
                             <div className="social-btn">
-                                <a href="#" className="edit-btn">Edit</a>
-                                <a href="#" className="del-btn">Delete</a>
-                                <a href="#" className="vote-up">UpVote +1</a>
-                                <a href="#" className="vote-down">DownVote -1</a>
+                                <Link to={"/edit/" + post._id} className="edit-btn">Edit</Link>
+                                <Link to={"/delete/" + post._id} className="del-btn">Delete</Link>
+                                <Link to={"/like/" + post._id} className="vote-up">Like</Link>
                                 <p className="thanks-for-vote">Thanks For Voting</p>
                             </div>
                         </div>
                     </div>
                     <div className="card_right">
-                        <img src="./img/animal.jpg" alt="image"/>
+                    <img src={post.imageUrl} alt="imageUrl" />
                     </div>
                 </div>
             </section>
@@ -36,7 +59,7 @@ export function Details() {
                         <div className="card_datails">
                             <h1>Votes</h1>
                             <div className="card_vote">
-                                <p className="PV">Total rating of votes: 0</p>
+                                <p className="PV">Total rating of votes: {post.likes?.length}</p>
                             </div>
                             <p className="disc">People who voted for the post - No one has voted yet.</p>
                         </div>

@@ -15,14 +15,16 @@ function getpost(req, res, next) {
     const postId = req.params.id;
 
     postModel.findById(postId)
+        .populate('user')
+        .populate('likes')
         .populate('comments')
         .populate({
             path: 'comments',
             populate: {
-                path: 'userId'
+                path: 'user'
             }
         })
-        .populate('userId')
+
         .then(post => res.json(post))
         .catch(next);
 
@@ -30,11 +32,11 @@ function getpost(req, res, next) {
 
 function createpost(req, res, next) {
     const { title, keyword, location, date, imageUrl, description } = req.body;
-    const { _id: userId } = req.user.id;
+    const user  = req.user.id;
 
     let newData = new Date(date);
 
-    postModel.create({ title, keyword, location, newData, imageUrl, description, userId })
+    postModel.create({ title, keyword, location, newData, imageUrl, description, user })
         .then((post) => {
             userModel.updateOne({ _id: userId }, { $push: { posts: post._id } })
                 .then((post) => res.status(200).json(post));
@@ -59,10 +61,10 @@ function deletepost(req, res, next) {
     const { id: userId } = req.user;
 
     Promise.all([
-            postModel.findOneAndDelete({ _id: postId }),
-            commentModel.deleteMany({ "postId": postId }),
-            userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
-        ])
+        postModel.findOneAndDelete({ _id: postId }),
+        commentModel.deleteMany({ "postId": postId }),
+        userModel.findOneAndUpdate({ _id: userId }, { $pull: { posts: postId } }),
+    ])
         .then(([deletedOne, _, __]) => {
             if (deletedOne) {
                 res.status(200).json(deletedOne)

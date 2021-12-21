@@ -28,7 +28,7 @@ export function Header() {
                 <li><Link to="/home">Home</Link></li>
                 <li><Link to="/all">All Posts</Link></li>
                 {
-                    user?.email ?
+                    !!(user?.email) ?
                       userNavigation    
                     : guestsNavigation
                 }

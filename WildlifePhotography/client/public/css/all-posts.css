@@ -55,16 +55,16 @@
     
     .back:hover {
         opacity: 1;
-        transform: rotateY(0deg);
+        transform: rotateY(0deg); 
     }
     
     .flip-vertical>.back {
         transform: rotateX(-180deg);
     }
     
-    .flip-vertical>.front:hover {
+    /* .flip-vertical>.front:hover {
         transform: rotateX(180deg);
-    }
+    } */
     
     .flip-vertical>.back {
         transform: rotateX(0deg);

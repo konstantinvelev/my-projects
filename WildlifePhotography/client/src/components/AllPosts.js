@@ -10,11 +10,11 @@ export function AllPosts() {
     useEffect(() => {
         postService.all()
             .then((data) => {
+                if (!!data) {
                 setPosts(Object.values(data));
+                }
             })
-            .catch(err => {
-
-            });
+            .catch(err => {});
     }, []);
 
     let postsView = (

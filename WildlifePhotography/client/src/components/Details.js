@@ -11,9 +11,13 @@ export function Details() {
     useEffect(() => {
         postService.getById(postId)
             .then((data) => {
+                if (!!data) {
                 formatCreatedAt(data);
                 setPost(data);
+                }
             })
+            .catch(err => {});
+
     }, [postId])
 
     function formatCreatedAt(data) {
@@ -22,7 +26,7 @@ export function Details() {
         var day = date.getDate(); //Date of the month: 2 in our example
         var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
         var year = date.getFullYear()
-        data.created_at = `${day}/${month}/${year}`;
+        data.created_at = `${day}.${month}.${year}`;
     }
 
 

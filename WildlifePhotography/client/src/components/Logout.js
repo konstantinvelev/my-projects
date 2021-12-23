@@ -14,5 +14,7 @@ export function Logout() {
             logout();
             navigate('/login')
         })
+        .catch(err => {});
+
     return null;
 }

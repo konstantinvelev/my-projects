@@ -5,7 +5,7 @@ import * as authService from '../services/authServices'
 import { AuthContext } from '../contexts/AuthContext';
 
 export function Register() {
-    let {register} = useContext(AuthContext);
+    let { register } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function registerHandler(e) {
@@ -21,9 +21,12 @@ export function Register() {
 
         authService.register(data)
             .then((data) => {
-                register(data)
-                navigate('/')
+                if (!!data) {
+                    register(data)
+                    navigate('/')
+                }
             })
+            .catch(err => { });
     };
 
     return (

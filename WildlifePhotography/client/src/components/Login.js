@@ -19,10 +19,12 @@ export function Login() {
 
         authServices.login(data)
             .then((userData) => {
+                if (!!data) {
                 login(userData);
                 navigate('/');
-            });
-
+                }
+            })
+            .catch(err => {});
     }
 
     return (

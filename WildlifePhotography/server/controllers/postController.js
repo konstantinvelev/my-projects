@@ -32,11 +32,10 @@ function getpost(req, res, next) {
 
 function createpost(req, res, next) {
     const { title, keyword, location, date, imageUrl, description } = req.body;
-    const user  = req.user.id;
+    const userId = req.user.id;
+    const newDate = new Date(date)
 
-    let newData = new Date(date);
-
-    postModel.create({ title, keyword, location, newData, imageUrl, description, user })
+    postModel.create({ title, keyword, location, date: newDate, imageUrl, description, user:userId })
         .then((post) => {
             userModel.updateOne({ _id: userId }, { $push: { posts: post._id } })
                 .then((post) => res.status(200).json(post));
@@ -77,11 +76,14 @@ function deletepost(req, res, next) {
 
 function editpost(req, res, next) {
     const postId = req.params.id;
-    const { title, imageUrl, description } = req.body;
-    const { _id: userId } = req.user;
+    let { title, keyword, location, date, imageUrl, description } = req.body;
+    const user = req.user.id;
+    date = new Date(date);
 
-    // if the userId is not the same as this one of the comment, the comment will not be updated
-    postModel.findOneAndUpdate({ _id: postId, userId }, { title: title, imageUrl: imageUrl, description: description }, { new: true })
+    // if the user is not the same as this one of the comment, the comment will not be updated
+    postModel.findOneAndUpdate(
+        { _id: postId, user },
+        { title, keyword, location, date, imageUrl, description, user }, { new: true })
         .then(updatedpost => {
             if (updatedpost) {
                 res.status(200).json(updatedpost);

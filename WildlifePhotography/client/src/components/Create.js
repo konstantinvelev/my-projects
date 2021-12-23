@@ -12,20 +12,28 @@ export function Create() {
             title: formData.get('title'),
             keyword: formData.get('keyword'),
             location: formData.get('location'),
-            date: formData.get('date'),
+            date: new Date(changeStructureOfDate(formData.get('date'))),
             imageUrl: formData.get('imageUrl'),
             description: formData.get('description')
         };
         postService.create(data)
-        .then((res)=>{
-            if(!!res){
-                navigate('/all')
-            }
-            else{
-                //navigate('/error-page')
-            }
-        })
+            .then((res) => {
+                if (!!res) {
+                    navigate('/all')
+                }
+                else {
+                    //navigate('/error-page')
+                }
+            })
+            .catch(err => { });
+    }
 
+    function changeStructureOfDate(date) {
+        var tokens = date.split('.');
+        var day = tokens[0];
+        var month = tokens[1];
+        var year = tokens[2];
+       return `${year}.${month}.${day}`;
     }
 
     return (
@@ -51,7 +59,7 @@ export function Create() {
                         </li>
                         <li>
                             <label >Date of creation:</label>
-                            <input type="text" className="inputFields" id="date" placeholder="18.02.2021" name="date" />
+                            <input type="datetime" className="inputFields" id="date" placeholder="18.02.2021" name="date" />
                         </li>
                         <li>
                             <label >Wildlife image:</label>

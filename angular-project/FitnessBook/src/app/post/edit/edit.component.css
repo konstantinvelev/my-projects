@@ -1,0 +1,131 @@
+/*login register forms  */
+
+#btn:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 30, 0);
+}
+
+label {
+    padding: 0;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+#haveanaccount:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(255, 30, 0);
+    background-color: black;
+}
+
+#haveanaccount {
+    color: rgb(255, 30, 0);
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.post label {
+    text-align: center;
+}
+
+form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+form.post {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 40%;
+    margin: 2em auto 0;
+    text-align: center;
+}
+
+.post fieldset {
+    border-radius: 0.3em;
+    padding: 0.8em;
+    background-color: #ffffff;
+}
+
+.post h2 {
+    padding-top: 0;
+    border-bottom: none;
+}
+
+.post p {
+    padding-bottom: 0;
+    padding-top: 1.5rem;
+}
+
+.post input {
+    flex: 0 1 100%;
+    border: 1px solid;
+    padding: 0.3em;
+    border-left: 0.3em solid rgb(255, 30, 0);
+    border-bottom: 0.3em solid black;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+}
+
+.post textarea {
+    flex: 0 1 100%;
+    border: 1px solid;
+    padding: 0.3em;
+    border-left: 0.3em solid rgb(255, 30, 0);
+    border-bottom: 0.3em solid black;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+}
+
+.post select {
+    border-color: black;
+}
+
+.post button {
+    color: white;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.6em 1.2em;
+    margin-top: 1.5rem;
+    width: 60%;
+    outline: none;
+    background-color: black;
+    font-weight: 900;
+}
+
+.post i {
+    border: 1px solid;
+    border-right: none;
+    padding: 0.55em;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    background-color: #e9ecef;
+}
+
+.post a:hover {
+    cursor: pointer;
+}
+
+.post .field {
+    display: flex;
+    padding-bottom: 0;
+}
+
+p.error {
+    text-align: center;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+}
+
+.post {
+    border-style: groove;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 40%;
+    margin: 2em auto 0;
+    text-align: center;
+}
+
+h1 {
+    padding-bottom: 50px;
+}

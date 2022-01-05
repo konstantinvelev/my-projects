@@ -1,0 +1,27 @@
+<div id="back">
+    <div id="profilecheif">
+        <div class="profile">
+            <h3>User Info:</h3>
+            <div class="flex">
+                <p>Username: </p>
+                <p>{{currentUser.username}}</p>
+            </div>
+            <div class="flex">
+                <p>Email: </p>
+                <p>{{currentUser.email}}</p>
+            </div>
+            <div class="flex">
+                <p>About you: </p>
+                <p>{{currentUser.userInfo}}</p>
+            </div>
+            <div class="flex">
+                <p>Posts: </p>
+                <p>{{currentUser.posts.length}}</p>
+            </div>
+            <div id="buttonHolder">
+                <a [routerLink]="['/user/edit']" id="backBtn">Edit Profile</a>
+            </div>
+        </div>
+
+    </div>
+</div>

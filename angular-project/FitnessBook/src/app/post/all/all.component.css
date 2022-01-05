@@ -1,0 +1,94 @@
+div {
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+#back {
+    background-image: url('../../../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
+
+#cheifdiv {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2em auto 1rem;
+    padding: .5em;
+    border: .3em solid rgb(255, 30, 0);
+    border-radius: .5rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    text-align: center;
+    background-color: rgba(27, 26, 26, 0.747);
+}
+
+.button-holder {
+    border: rgb(255, 30, 0);
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+    color: black
+}
+
+#cheif {
+    display: inline-flex;
+    width: 65%;
+}
+
+#infoHolder {
+    display: inline-flex;
+    padding-bottom: 30px;
+}
+
+#diff {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-image: url('../../../assets/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+}
+
+#details:hover {
+    background-color: black;
+}
+
+#details {
+    margin-left: 300px;
+    margin-right: 50px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 10px;
+    background-color: rgb(255, 30, 0);
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 0.3em;
+    text-transform: uppercase;
+    font-family: arial, helvetica, verdana, sans-serif;
+    font-weight: 900;
+}
+
+#likes {
+    margin-left: 300px;
+    color: white;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: arial, helvetica, verdana, sans-serif;
+    font-weight: 900;
+}
+
+#username {
+    color: white;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: arial, helvetica, verdana, sans-serif;
+    font-weight: 900;
+}

@@ -1,0 +1,18 @@
+<header>
+    <nav>
+        <div>
+            <a routerLink="/" id="titleOfApp">FitnessBook</a>
+            <a routerLink="/" class="navitem">Home</a>
+
+            <a routerLink="/post/create" *ngIf="isLogged" class="navitem">Post Something</a>
+            <a routerLink="/post/all" *ngIf="isLogged" class="navitem">Posts</a>
+            <a routerLink="/user/profile" *ngIf="isLogged" class="navitem">Hello,  {{currentUser.username}}</a>
+
+            <a (click)="logoutHandler()" *ngIf="isLogged" class="navitem">Logout</a>
+
+            <a routerLink="/about" *ngIf="!isLogged" class="navitem">About</a>
+            <a routerLink="user/login" *ngIf="!isLogged" class="navitem">Login</a>
+            <a routerLink="user/register" *ngIf="!isLogged" class="navitem">Register</a>
+        </div>
+    </nav>
+</header>

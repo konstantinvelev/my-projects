@@ -1,66 +1,83 @@
 const baseUrl = 'http://localhost:3005/api/posts'
 
 export const create = async (data) => {
-    let res = await fetch(`${baseUrl}/create`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        let res = await fetch(`${baseUrl}/create`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-    if (res.ok) {
-        let result = await res.json();
-        return result;
+        return await res.json();
+    } catch (error) {
+        return error;
     }
 }
 
 export const all = async () => {
-    let res = await fetch(`${baseUrl}/all`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json'
-        },
-    });
+    try {
+        let res = await fetch(`${baseUrl}/all`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+        });
 
-    let result = res.json();
-
-    if (res.ok) {
-        return result;
+        return res.json();
+    } catch (error) {
+        return error;
     }
 }
 
 export const getById = async (postId) => {
-    let res = await fetch(`${baseUrl}/details/${postId}`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json'
-        },
-    });
+    try {
+        let res = await fetch(`${baseUrl}/details/${postId}`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+        });
 
-    let result = await res.json();
-
-    if (res.ok) {
-        return result;
+        return await res.json();
+    } catch (error) {
+        return error;
     }
 }
 
 export const edit = async (postId, data) => {
-    let res = await fetch(`${baseUrl}/edit/${postId}`,{
-        method: 'POST',
-        credentials: 'include',
-        headers:{
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
+    try {
+        let res = await fetch(`${baseUrl}/edit/${postId}`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
 
-    let result = await res.json();
+        return await res.json();
+    } catch (error) {
+        return error;
+    }
+}
 
-    if(res.ok){
-        return result;
+export const remove = async (postId) => {
+    try {
+        let res = await fetch(`${baseUrl}/delete/${postId}`, {
+            method: 'GET', 
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+
+        return await res.json();
+    } catch (error) {
+
     }
 }

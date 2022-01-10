@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
-import { Home } from './components/Home';
-import NotFound from './components/NotFound';
+import { Home } from './components/layout/Home';
+import WentWrong from './components/common/WentWrong';
 
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -18,6 +18,8 @@ import { MyPosts } from './components/post/MyPosts'
 import { AllPosts } from './components/post/AllPosts';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { LoggedRoutes } from './components/privateRoutes/LoggedRoutes';
+import { NotLoggedRoutes } from './components/privateRoutes/NotLoggedRoutes';
 
 
 function App() {
@@ -27,17 +29,21 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<WentWrong />} />
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/logout' element={<Logout />} />
-            <Route path='/all' element={<AllPosts />} />
-            <Route path='/my-posts' element={<MyPosts />} />
-            <Route path='/create' element={<Create />} />
             <Route path='/details/:postId' element={<Details />} />
-            <Route path='/edit/:postId' element={<Edit />} />
+            <Route path='/all' element={<AllPosts />} />
+            <Route element={<NotLoggedRoutes />}>
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/logout' element={<Logout />} />
+            </Route>
+            <Route element={<LoggedRoutes />}>
+              <Route path='/my-posts' element={<MyPosts />} />
+              <Route path='/create' element={<Create />} />
+              <Route path='/edit/:postId' element={<Edit />} />
+            </Route>
           </Routes>
         </main>
         <Footer />

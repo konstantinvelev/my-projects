@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react"
-
+import { useNavigate } from "react-router-dom";
 
 import * as postService from '../../services/postService';
 import { PostCard } from "./PostCard";
 
 export function AllPosts() {
+    const navigate = useNavigate();
     let [posts, setPosts] = useState([{}]);
 
     useEffect(() => {
         postService.all()
             .then((data) => {
                 if (!!data) {
-                setPosts(Object.values(data));
+                    setPosts(Object.values(data));
+                } else {
+                    navigate('/login');
                 }
             })
-            .catch(err => {});
-    }, []);
+            .catch(err => { });
+    }, [posts]);
 
     let postsView = (
-        posts?.map((post,i) => (
-            <PostCard key={i} post={post}/>
+        posts?.map((post, i) => (
+            <PostCard key={i} post={post} />
         ))
     )
 

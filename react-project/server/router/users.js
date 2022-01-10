@@ -7,6 +7,7 @@ const { auth } = require('../utils');
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
+router.get('/userById/:id', authController.userById);
 
 router.get('/profile', auth(), authController.getProfileInfo);
 router.put('/profile', auth(), authController.editProfileInfo);

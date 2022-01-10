@@ -30,7 +30,7 @@ export function Edit() {
         var day = tokens[0];
         var month = tokens[1];
         var year = tokens[2];
-       return `${year}.${month}.${day}`;
+        return `${year}.${month}.${day}`;
     }
 
     function createSubmitHandler(e) {
@@ -49,12 +49,15 @@ export function Edit() {
 
         postService.edit(postId, data)
             .then((data) => {
-                if (!!data) {
+                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                    navigate(`*`)
+                }
+                else {
                     setPost(data)
-                    navigate(`/details/${data._id}`)
+                navigate(`/details/${data._id}`)
                 }
             })
-            .catch(err => {});
+            .catch(err => { });
     }
 
     return (

@@ -7,6 +7,18 @@ export const AuthContext = createContext();
 export const AuthProvider = ({
     children
 }) => {
+
+    useEffect(() => {
+        authServices.getUserProfile()
+            .then((res) => {
+                if (!!res) {
+                    login(res)
+                } else {
+                    authServices.logout();
+                }
+            })
+    }, [])
+
     const [user, setUser] = useState({
         _id: '',
         email: '',
@@ -14,14 +26,11 @@ export const AuthProvider = ({
         lastName: ''
     });
 
-    useEffect(() => {
-        let localUser = authServices.getUser();
-        if (!!localUser) { setUser(localUser) }
-    }, [])
 
-    const login = (data) => setUser(data) 
 
-    const register = (data) => setUser(data) 
+    const login = (data) => setUser(data)
+
+    const register = (data) => setUser(data)
 
     const logout = () => {
         setUser({
@@ -33,7 +42,7 @@ export const AuthProvider = ({
     }
 
     return (
-        <AuthContext.Provider value={{user,register,login,logout}}>
+        <AuthContext.Provider value={{ user, register, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

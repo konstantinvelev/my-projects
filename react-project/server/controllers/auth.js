@@ -21,7 +21,7 @@ function register(req, res, next) {
         return;
     }
 
-    return userModel.create({firstName, lastName, email, password })
+    return userModel.create({ firstName, lastName, email, password })
         .then((createdUser) => {
             createdUser = bsonToJson(createdUser);
             createdUser = removePassword(createdUser);
@@ -92,6 +92,16 @@ function logout(req, res) {
         .catch(err => res.send(err));
 }
 
+function userById(req, res, next) {
+    const userId = req.params.id;
+
+    //  userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
+    userModel.findOne({ _id: userId })
+        .then(user => { res.status(200).json(user) })
+        .catch(next);
+}
+
+
 function getProfileInfo(req, res, next) {
     const { _id: userId } = req.user;
 
@@ -114,6 +124,7 @@ module.exports = {
     login,
     register,
     logout,
+    userById,
     getProfileInfo,
     editProfileInfo,
 }

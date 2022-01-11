@@ -45,6 +45,10 @@ function register(req, res, next) {
                     .send({ message: `This ${field} is already registered!` });
                 return;
             }
+            else{
+                res.status(400)
+                .send({ message: `This data is incorect` });
+            }
             next(err);
         });
 }

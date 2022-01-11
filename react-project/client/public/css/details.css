@@ -76,7 +76,6 @@
     background: rgba(116, 153, 226, 0.89);
     -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-    -webkit-transition: 300ms ease-in-out;
 }
 
 .disc {
@@ -102,7 +101,7 @@
     font-size: 18px;
     font-weight: 600;
     margin-top: 40px;
-    /*margin-left: 10px;*/
+    margin-left: 85px;
     border-radius: 12px;
     -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -112,7 +111,7 @@
 }
 
 .del-btn {
-    background-color: #88B04B;
+    background-color: #9B2335 ;
 }
 
 .edit-btn {
@@ -120,7 +119,7 @@
 }
 
 .vote-up {
-    background-color: #9B2335;
+    background-color: #88B04B;
 }
 
 .thanks-for-vote {
@@ -307,7 +306,7 @@ span {
     background: #9B2335;
     -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-    -webkit-transition: 300ms ease-in-out;
+
     font-size: 18px;
 }
 
@@ -316,7 +315,6 @@ span {
     -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
     font-size: 18.5px;
-    -webkit-transition: 300ms ease-in-out;
 }
 
 .PV,

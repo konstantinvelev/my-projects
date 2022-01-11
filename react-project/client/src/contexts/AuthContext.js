@@ -8,17 +8,6 @@ export const AuthProvider = ({
     children
 }) => {
 
-    useEffect(() => {
-        authServices.getUserProfile()
-            .then((res) => {
-                if (!!res) {
-                    login(res)
-                } else {
-                    authServices.logout();
-                }
-            })
-    }, [])
-
     const [user, setUser] = useState({
         _id: '',
         email: '',
@@ -26,7 +15,16 @@ export const AuthProvider = ({
         lastName: ''
     });
 
-
+    useEffect(() => {
+        authServices.getUserProfile()
+            .then((res) => {
+                if (!!res && res.message === undefined) {
+                    login(res)
+                } else {
+                    authServices.logout();
+                }
+            })
+    }, [user])
 
     const login = (data) => setUser(data)
 

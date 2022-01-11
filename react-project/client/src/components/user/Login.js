@@ -19,12 +19,14 @@ export function Login() {
 
         authServices.login(data)
             .then((userData) => {
-                if (!!data) {
-                login(userData);
-                navigate('/');
+                if (userData?.message !== undefined && userData?.message !== '') {
+                    navigate('/login')
+                }
+                else {
+                    login(userData);
+                    navigate('/');
                 }
             })
-            .catch(err => {});
     }
 
     return (

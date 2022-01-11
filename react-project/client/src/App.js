@@ -34,16 +34,17 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/details/:postId' element={<Details />} />
             <Route path='/all' element={<AllPosts />} />
-            <Route element={<NotLoggedRoutes />}>
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/logout' element={<Logout />} />
-            </Route>
             <Route element={<LoggedRoutes />}>
+              <Route path='/logout' element={<Logout />} />
               <Route path='/my-posts' element={<MyPosts />} />
               <Route path='/create' element={<Create />} />
               <Route path='/edit/:postId' element={<Edit />} />
             </Route>
+            <Route element={<NotLoggedRoutes />}>
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+            </Route>
+            
           </Routes>
         </main>
         <Footer />

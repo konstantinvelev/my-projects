@@ -54,10 +54,9 @@ export function Edit() {
                 }
                 else {
                     setPost(data)
-                navigate(`/details/${data._id}`)
+                    navigate(`/details/${data._id}`)
                 }
             })
-            .catch(err => { });
     }
 
     return (

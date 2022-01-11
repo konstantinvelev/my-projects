@@ -17,15 +17,14 @@ export function Create() {
             description: formData.get('description')
         };
         postService.create(data)
-            .then((res) => {
-                if (!!res) {
-                    navigate('/all')
+            .then((data) => {
+                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                    navigate(`*`)
                 }
                 else {
-                    //navigate('/error-page')
+                    navigate('/all')
                 }
             })
-            .catch(err => { });
     }
 
     function changeStructureOfDate(date) {

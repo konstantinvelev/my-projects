@@ -17,8 +17,7 @@ export function AllPosts() {
                     navigate('/login');
                 }
             })
-            .catch(err => { });
-    }, [posts]);
+    }, []);
 
     let postsView = (
         posts?.map((post, i) => (

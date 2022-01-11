@@ -20,9 +20,12 @@ export function Register() {
         };
 
         authService.register(data)
-            .then((data) => {
-                if (!!data) {
-                    register(data)
+            .then((userData) => {
+                if (userData?.message !== undefined && userData?.message !== '') {
+                    navigate('/register')
+                }
+                else {
+                    register(userData)
                     navigate('/')
                 }
             })

@@ -3,106 +3,144 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 
 import { AuthContext } from '../../contexts/AuthContext';
 import * as postService from '../../services/postService';
+import DeleteConformation from '../common/DeleteConformation/DeleteConformation';
 
 export function Details() {
+    const [post, setPost] = useState([]);
+    const [showConformation, setShowConformation] = useState(false);
     let navigate = useNavigate();
-    let { user } = useContext(AuthContext);
     let { postId } = useParams();
-    let [post, setPost] = useState([]);
+
+    let { user } = useContext(AuthContext);
+
 
     useEffect(() => {
         postService.getById(postId)
             .then((data) => {
-                if (!!data) {
-                    formatCreatedAt(data);
+                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                    navigate(`*`)
+                }
+                else {
+                    formatDate(data);
                     setPost(data);
                 }
             })
-            .catch(err => { });
 
-    }, [postId])
+    }, [])
 
-    function formatCreatedAt(data) {
-        let { created_at } = data;
-        var date = new Date(created_at);
-        var day = date.getDate(); //Date of the month: 2 in our example
-        var month = date.getMonth(); //Month of the Year: 0-based index, so 1 in our example
-        var year = date.getFullYear()
-        data.created_at = `${day}.${month}.${year}`;
+    function formatDate(data) {
+        let { date } = data;
+        var newDate = new Date(date);
+        var day = newDate.getDate(); //Date of the month: 2 in our example
+        var month = newDate.getMonth(); //Month of the Year: 0-based index, so 1 in our example
+        var year = newDate.getFullYear()
+        data.date = `${day}.${month}.${year}`;
     }
 
     let peopleWhoLiked = (
-        post?.likes?.user?.map((user,i) => (
-            <p key={i}>{`${user.firstName} ${user.lastName}`}</p>
+        post?.likes?.map((user) => (
+            <p key={user._id}>{`${user.firstName} ${user.lastName}`}</p>
         ))
     )
 
-    function deletePostHandler(e){
+    function deleteClickHandler(e) {
+        e.preventDefault();
+        setShowConformation(true);
+    }
+
+    function deletePostHandler(e) {
         e.preventDefault();
 
         postService.remove(post._id)
-        .then(res=>{
-            navigate('/all')
-        })
+            .then(res => {
+                navigate('/all')
+            })
+    }
+
+    function likeClickHandler(e) {
+        e.preventDefault();
+
+        postService.like(post._id, user._id)
+            .then((data) => {
+                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                    navigate(`*`)
+                }
+                else {
+                    let { likes } = data;
+                    setPost({ ...post, likes});
+                    navigate(`/details/${data._id}`)
+                }
+            })
+
+    }
+
+    function contains() {
+        return ( post.likes?.includes(user._id)) 
     }
 
 
     return (
-        <div>
-            <section id="details-page">
-                <div className="main_card">
-                    <div className="card_left">
-                        <div className="card_datails">
-                            <h1>Title: {post.title}</h1>
-                            <h3>Created by an author: {`${post.user?.firstName} ${post.user?.lastName}`}</h3>
-                            <div className="card_animal">
-                                <p className="card-keyword">Keyword: {post.keyword}</p>
-                                <p className="card-location">Location: {post.location}</p>
-                                <p className="card-date">Date: {post.created_at}</p>
-                            </div>
-                            <p className="disc">Description: {post.description}</p>
-                            <div className="social-btn">
-                                {
-                                    post.user?.id === user.id
-                                        ? <>
-                                            <Link to={"/edit/" + post._id} className="edit-btn">Edit</Link>
-                                            <button onClick={deletePostHandler} className="del-btn">Delete</button>
-                                          </>
-                                        :
-                                          <>
-                                           {
-                                             post.likes.include(user.id) 
-                                             ? <p className="thanks-for-vote">Thanks For Voting</p>
-                                             : <Link to={"/like/" + post._id} className="vote-up">Like</Link>
-                                           }
-                                          </>
-                                }
+        <>
+            {showConformation
+                ? <DeleteConformation onAccept={deletePostHandler} onCancle={() => setShowConformation(false)} />
+                : ''
+            }
+            <div>
+                <section id="details-page">
+                    <div className="main_card">
+                        <div className="card_left">
+                            <div className="card_datails">
+                                <h1>Title: {post.title}</h1>
+                                <h3>Created by an author: {`${post.user?.firstName} ${post.user?.lastName}`}</h3>
+                                <div className="card_animal">
+                                    <p className="card-keyword">Keyword: {post.keyword}</p>
+                                    <p className="card-location">Location: {post.location}</p>
+                                    <p className="card-date">Date: {post.date}</p>
+                                </div>
+                                <p className="disc">Description: {post.description}</p>
+                                <div className="social-btn">
+                                    {
+                                        post.user?._id === user._id
+                                            ? <>
+                                                <Link to={"/edit/" + post._id} className="edit-btn">Edit</Link>
+                                                <button onClick={deleteClickHandler} className="del-btn">Delete</button>
+                                            </>
+                                            :
+                                            <>
+                                                {
+                                                    contains()
+                                                        ? <p className="thanks-for-vote">Thanks For Voting</p>
+                                                        : <button onClick={likeClickHandler} className="vote-up">Like</button>
+                                                }
+                                            </>
+                                    }
 
+                                </div>
                             </div>
                         </div>
+                        <div className="card_right">
+                            <img src={post.imageUrl} alt="imageUrl" />
+                        </div>
                     </div>
-                    <div className="card_right">
-                        <img src={post.imageUrl} alt="imageUrl" />
-                    </div>
-                </div>
-            </section>
-            <section id="votes">
-                <div className="vote-info">
-                    <div className="card_left">
-                        <div className="card_datails">
-                            <h1>Votes</h1>
-                            <div className="card_vote">
-                                <p className="PV">Total rating of votes: {post.likes?.length}</p>
-                            </div>
+                </section>
+                <section id="votes">
+                    <div className="vote-info">
+                        <div className="card_left">
+                            <div className="card_datails">
+                                <h1>Votes</h1>
+                                <div className="card_vote">
+                                    <p className="PV">Total rating of votes: {post.likes?.length}</p>
+                                </div>
                                 {
-                                  post.likes?.length > 0  
-                                  ? peopleWhoLiked
-                                  : <p className="disc">People who voted for the post - No one has voted yet.</p>
+                                    post.likes?.length > 0
+                                        ? peopleWhoLiked
+                                        : <p className="disc">People who voted for the post - No one has voted yet.</p>
                                 }
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </>
     )
 }

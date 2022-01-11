@@ -3,39 +3,49 @@
 const baseUrl = 'http://localhost:3005/api/users';
 
 export const register = async (data) => {
-    let res = await fetch(`${baseUrl}/register`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    });
-
-    let result = await res.json();
-    if (res.ok) {
-        setLocalStorage(result);
+    try {
+        let res = await fetch(`${baseUrl}/register`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+    
+        let result = await res.json();
+        if (res.ok) {
+            setLocalStorage(result);
+        }
+        return result;
+    } catch (error) {
+        return false;
     }
-    return result
+    
 }
 
 
 export const login = async (data) => {
-    let res = await fetch(`${baseUrl}/login`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    });
-
-    let result = await res.json();
-
-    if (res.ok) {
-        setLocalStorage(result);
+    try {
+        let res = await fetch(`${baseUrl}/login`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+    
+        let result = await res.json();
+    
+        if (res.ok) {
+            setLocalStorage(result);
+        }
+        return result;
+    } catch (error) {
+        return false;
     }
-    return result;
+    
 }
 
 export const logout = async () => {

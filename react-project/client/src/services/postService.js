@@ -78,6 +78,23 @@ export const remove = async (postId) => {
 
         return await res.json();
     } catch (error) {
+        return error;
+    }
+}
 
+export const like = async (postId,userId) => {
+    try {
+        let res = await fetch(`${baseUrl}/like/${postId}`,{
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({userId})
+        })
+
+        return await res.json();
+    } catch (error) {
+        return error;
     }
 }

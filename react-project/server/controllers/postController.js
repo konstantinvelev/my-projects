@@ -16,7 +16,19 @@ function getpost(req, res, next) {
 
     postModel.findById(postId)
         .populate('user')
-        .populate('likes')
+        .populate({
+            path: 'user',
+            populate: {
+                path: 'user'
+            }
+        })
+        .populate(
+            {
+                path: 'likes',
+                populate: {
+                    path: 'user'
+                }
+            })
         .populate('comments')
         .populate({
             path: 'comments',
@@ -45,7 +57,7 @@ function createpost(req, res, next) {
 
 function subscribe(req, res, next) {
     const postId = req.params.id;
-    const { _id: userId } = req.body;
+    const {  userId } = req.body;
 
     postModel.findByIdAndUpdate({ _id: postId }, { $addToSet: { likes: userId } }, { new: true })
         .then(updatedpost => {

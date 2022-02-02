@@ -11,10 +11,10 @@ export function AllPosts() {
     useEffect(() => {
         postService.all()
             .then((data) => {
-                if (!!data) {
+                if (!data.message) {
                     setPosts(Object.values(data));
                 } else {
-                    navigate('/login');
+                    navigate('/');
                 }
             })
     }, []);

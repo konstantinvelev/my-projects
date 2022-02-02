@@ -24,7 +24,7 @@ export const AuthProvider = ({
                     authServices.logout();
                 }
             })
-    }, [user])
+    }, [])
 
     const login = (data) => setUser(data)
 

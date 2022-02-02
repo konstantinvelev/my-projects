@@ -6,6 +6,7 @@ const { postController } = require('../controllers');
 // middleware that is specific to this router
 
 router.get('/all', postController.getposts);
+router.get('/allByUser',auth(), postController.getpostsByUser);
 router.get('/details/:id', postController.getpost);
 router.post('/create', auth(), postController.createpost);
 router.get('/delete/:id', auth(), postController.deletepost);

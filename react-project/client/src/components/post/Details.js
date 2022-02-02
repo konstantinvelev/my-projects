@@ -37,12 +37,6 @@ export function Details() {
         data.date = `${day}.${month}.${year}`;
     }
 
-    let peopleWhoLiked = (
-        post?.likes?.map((user) => (
-            <p key={user._id}>{`${user.firstName} ${user.lastName}`}</p>
-        ))
-    )
-
     function deleteClickHandler(e) {
         e.preventDefault();
         setShowConformation(true);
@@ -67,17 +61,30 @@ export function Details() {
                 }
                 else {
                     let { likes } = data;
-                    setPost({ ...post, likes});
+                    setPost({ ...post, likes });
                     navigate(`/details/${data._id}`)
                 }
             })
-
     }
 
-    function contains() {
-        return ( post.likes?.includes(user._id)) 
-    }
 
+    let peopleWhoLiked = (
+        post?.likes?.map((user) => (
+            <p key={user._id}>{`${user.firstName} ${user.lastName}`}</p>
+        ))
+    )
+
+    let likeLogic = (
+        post.likes?.map(liked => {
+            if (liked._id === user._id && user._id !== undefined) {
+                return <p className="thanks-for-vote">Thanks For Voting</p>
+            }
+            else {
+                <button onClick={likeClickHandler} className="vote-up">Like</button>
+            }
+
+        })
+    )
 
     return (
         <>
@@ -95,9 +102,11 @@ export function Details() {
                                 <div className="card_animal">
                                     <p className="card-keyword">Keyword: {post.keyword}</p>
                                     <p className="card-location">Location: {post.location}</p>
-                                    <p className="card-date">Date: {post.date}</p>
+                                    <p className="card-location">Date: {post.date}</p>
                                 </div>
-                                <p className="disc">Description: {post.description}</p>
+                                <div className="card_animal">
+                                    <p className="disc">Description: {post.description}</p>
+                                </div>
                                 <div className="social-btn">
                                     {
                                         post.user?._id === user._id
@@ -108,9 +117,7 @@ export function Details() {
                                             :
                                             <>
                                                 {
-                                                    contains()
-                                                        ? <p className="thanks-for-vote">Thanks For Voting</p>
-                                                        : <button onClick={likeClickHandler} className="vote-up">Like</button>
+                                                    likeLogic
                                                 }
                                             </>
                                     }

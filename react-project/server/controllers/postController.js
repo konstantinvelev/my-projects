@@ -5,9 +5,23 @@ const userModel = require('../models/userModel');
 
 function getposts(req, res, next) {
     postModel.find()
-        .populate('userId')
+        .populate('user')
         .populate('comments')
-        .then(posts => res.json(posts))
+        .then(posts => {
+            return res.json(posts)
+
+        })
+        .catch(next);
+}
+
+function getpostsByUser(req, res, next) {
+    const userId = req.user.id;
+    postModel.find({ user: userId })
+        .populate('likes')
+        .populate('user')
+        .then(posts => {
+            return res.json(posts)
+        })
         .catch(next);
 }
 
@@ -22,13 +36,7 @@ function getpost(req, res, next) {
                 path: 'user'
             }
         })
-        .populate(
-            {
-                path: 'likes',
-                populate: {
-                    path: 'user'
-                }
-            })
+        .populate('likes')
         .populate('comments')
         .populate({
             path: 'comments',
@@ -36,7 +44,6 @@ function getpost(req, res, next) {
                 path: 'user'
             }
         })
-
         .then(post => res.json(post))
         .catch(next);
 
@@ -47,7 +54,7 @@ function createpost(req, res, next) {
     const userId = req.user.id;
     const newDate = new Date(date)
 
-    postModel.create({ title, keyword, location, date: newDate, imageUrl, description, user:userId })
+    postModel.create({ title, keyword, location, date: newDate, imageUrl, description, user: userId })
         .then((post) => {
             userModel.updateOne({ _id: userId }, { $push: { posts: post._id } })
                 .then((post) => res.status(200).json(post));
@@ -57,7 +64,7 @@ function createpost(req, res, next) {
 
 function subscribe(req, res, next) {
     const postId = req.params.id;
-    const {  userId } = req.body;
+    const { userId } = req.body;
 
     postModel.findByIdAndUpdate({ _id: postId }, { $addToSet: { likes: userId } }, { new: true })
         .then(updatedpost => {
@@ -65,7 +72,6 @@ function subscribe(req, res, next) {
         })
         .catch(next);
 }
-
 
 function deletepost(req, res, next) {
     const postId = req.params.id;
@@ -108,6 +114,7 @@ function editpost(req, res, next) {
 
 module.exports = {
     getposts,
+    getpostsByUser,
     editpost,
     createpost,
     deletepost,

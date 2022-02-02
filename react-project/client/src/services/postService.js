@@ -24,13 +24,31 @@ export const all = async () => {
             credentials: 'include',
             headers: {
                 'content-type': 'application/json'
-            },
+            }
         });
 
-        return res.json();
+        return await res.json();
     } catch (error) {
         return error;
     }
+}
+
+export const allByUser = async () => {
+
+    try {
+        let res = await fetch(`${baseUrl}/allByUser`, {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+
+        return await res.json();
+    } catch (error) {
+        return error;
+    }
+
 }
 
 export const getById = async (postId) => {
@@ -40,7 +58,7 @@ export const getById = async (postId) => {
             credentials: 'include',
             headers: {
                 'content-type': 'application/json'
-            },
+            }
         });
 
         return await res.json();
@@ -69,12 +87,12 @@ export const edit = async (postId, data) => {
 export const remove = async (postId) => {
     try {
         let res = await fetch(`${baseUrl}/delete/${postId}`, {
-            method: 'GET', 
+            method: 'GET',
             credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        });
 
         return await res.json();
     } catch (error) {
@@ -82,16 +100,16 @@ export const remove = async (postId) => {
     }
 }
 
-export const like = async (postId,userId) => {
+export const like = async (postId, userId) => {
     try {
-        let res = await fetch(`${baseUrl}/like/${postId}`,{
+        let res = await fetch(`${baseUrl}/like/${postId}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({userId})
-        })
+            body: JSON.stringify({ userId })
+        });
 
         return await res.json();
     } catch (error) {

@@ -14,9 +14,10 @@ export function Register() {
         let data = {
             firstName: formData.get('firstName'),
             lastName: formData.get('lastName'),
+            username: formData.get('username'),
             email: formData.get('email'),
             password: formData.get('password'),
-            rePassword: formData.get('rePassword'),
+            repeatPassword: formData.get('rePassword'),
         };
 
         authService.register(data)
@@ -50,6 +51,10 @@ export function Register() {
                         <li>
                             <label>Last Name:</label>
                             <input type="text" className="inputFields" id="last-name" name="lastName" placeholder="Petkov" />
+                        </li>
+                        <li>
+                            <label>Username:</label>
+                            <input type="text" className="inputFields" id="username" name="username" placeholder="alexaa" />
                         </li>
                         <li>
                             <label>Email:</label>

@@ -1,10 +1,9 @@
-// import { Navigate } from "react-router-dom";
-// let navigate = Navigate();
-const baseUrl = 'http://localhost:3005/api/users';
+const nodeJsBaseUrl = 'http://localhost:3005/api/users';
+const ngNetBaseUrl = 'http://localhost:5000/auth';
 
 export const register = async (data) => {
     try {
-        let res = await fetch(`${baseUrl}/register`, {
+        let res = await fetch(`${ngNetBaseUrl}/register`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -27,7 +26,7 @@ export const register = async (data) => {
 
 export const login = async (data) => {
     try {
-        let res = await fetch(`${baseUrl}/login`, {
+        let res = await fetch(`${ngNetBaseUrl}/login`, {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -49,7 +48,7 @@ export const login = async (data) => {
 }
 
 export const logout = async () => {
-    let res = await fetch(`${baseUrl}/logout`, {
+    let res = await fetch(`${ngNetBaseUrl}/logout`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -63,7 +62,7 @@ export const logout = async () => {
 }
 
 export const getUserById = async (id) => {
-    let res = await fetch(`${baseUrl}/userById/${id}`, {
+    let res = await fetch(`${ngNetBaseUrl}/userById/${id}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -75,7 +74,7 @@ export const getUserById = async (id) => {
 
 export const getUserProfile = async () => {
     try {
-        let res = await fetch(`${baseUrl}/profile`, {
+        let res = await fetch(`${ngNetBaseUrl}/profile`, {
             method: 'GET',
             credentials: 'include',
             headers: {

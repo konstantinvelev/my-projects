@@ -1,4 +1,3 @@
-const { compare } = require('bcrypt');
 const { postModel } = require('../models');
 const commentModel = require('../models/commentModel');
 const userModel = require('../models/userModel');

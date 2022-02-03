@@ -1,17 +1,20 @@
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
 const nodeJsBaseUrl = 'http://localhost:3005/api/users';
-const ngNetBaseUrl = 'http://localhost:5000/auth';
+const ngNetBaseUrl = 'http://localhost:7000/auth';
+
 
 export const register = async (data) => {
     try {
         let res = await fetch(`${ngNetBaseUrl}/register`, {
             method: 'POST',
-            credentials: 'include',
             headers: {
                 'content-type': 'application/json',
             },
             body: JSON.stringify(data)
         });
-    
+
         let result = await res.json();
         if (res.ok) {
             setLocalStorage(result);
@@ -20,7 +23,6 @@ export const register = async (data) => {
     } catch (error) {
         return false;
     }
-    
 }
 
 
@@ -28,15 +30,14 @@ export const login = async (data) => {
     try {
         let res = await fetch(`${ngNetBaseUrl}/login`, {
             method: 'POST',
-            credentials: 'include',
             headers: {
-                'content-type': 'application/json',
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         });
-    
+
         let result = await res.json();
-    
+
         if (res.ok) {
             setLocalStorage(result);
         }
@@ -44,7 +45,7 @@ export const login = async (data) => {
     } catch (error) {
         return false;
     }
-    
+
 }
 
 export const logout = async () => {
@@ -81,8 +82,8 @@ export const getUserProfile = async () => {
                 'content-type': 'application/json',
             }
         });
-        
-        if(res.ok){
+
+        if (res.ok) {
             let result = await res.json();
             setLocalStorage(result);
             return result;
@@ -90,7 +91,7 @@ export const getUserProfile = async () => {
     } catch (error) {
         return false;
     }
-    
+
 }
 
 export const getUser = () => {
@@ -98,6 +99,7 @@ export const getUser = () => {
 }
 
 function setLocalStorage(data) {
+    cookies.set('token', JSON.stringify(data));
     localStorage.setItem('user', JSON.stringify(data));
 }
 

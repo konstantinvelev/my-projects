@@ -13,7 +13,7 @@ export function Login() {
 
         let formData = new FormData(e.currentTarget);
         let data = {
-            email: formData.get('email'),
+            username: formData.get('username'),
             password: formData.get('password')
         };
 
@@ -42,7 +42,7 @@ export function Login() {
                         <ul className="noBullet">
                             <li>
                                 <label>Email:</label>
-                                <input type="text" className="inputFields" id="email" name="email" placeholder="alex@gmail.com" />
+                                <input type="text" className="inputFields" id="username" name="username" placeholder="Alexxaa" />
                             </li>
                             <li>
                                 <label>Password:</label>

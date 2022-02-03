@@ -1,0 +1,67 @@
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #474e5d;
+  background: transparent;
+  padding-top: 50px;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 6px solid #888;
+  border-color: #72A4AB;
+  width: 50%;
+}
+
+.confirm-container {
+  color: #fff;
+  padding: 50px;
+  text-align: center;
+  background: linear-gradient(to right, #03434C, #08272C);
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.social-btn>.edit-btn,
+.del-btn,
+.vote-up,
+.vote-down,
+.thanks-for-vote {
+  color: #fff;
+  border: none;
+  padding: 14px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-left: 85px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 300ms ease-in-out;
+  -o-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+}
+
+.del-btn {
+  background-color: #9B2335;
+}
+
+.edit-btn {
+  background-color: #EFC050;
+}
+
+.vote-up {
+  background-color: #88B04B;
+}

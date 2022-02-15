@@ -5,5 +5,5 @@ import { AuthContext } from "../../contexts/AuthContext";
 export function NotLoggedRoutes(){
     const {user} = useContext(AuthContext);
 
-    return (user.email === '' || !!user.message) ? <Outlet/> : <Navigate to='/'/>
+    return (user.id === '' || user.id === undefined || !!user.message) ? <Outlet/> : <Navigate to='/'/>
 }

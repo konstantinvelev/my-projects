@@ -19,7 +19,7 @@ export function Login() {
 
         authServices.login(data)
             .then((userData) => {
-                if (userData?.message !== undefined && userData?.message !== '') {
+                if (!!userData.errors) {
                     navigate('/login')
                 }
                 else {
@@ -41,7 +41,7 @@ export function Login() {
                         <h2>Login</h2>
                         <ul className="noBullet">
                             <li>
-                                <label>Email:</label>
+                                <label>Username:</label>
                                 <input type="text" className="inputFields" id="username" name="username" placeholder="Alexxaa" />
                             </li>
                             <li>

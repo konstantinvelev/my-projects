@@ -1,13 +1,12 @@
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import Cookies from 'js-cookie';
 
-const nodeJsBaseUrl = 'http://localhost:3005/api/users';
-const ngNetBaseUrl = 'http://localhost:7000/auth';
-
+const ngNetBaseUrl = 'http://localhost:7000';
+const cookieKey = 'token';
+const token = Cookies.get(cookieKey);
 
 export const register = async (data) => {
     try {
-        let res = await fetch(`${ngNetBaseUrl}/register`, {
+        let res = await fetch(`${ngNetBaseUrl}/auth/register`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -16,50 +15,57 @@ export const register = async (data) => {
         });
 
         let result = await res.json();
-        if (res.ok) {
-            setLocalStorage(result);
-        }
+        
         return result;
     } catch (error) {
-        return false;
+        return error;
     }
 }
 
 
 export const login = async (data) => {
     try {
-        let res = await fetch(`${ngNetBaseUrl}/login`, {
+        let res = await fetch(`${ngNetBaseUrl}/auth/login`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
             },
             body: JSON.stringify(data)
         });
-
+        
         let result = await res.json();
 
         if (res.ok) {
-            setLocalStorage(result);
+            Cookies.set('token', result.token)
+            return parseToken(result.token);
         }
         return result;
     } catch (error) {
-        return false;
+        return error;
     }
 
 }
 
 export const logout = async () => {
-    let res = await fetch(`${ngNetBaseUrl}/logout`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-            'content-type': 'application/json',
-        }
-    });
+    try {
+        let res = await fetch(`${ngNetBaseUrl}/user/logout`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': token ? 'Bearer ' + token : '',
+            }
+        });
 
-    if (res.ok) {
-        removeLocalStorage();
+        let result = await res.json();
+
+        if (res.ok) {
+            Cookies.remove('token')
+        }
+        return result;
+    } catch (error) {
+        return error;
     }
+    
 }
 
 export const getUserById = async (id) => {
@@ -67,6 +73,7 @@ export const getUserById = async (id) => {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
+            'authorization': token ? 'Bearer ' + token : '',
         }
     });
 
@@ -85,7 +92,7 @@ export const getUserProfile = async () => {
 
         if (res.ok) {
             let result = await res.json();
-            setLocalStorage(result);
+            //setLocalStorage(result);
             return result;
         }
     } catch (error) {
@@ -95,14 +102,22 @@ export const getUserProfile = async () => {
 }
 
 export const getUser = () => {
-    return JSON.parse(localStorage.getItem('user'));
+    return parseToken();
 }
+function parseToken() {
+    const token = Cookies.get(cookieKey);
 
-function setLocalStorage(data) {
-    cookies.set('token', JSON.stringify(data));
-    localStorage.setItem('user', JSON.stringify(data));
-}
+    if (!token) {
+        return;
+    }
 
-function removeLocalStorage() {
-    localStorage.clear();
+    try {
+        const parsedToken = JSON.parse(atob(token.split('.')[1]));
+        return { 
+          id: parsedToken.nameid, 
+          username: parsedToken.unique_name, 
+        }
+    } catch (error) {
+        return;
+    }
 }

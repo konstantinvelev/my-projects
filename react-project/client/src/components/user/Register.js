@@ -22,15 +22,13 @@ export function Register() {
 
         authService.register(data)
             .then((userData) => {
-                if (userData?.message !== undefined && userData?.message !== '') {
+                if (!!userData.errors) {
                     navigate('/register')
                 }
                 else {
-                    register(userData)
-                    navigate('/')
+                    navigate('/login')
                 }
             })
-            .catch(err => { });
     };
 
     return (

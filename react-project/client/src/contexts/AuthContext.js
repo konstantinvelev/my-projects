@@ -9,10 +9,8 @@ export const AuthProvider = ({
 }) => {
 
     const [user, setUser] = useState({
-        _id: '',
-        email: '',
-        firstName: '',
-        lastName: ''
+        id: '',
+        username: ''
     });
 
     useEffect(() => {
@@ -32,11 +30,9 @@ export const AuthProvider = ({
 
     const logout = () => {
         setUser({
-            _id: '',
-            email: '',
-            firstName: '',
-            lastName: ''
-        })
+            id: '',
+            username: ''
+        });
     }
 
     return (

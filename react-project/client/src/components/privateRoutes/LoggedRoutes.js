@@ -5,5 +5,5 @@ import { AuthContext } from "../../contexts/AuthContext";
 export function LoggedRoutes() {
     const { user } = useContext(AuthContext);
 
-    return user.email !== '' ? <Outlet/> : <Navigate to='/login'/>;
+    return user.id !== '' ? <Outlet/> : <Navigate to='/login'/>;
 }

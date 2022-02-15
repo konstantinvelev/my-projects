@@ -1,10 +1,8 @@
 const { postModel } = require('../models');
 const commentModel = require('../models/commentModel');
-const userModel = require('../models/userModel');
 
 function getposts(req, res, next) {
     postModel.find()
-        .populate('user')
         .populate('comments')
         .then(posts => {
             return res.json(posts)
@@ -14,10 +12,9 @@ function getposts(req, res, next) {
 }
 
 function getpostsByUser(req, res, next) {
-    const userId = req.user.id;
-    postModel.find({ user: userId })
+    const {id} = req.body
+    postModel.find({ user: id })
         .populate('likes')
-        .populate('user')
         .then(posts => {
             return res.json(posts)
         })
@@ -28,13 +25,6 @@ function getpost(req, res, next) {
     const postId = req.params.id;
 
     postModel.findById(postId)
-        .populate('user')
-        .populate({
-            path: 'user',
-            populate: {
-                path: 'user'
-            }
-        })
         .populate('likes')
         .populate('comments')
         .populate({
@@ -49,19 +39,17 @@ function getpost(req, res, next) {
 }
 
 function createpost(req, res, next) {
-    const { title, keyword, location, date, imageUrl, description } = req.body;
-    const userId = req.user.id;
+    const { title, keyword, location, date, imageUrl, description, userId } = req.body;
     const newDate = new Date(date)
 
     postModel.create({ title, keyword, location, date: newDate, imageUrl, description, user: userId })
         .then((post) => {
-            userModel.updateOne({ _id: userId }, { $push: { posts: post._id } })
-                .then((post) => res.status(200).json(post));
+                res.status(200).json(post);
         })
         .catch(next);
 }
 
-function subscribe(req, res, next) {
+function like(req, res, next) {
     const postId = req.params.id;
     const { userId } = req.body;
 
@@ -118,5 +106,5 @@ module.exports = {
     createpost,
     deletepost,
     getpost,
-    subscribe,
+    like,
 }

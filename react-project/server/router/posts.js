@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { auth } = require('../utils');
 const { postController } = require('../controllers');
 
 // middleware that is specific to this router
 
 router.get('/all', postController.getposts);
-router.get('/allByUser',auth(), postController.getpostsByUser);
+router.post('/allByUser', postController.getpostsByUser);
 router.get('/details/:id', postController.getpost);
-router.post('/create', auth(), postController.createpost);
-router.get('/delete/:id', auth(), postController.deletepost);
-router.post('/edit/:id', auth(), postController.editpost);
-router.put('/like/:id', auth(), postController.subscribe);
+router.post('/create', postController.createpost);
+router.get('/delete/:id', postController.deletepost);
+router.post('/edit/:id', postController.editpost);
+router.put('/like/:id', postController.like);
 
 module.exports = router

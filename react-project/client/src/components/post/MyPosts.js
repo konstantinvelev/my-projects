@@ -1,19 +1,20 @@
-import { useEffect, useContext, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
-import * as postService from '../../services/postService'
-import { AuthContext } from "../../contexts/AuthContext"
+import * as postService from '../../services/postService';
+import * as authService from '../../services/authServices';
 
 export function MyPosts() {
     const [posts, setPosts] = useState([]);
-    const {user} = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         postService.allByUser()
             .then((data) => {
-                if (!data.message) {
-                    setPosts(Object.values(data));
+                 if (!data.message) {
+                //     let post = Object.values(data);
+                //     let user = authService.getUser();
+                        setPosts(Object.values(data));
                 } else {
                     navigate('/');
                 }

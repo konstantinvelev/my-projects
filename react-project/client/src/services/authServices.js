@@ -65,19 +65,20 @@ export const logout = async () => {
     } catch (error) {
         return error;
     }
-    
 }
 
 export const getUserById = async (id) => {
-    let res = await fetch(`${ngNetBaseUrl}/userById/${id}`, {
+    let res = await fetch(`${ngNetBaseUrl}/user/getUser/${id}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
             'authorization': token ? 'Bearer ' + token : '',
         }
     });
+    //let result = await res.json();
 
-    return await res.json();
+    return res;
+    //return result;
 }
 
 export const getUserProfile = async () => {

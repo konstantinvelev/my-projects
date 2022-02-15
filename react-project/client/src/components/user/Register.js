@@ -1,11 +1,8 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/AuthContext';
 import * as authService from '../../services/authServices'
 
 export function Register() {
-    let { register } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function registerHandler(e) {

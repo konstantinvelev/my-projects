@@ -14,15 +14,14 @@ export const AuthProvider = ({
     });
 
     useEffect(() => {
-        authServices.getUserProfile()
-            .then((res) => {
-                if (!!res && res.message === undefined) {
-                    login(res)
-                } else {
-                   // authServices.logout();
-                }
-            })
+        const user = authServices.getUser();
+        if (user) {
+            login(user)
+        } else {
+            authServices.logout();
+        }
     }, [])
+
 
     const login = (data) => setUser(data)
 

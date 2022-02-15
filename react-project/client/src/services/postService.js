@@ -1,7 +1,10 @@
+import * as authService from './authServices';
+var user = authService.getUser();
 const baseUrl = 'http://localhost:3005/api/posts'
 
 export const create = async (data) => {
     try {
+        data.userId = user.id;
         let res = await fetch(`${baseUrl}/create`, {
             method: 'POST',
             credentials: 'include',
@@ -37,11 +40,12 @@ export const allByUser = async () => {
 
     try {
         let res = await fetch(`${baseUrl}/allByUser`, {
-            method: 'GET',
+            method: 'POST',
             credentials: 'include',
             headers: {
-                'content-type': 'application/json'
-            }
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user)
         });
 
         return await res.json();

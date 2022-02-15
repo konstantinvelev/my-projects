@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 
 import { AuthContext } from '../../contexts/AuthContext';
 import * as postService from '../../services/postService';
+import * as authService from '../../services/authServices';
 import DeleteConformation from '../common/DeleteConformation/DeleteConformation';
 
 export function Details() {
@@ -13,6 +14,10 @@ export function Details() {
 
     let { user } = useContext(AuthContext);
 
+    function getUser(userId){
+        authService.getUserById(userId).then((res) => {return res});
+    }
+
 
     useEffect(() => {
         postService.getById(postId)
@@ -22,6 +27,7 @@ export function Details() {
                 }
                 else {
                     formatDate(data);
+                    getUser(data.user);
                     setPost(data);
                 }
             })
@@ -75,15 +81,15 @@ export function Details() {
     )
 
     let likeLogic = (
-        post.likes?.map(liked => {
-            if (liked._id === user._id && user._id !== undefined) {
-                return <p className="thanks-for-vote">Thanks For Voting</p>
-            }
-            else {
-                <button onClick={likeClickHandler} className="vote-up">Like</button>
-            }
-
-        })
+        //post.likes?.map(liked => {
+            // if (liked._id === user._id && user._id !== undefined) {
+            //     return <p className="thanks-for-vote">Thanks For Voting</p>
+            // }
+            // else {
+                // }
+                
+            //})
+            <button onClick={likeClickHandler} className="vote-up">Like</button>
     )
 
     return (

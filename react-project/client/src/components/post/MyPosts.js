@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as postService from '../../services/postService';
-import * as authService from '../../services/authServices';
 
 export function MyPosts() {
     const [posts, setPosts] = useState([]);

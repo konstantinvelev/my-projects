@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom"
 
-import { AuthContext } from '../../contexts/AuthContext';
 import * as postService from '../../services/postService';
 import * as authService from '../../services/authServices';
 import DeleteConformation from '../common/DeleteConformation/DeleteConformation';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 export function Details() {
     const [post, setPost] = useState([]);
@@ -12,7 +12,7 @@ export function Details() {
     let navigate = useNavigate();
     let { postId } = useParams();
 
-    let { user } = useContext(AuthContext);
+    let { user } = useAuthContext();
 
     function getUser(userId){
         authService.getUserById(userId).then((res) => {return res});

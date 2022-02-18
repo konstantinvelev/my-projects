@@ -14,12 +14,12 @@ export const AuthProvider = ({
     });
 
     useEffect(() => {
-        const user = authServices.getUser();
-        if (user) {
-            login(user)
-        } else {
-            authServices.logout();
-        }
+       const user = authServices.getUser();
+                if (user) {
+                    login(user)
+                } else {
+                    logout();
+                }
     }, [])
 
 

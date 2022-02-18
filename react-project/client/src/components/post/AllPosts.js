@@ -26,14 +26,12 @@ export function AllPosts() {
     )
 
     let noPostsView = (
-        <>
-            <div className="no-posts">
-                <div className="no-posts-img">
-                    <img src="./img/animal.jpg" alt="image_nature_3" />
-                </div>
-                <p className="no-offer">There are no posts yet...</p>
+        <div className="no-posts">
+            <div className="no-posts-img">
+                <img src="./img/animal.jpg" alt="image_nature_3" />
             </div>
-        </>
+            <p className="no-offer">There are no posts yet...</p>
+        </div>
     );
 
     return (

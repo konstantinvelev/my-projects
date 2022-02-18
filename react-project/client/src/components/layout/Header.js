@@ -1,11 +1,9 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 export function Header() {
 
-    let {user} = useContext(AuthContext);
+    let { user } = useAuthContext();
 
     let userNavigation = (
         <>
@@ -29,8 +27,8 @@ export function Header() {
                 <li><Link to="/all">All Posts</Link></li>
                 {
                     !!(user?.id) ?
-                      userNavigation    
-                    : guestsNavigation
+                        userNavigation
+                        : guestsNavigation
                 }
             </ul>
         </nav>

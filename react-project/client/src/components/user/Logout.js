@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import * as authService from '../../services/authServices';
 
 
 export function Logout() {
-    let {logout} = useContext(AuthContext);
+    let { logout } = useAuthContext();
     let navigate = useNavigate();
 
     authService.logout()
@@ -14,7 +13,6 @@ export function Logout() {
             logout();
             navigate('/login')
         })
-        .catch(err => {});
 
     return null;
 }

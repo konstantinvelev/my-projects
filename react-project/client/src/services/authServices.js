@@ -1,8 +1,6 @@
 import Cookies from 'js-cookie';
-
-const ngNetBaseUrl = 'http://localhost:7000';
-const cookieKey = 'token';
-const token = Cookies.get(cookieKey);
+import {ngNetBaseUrl, cookieKey,apiKey} from '../components/common/authConfig';
+export const token = Cookies.get(cookieKey);
 
 export const register = async (data) => {
     try {
@@ -10,6 +8,7 @@ export const register = async (data) => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
+                'x-api-key': apiKey
             },
             body: JSON.stringify(data)
         });
@@ -29,6 +28,7 @@ export const login = async (data) => {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
+                'x-api-key': apiKey
             },
             body: JSON.stringify(data)
         });
@@ -43,7 +43,6 @@ export const login = async (data) => {
     } catch (error) {
         return error;
     }
-
 }
 
 export const logout = async () => {
@@ -52,6 +51,7 @@ export const logout = async () => {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
+                'x-api-key': apiKey,
                 'authorization': token ? 'Bearer ' + token : '',
             }
         });
@@ -72,6 +72,7 @@ export const getUserById = async (id) => {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
+            'x-api-key': apiKey,
             'authorization': token ? 'Bearer ' + token : '',
         }
     });
@@ -83,19 +84,16 @@ export const getUserById = async (id) => {
 
 export const getUserProfile = async () => {
     try {
-        let res = await fetch(`${ngNetBaseUrl}/profile`, {
+        let res = await fetch(`${ngNetBaseUrl}/user/profile`, {
             method: 'GET',
             credentials: 'include',
             headers: {
                 'content-type': 'application/json',
+                'x-api-key': apiKey
             }
         });
-
-        if (res.ok) {
-            let result = await res.json();
-            //setLocalStorage(result);
-            return result;
-        }
+        let result = await res.json();
+        return result;
     } catch (error) {
         return false;
     }

@@ -6,7 +6,7 @@ export function Register() {
     const navigate = useNavigate();
 
     function registerHandler(e) {
-        e.preventDefault();
+
         let formData = new FormData(e.currentTarget);
         let data = {
             firstName: formData.get('firstName'),

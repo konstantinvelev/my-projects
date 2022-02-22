@@ -37,7 +37,6 @@ export const all = async () => {
 }
 
 export const allByUser = async () => {
-
     try {
         let res = await fetch(`${baseUrl}/allByUser`, {
             method: 'POST',

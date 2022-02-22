@@ -34,10 +34,7 @@ export function Edit() {
     }
 
     function createSubmitHandler(e) {
-        e.preventDefault();
-
         let formData = new FormData(e.currentTarget);
-
         let data = {
             title: formData.get('title'),
             keyword: formData.get('keyword'),
@@ -49,7 +46,7 @@ export function Edit() {
 
         postService.edit(postId, data)
             .then((data) => {
-                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                if (data?.message !== undefined && data?.message == '') {
                     navigate(`*`)
                 }
                 else {

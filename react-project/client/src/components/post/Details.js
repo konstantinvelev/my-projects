@@ -11,7 +11,6 @@ export function Details() {
     const [showConformation, setShowConformation] = useState(false);
     let navigate = useNavigate();
     let { postId } = useParams();
-
     let { user } = useAuthContext();
 
     function getUser(userId){
@@ -22,7 +21,7 @@ export function Details() {
     useEffect(() => {
         postService.getById(postId)
             .then((data) => {
-                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                if (data?.message !== undefined && data?.message == '') {
                     navigate(`*`)
                 }
                 else {
@@ -31,7 +30,6 @@ export function Details() {
                     setPost(data);
                 }
             })
-
     }, [])
 
     function formatDate(data) {
@@ -43,26 +41,21 @@ export function Details() {
         data.date = `${day}.${month}.${year}`;
     }
 
-    function deleteClickHandler(e) {
-        e.preventDefault();
+    function deleteClickHandler() {
         setShowConformation(true);
     }
 
-    function deletePostHandler(e) {
-        e.preventDefault();
-
+    function deletePostHandler() {
         postService.remove(post._id)
             .then(res => {
                 navigate('/all')
             })
     }
 
-    function likeClickHandler(e) {
-        e.preventDefault();
-
+    function likeClickHandler() {
         postService.like(post._id, user._id)
             .then((data) => {
-                if (data?.message !== undefined && data?.message === 'Not allowed!') {
+                if (data?.message !== undefined && data?.message == '') {
                     navigate(`*`)
                 }
                 else {
@@ -72,7 +65,6 @@ export function Details() {
                 }
             })
     }
-
 
     let peopleWhoLiked = (
         post?.likes?.map((user) => (
@@ -127,7 +119,6 @@ export function Details() {
                                                 }
                                             </>
                                     }
-
                                 </div>
                             </div>
                         </div>

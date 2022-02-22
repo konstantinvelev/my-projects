@@ -12,10 +12,8 @@ export const register = async (data) => {
             },
             body: JSON.stringify(data)
         });
-
-        let result = await res.json();
         
-        return result;
+        return await res.json();
     } catch (error) {
         return error;
     }
@@ -56,12 +54,10 @@ export const logout = async () => {
             }
         });
 
-        let result = await res.json();
-
         if (res.ok) {
             Cookies.remove('token')
         }
-        return result;
+        return await res.json();
     } catch (error) {
         return error;
     }
@@ -92,17 +88,17 @@ export const getUserProfile = async () => {
                 'x-api-key': apiKey
             }
         });
-        let result = await res.json();
-        return result;
-    } catch (error) {
-        return false;
-    }
 
+        return await res.json();
+    } catch (error) {
+        return error;
+    }
 }
 
 export const getUser = () => {
     return parseToken();
 }
+
 function parseToken() {
     const token = Cookies.get(cookieKey);
 

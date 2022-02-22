@@ -8,8 +8,6 @@ export function Login() {
 
     let navigate = useNavigate();
     function loginHandler(e) {
-        e.preventDefault();
-
         let formData = new FormData(e.currentTarget);
         let data = {
             username: formData.get('username'),

@@ -27,7 +27,7 @@ export function Header() {
                 <li><Link to="/all">All Posts</Link></li>
                 {
                     !!(user?.id) ?
-                        userNavigation
+                          userNavigation
                         : guestsNavigation
                 }
             </ul>

@@ -42,8 +42,7 @@ export function MyPosts() {
                     </div>
                 </div>
             </div>
-        )
-        )
+        ))
     )
 
     let noMyPosts = (

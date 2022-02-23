@@ -5,7 +5,6 @@ export function Create() {
     let navigate = useNavigate();
 
     function createPostHandler(e) {
-        e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
         let data = {
@@ -18,8 +17,8 @@ export function Create() {
         };
         postService.create(data)
             .then((data) => {
-                if (data?.message !== undefined && data?.message === 'Not allowed!') {
-                    navigate(`*`)
+                if (data?.message !== undefined && data?.message == '') {
+                    navigate(`/`)
                 }
                 else {
                     navigate('/all')

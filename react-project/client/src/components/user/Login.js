@@ -5,8 +5,8 @@ import * as authServices from '../../services/authServices';
 
 export function Login() {
     let { login } = useAuthContext();
-
     let navigate = useNavigate();
+    
     function loginHandler(e) {
         let formData = new FormData(e.currentTarget);
         let data = {

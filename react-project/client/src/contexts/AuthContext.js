@@ -21,7 +21,6 @@ export const AuthProvider = ({
                 }
     }, [])
 
-
     const login = (data) => setUser(data)
 
     const register = (data) => setUser(data)

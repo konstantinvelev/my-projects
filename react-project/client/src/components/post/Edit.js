@@ -47,7 +47,7 @@ export function Edit() {
         postService.edit(postId, data)
             .then((data) => {
                 if (data?.message !== undefined && data?.message == '') {
-                    navigate(`*`)
+                    navigate(`/`)
                 }
                 else {
                     setPost(data)
